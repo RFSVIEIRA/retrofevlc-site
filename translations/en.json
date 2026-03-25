@@ -1,13 +1,34 @@
 {
   "title": "RetroFeVLC",
   "subtitle": "The powerful evolution of RetroFE — now with VLC, smart addons & next-level customization",
+
   "nav-home": "Home",
+  "nav-whatsnew": "What's New",
   "nav-features": "Features",
-  "nav-quickguide": "Quick Guide",
   "nav-addons": "Addons",
   "nav-layouts": "Layouts",
   "nav-about": "About",
+
   "discord-btn": "🚀 Join the Discord",
-  "download-btn": "⬇️ Download Full Version",
-  "footer-text": "Multi-language neon cyber style site"
+  "download-btn": "⬇️ Download Full Version V2.1.57",
+  "footer-text": "Multi-language neon cyber style site",
+
+  "welcome": "Welcome to RetroFeVLC",
+  "welcome-text": "RetroFeVLC is a powerful fork of RetroFE that replaces GStreamer with <strong>VLC</strong>, bringing dozens of new features, a smart addon system, and a much more user-friendly experience.",
+
+  "whatsnew-title": "What's New in RetroFeVLC V2.1.57",
+  "whatsnew-text": "<ul><li>Menu Options: Settings, Controls, Layout</li><li>4K Support + Scale Quality Options</li><li>Rock-Solid Stability – add new screens without crashes</li><li>Animated Images (GIF + WebP support)</li><li>Memory leak fixes for silky-smooth performance</li><li>New playlist ordering options</li><li>Game Search (external addon)</li><li>Dynamic Playlists: ALL GAMES, ALL FAVORITES, ALL LASTPLAYED with real-time updates</li><li>New Grid menu option</li><li>Layout include files + Variables support</li><li>GameInfo stats (play count, most played game, etc.)</li><li>Per-game layouts</li></ul><p><strong>RetroFeVLC supports RetroAchievements sync, Kiosk Mode, and the beautiful Phoenix Demo Theme.</strong></p>",
+
+  "whatis-title": "What is RetroFeVLC?",
+  "whatis-text": "RetroFeVLC is a complete, high-performance front-end for your retro game collection.<br><br><strong>RetroFeVLC (The Face)</strong>: Beautiful, fast, powered by VLC for perfect video previews.<br><strong>Start.exe (The Brain)</strong>: Your all-in-one management tool for settings, controllers, launchers and playlists.<br><br>It shows your games with menus, artwork, videos and lets you launch any emulator. Think Netflix UI, but for your retro games.",
+
+  "addons-title": "Addons & Tools",
+  "key-features": "Key Features",
+  "quick-start": "Quick Start Guide",
+  "layouts-title": "Layouts & Themes",
+  "about-title": "About RetroFeVLC",
+
+  "quickguide-text": "1. Download the Full All Addons Include version<br>2. Extract to any folder (e.g. E:\\RetroFeVLC)<br>3. Run Start.exe<br>4. Right-click tray icon → RetroFeVLC Options<br>5. Add your game collections and enjoy!",
+
+  "layouts-text": "Extremely powerful layout system with grids, per-game layouts, 3D effects, random media, and in-frontend Options Menu.<br>The official <strong>Phoenix Theme</strong> includes 12 menu styles – the ultimate showcase of what RetroFeVLC can do."
 }
