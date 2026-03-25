@@ -4,6 +4,7 @@
 
   "nav-home": "Início",
   "nav-whatsnew": "Novidades",
+  "nav-quickstart": "Guia Rápido",
   "nav-features": "Funcionalidades",
   "nav-addons": "Addons",
   "nav-layouts": "Layouts",
@@ -17,18 +18,45 @@
   "welcome-text": "RetroFeVLC é um fork poderoso do RetroFE que substitui o GStreamer pelo <strong>VLC</strong>, trazendo dezenas de novas funcionalidades, um sistema inteligente de addons e uma experiência muito mais amigável.",
 
   "whatsnew-title": "Novidades no RetroFeVLC V2.1.57",
-  "whatsnew-text": "<ul><li>Menu Options: Definições, Controles, Layout</li><li>Suporte 4K + Opções de Qualidade de Escala</li><li>Estabilidade Total – adiciona novos ecrãs sem crashes</li><li>Imagens Animadas (suporte GIF + WebP)</li><li>Correções de memory leak para desempenho fluido</li><li>Novas opções de ordenação de playlists</li><li>Pesquisa de Jogos (addon externo)</li><li>Playlists Dinâmicas: ALL GAMES, ALL FAVORITES, ALL LASTPLAYED com atualização em tempo real</li><li>Nova opção de menu em Grelha</li><li>Ficheiros de include em layouts + suporte a Variáveis</li><li>Estatísticas de Jogo (número de vezes jogado, jogo mais jogado, etc.)</li><li>Layouts por jogo individual</li></ul><p><strong>RetroFeVLC suporta sincronização de RetroAchievements, Modo Kiosk e o lindo tema de demonstração Phoenix.</strong></p>",
 
-  "whatis-title": "O que é o RetroFeVLC?",
-  "whatis-text": "RetroFeVLC é um front-end completo e de alto desempenho para a tua coleção de jogos retro.<br><br><strong>RetroFeVLC (A Face)</strong>: Bonito, rápido e alimentado por VLC para previews de vídeo perfeitos.<br><strong>Start.exe (O Cérebro)</strong>: A tua ferramenta de gestão tudo-em-um para definições, controladores, launchers e playlists.<br><br>Mostra os teus jogos com menus, artwork, vídeos e permite lançar qualquer emulador. Pensa no Netflix, mas para os teus jogos retro.",
+  "quickstart-title": "Guia Rápido",
+
+  "key-features": "Funcionalidades Principais",
 
   "addons-title": "Addons & Ferramentas",
-  "key-features": "Funcionalidades Principais",
-  "quick-start": "Guia Rápido",
+
   "layouts-title": "Layouts e Temas",
+  "layouts-text": "Motor de layouts extremamente poderoso com menus em grelha, layouts por jogo, efeitos 3D, variáveis, ficheiros include e Options Menu integrado.<br>O tema oficial <strong>Phoenix</strong> é uma demonstração completa de tudo o que o RetroFeVLC pode fazer.",
+
   "about-title": "Sobre o RetroFeVLC",
+  "about-text": "RetroFeVLC é um fork desenvolvido por um entusiasta da comunidade. Totalmente open-source sob licença GPL3. O objetivo é tornar o RetroFE ainda melhor mantendo-o gratuito e aberto para todos.",
 
-  "quickguide-text": "1. Descarrega a versão Full All Addons Include<br>2. Extrai para qualquer pasta (ex: E:\\RetroFeVLC)<br>3. Executa Start.exe<br>4. Clique direito no ícone da tray → RetroFeVLC Options<br>5. Adiciona as tuas coleções de jogos e diverte-te!",
+  "whatsnew-1": "Menu Options – Definições, Controles, Layout",
+  "whatsnew-2": "Suporte Total 4K + Opções de Qualidade de Escala",
+  "whatsnew-3": "Estabilidade Total (sem crashes ao adicionar ecrãs)",
+  "whatsnew-4": "Imagens Animadas (suporte GIF + WebP)",
+  "whatsnew-5": "Correções importantes de memory leak",
+  "whatsnew-6": "Novas opções de ordenação de playlists",
+  "whatsnew-7": "Pesquisa de Jogos (addon externo)",
+  "whatsnew-8": "Playlists Dinâmicas com atualização em tempo real",
+  "whatsnew-9": "Nova opção de menu em Grelha",
+  "whatsnew-10": "Ficheiros include em layouts + suporte a Variáveis",
+  "whatsnew-11": "Estatísticas de Jogo (número de vezes jogado, jogo mais jogado, etc.)",
+  "whatsnew-12": "Layouts por jogo individual",
 
-  "layouts-text": "Sistema de layouts extremamente poderoso com grelhas, layouts por jogo individual, efeitos 3D, media aleatória e Options Menu integrado.<br>O tema oficial <strong>Phoenix</strong> inclui 12 estilos de menu – a demonstração definitiva do que o RetroFeVLC consegue fazer."
+  "feature-start": "Lançador inteligente com System Tray, sincronização automática de Favoritos e Últimos Jogados, JoyToKey, SuperF4 e muito mais.",
+  "feature-search": "Pesquisa ultrarrápida de jogos (F11 por defeito) com suporte total a gamepad.",
+  "feature-layout": "Menus em grelha, layouts por jogo, slideshows aleatórios, efeitos 3D e Options Menu integrado.",
+  "feature-metadata": "HyperSpin, MAME, truRIP + GenreFixer com IA e Metadata Regenerator.",
+  "feature-marquee": "Duplicador avançado de Marquee.",
+
+  "addon-genre": "🎨 GenreFixer (IA)",
+  "addon-kiosk": "🛡️ Modo Kiosk Simples",
+  "addon-tree": "🌳 Layout Tree Maker",
+  "addon-menu": "📋 MenuManager",
+  "addon-meta": "📊 Metadata Regenerator",
+  "addon-editor": "🖌️ Editor de Layouts RetroFeVLC",
+  "addon-rera": "🏆 RetroRa – Sincronização RetroAchievements",
+  "addon-story": "🌍 Story Translator (IA)",
+  "addon-marquee": "🖼️ Duplicador de Ecrã Marquee"
 }

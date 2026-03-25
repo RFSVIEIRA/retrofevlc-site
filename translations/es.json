@@ -1,0 +1,62 @@
+{
+  "title": "RetroFeVLC",
+  "subtitle": "La poderosa evolución de RetroFE — ahora con VLC, addons inteligentes y personalización de alto nivel",
+
+  "nav-home": "Inicio",
+  "nav-whatsnew": "Novedades",
+  "nav-quickstart": "Guía Rápida",
+  "nav-features": "Características",
+  "nav-addons": "Addons",
+  "nav-layouts": "Layouts",
+  "nav-about": "Acerca de",
+
+  "discord-btn": "🚀 Unirse al Discord",
+  "download-btn": "⬇️ Descargar Versión Completa V2.1.57",
+  "footer-text": "Sitio multilingüe estilo neon cyber",
+
+  "welcome": "Bienvenido a RetroFeVLC",
+  "welcome-text": "RetroFeVLC es un fork poderoso de RetroFE que reemplaza GStreamer por <strong>VLC</strong>, trayendo docenas de nuevas funciones, un sistema inteligente de addons y una experiencia mucho más amigable.",
+
+  "whatsnew-title": "Novedades en RetroFeVLC V2.1.57",
+
+  "quickstart-title": "Guía Rápida",
+
+  "key-features": "Características Principales",
+
+  "addons-title": "Addons y Herramientas",
+
+  "layouts-title": "Layouts y Temas",
+  "layouts-text": "Motor de layouts extremadamente poderoso con menús en cuadrícula, layouts por juego, efectos 3D, variables, archivos include y Options Menu integrado.<br>El tema oficial <strong>Phoenix</strong> es una demostración completa de todo lo que RetroFeVLC puede hacer.",
+
+  "about-title": "Acerca de RetroFeVLC",
+  "about-text": "RetroFeVLC es un fork impulsado por la comunidad desarrollado por un entusiasta. Totalmente open-source bajo GPL3. El objetivo es hacer RetroFE aún mejor manteniéndolo gratuito y abierto para todos.",
+
+  "whatsnew-1": "Opciones de Menú – Configuración, Controles, Layout",
+  "whatsnew-2": "Soporte Total 4K + Opciones de Calidad de Escala",
+  "whatsnew-3": "Estabilidad Total (sin crashes al añadir pantallas)",
+  "whatsnew-4": "Imágenes Animadas (soporte GIF + WebP)",
+  "whatsnew-5": "Correcciones importantes de memory leak",
+  "whatsnew-6": "Nuevas opciones de ordenación de playlists",
+  "whatsnew-7": "Búsqueda de Juegos (addon externo)",
+  "whatsnew-8": "Playlists Dinámicas con actualización en tiempo real",
+  "whatsnew-9": "Nueva opción de menú en Cuadrícula",
+  "whatsnew-10": "Archivos include en layouts + soporte a Variables",
+  "whatsnew-11": "Estadísticas de Juego (veces jugado, juego más jugado, etc.)",
+  "whatsnew-12": "Layouts por juego individual",
+
+  "feature-start": "Lanzador inteligente con System Tray, sincronización automática de Favoritos y Últimos Jugados, JoyToKey, SuperF4 y más.",
+  "feature-search": "Búsqueda ultrarrápida de juegos (F11 por defecto) con soporte total a gamepad.",
+  "feature-layout": "Menús en cuadrícula, layouts por juego, slideshows aleatorios, efectos 3D y Options Menu integrado.",
+  "feature-metadata": "HyperSpin, MAME, truRIP + GenreFixer con IA y Metadata Regenerator.",
+  "feature-marquee": "Duplicador avanzado de Marquee.",
+
+  "addon-genre": "🎨 GenreFixer (IA)",
+  "addon-kiosk": "🛡️ Modo Kiosk Simple",
+  "addon-tree": "🌳 Layout Tree Maker",
+  "addon-menu": "📋 MenuManager",
+  "addon-meta": "📊 Metadata Regenerator",
+  "addon-editor": "🖌️ Editor de Layouts RetroFeVLC",
+  "addon-rera": "🏆 RetroRa – Sincronización RetroAchievements",
+  "addon-story": "🌍 Story Translator (IA)",
+  "addon-marquee": "🖼️ Duplicador de Pantalla Marquee"
+}

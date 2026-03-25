@@ -4,6 +4,7 @@
 
   "nav-home": "Home",
   "nav-whatsnew": "What's New",
+  "nav-quickstart": "Quick Start",
   "nav-features": "Features",
   "nav-addons": "Addons",
   "nav-layouts": "Layouts",
@@ -17,18 +18,45 @@
   "welcome-text": "RetroFeVLC is a powerful fork of RetroFE that replaces GStreamer with <strong>VLC</strong>, bringing dozens of new features, a smart addon system, and a much more user-friendly experience.",
 
   "whatsnew-title": "What's New in RetroFeVLC V2.1.57",
-  "whatsnew-text": "<ul><li>Menu Options: Settings, Controls, Layout</li><li>4K Support + Scale Quality Options</li><li>Rock-Solid Stability – add new screens without crashes</li><li>Animated Images (GIF + WebP support)</li><li>Memory leak fixes for silky-smooth performance</li><li>New playlist ordering options</li><li>Game Search (external addon)</li><li>Dynamic Playlists: ALL GAMES, ALL FAVORITES, ALL LASTPLAYED with real-time updates</li><li>New Grid menu option</li><li>Layout include files + Variables support</li><li>GameInfo stats (play count, most played game, etc.)</li><li>Per-game layouts</li></ul><p><strong>RetroFeVLC supports RetroAchievements sync, Kiosk Mode, and the beautiful Phoenix Demo Theme.</strong></p>",
 
-  "whatis-title": "What is RetroFeVLC?",
-  "whatis-text": "RetroFeVLC is a complete, high-performance front-end for your retro game collection.<br><br><strong>RetroFeVLC (The Face)</strong>: Beautiful, fast, powered by VLC for perfect video previews.<br><strong>Start.exe (The Brain)</strong>: Your all-in-one management tool for settings, controllers, launchers and playlists.<br><br>It shows your games with menus, artwork, videos and lets you launch any emulator. Think Netflix UI, but for your retro games.",
+  "quickstart-title": "Quick Start Guide",
+
+  "key-features": "Key Features",
 
   "addons-title": "Addons & Tools",
-  "key-features": "Key Features",
-  "quick-start": "Quick Start Guide",
+
   "layouts-title": "Layouts & Themes",
+  "layouts-text": "Extremely powerful layout engine with Grid menus, per-game layouts, 3D effects, variables, include files and built-in Options Menu.<br>The official <strong>Phoenix Theme</strong> is a complete demo that shows everything RetroFeVLC can do.",
+
   "about-title": "About RetroFeVLC",
+  "about-text": "RetroFeVLC is a community-driven fork developed by an enthusiast. Fully open-source under GPL3. The goal is to make RetroFE even better while keeping it free and open for everyone.",
 
-  "quickguide-text": "1. Download the Full All Addons Include version<br>2. Extract to any folder (e.g. E:\\RetroFeVLC)<br>3. Run Start.exe<br>4. Right-click tray icon → RetroFeVLC Options<br>5. Add your game collections and enjoy!",
+  "whatsnew-1": "Menu Options – Settings, Controls, Layout",
+  "whatsnew-2": "Full 4K Support + Scale Quality Options",
+  "whatsnew-3": "Rock-Solid Stability (no crashes when adding screens)",
+  "whatsnew-4": "Animated Images (GIF + WebP support)",
+  "whatsnew-5": "Major memory leak fixes",
+  "whatsnew-6": "New playlist ordering options",
+  "whatsnew-7": "Game Search (external addon)",
+  "whatsnew-8": "Dynamic Playlists with real-time updates",
+  "whatsnew-9": "New Grid menu option",
+  "whatsnew-10": "Layout include files + Variables support",
+  "whatsnew-11": "GameInfo stats (play count, most played game, etc.)",
+  "whatsnew-12": "Per-game layouts",
 
-  "layouts-text": "Extremely powerful layout system with grids, per-game layouts, 3D effects, random media, and in-frontend Options Menu.<br>The official <strong>Phoenix Theme</strong> includes 12 menu styles – the ultimate showcase of what RetroFeVLC can do."
+  "feature-start": "Intelligent launcher with System Tray, automatic sync of Favorites & Last Played, JoyToKey, SuperF4 and more.",
+  "feature-search": "Lightning-fast game search (F11 by default) with full gamepad support.",
+  "feature-layout": "Grid menus, per-game layouts, random slideshows, 3D effects, and built-in Options Menu.",
+  "feature-metadata": "HyperSpin, MAME, truRIP + AI Genre Fixer and Metadata Regenerator.",
+  "feature-marquee": "Advanced Marquee Monitor Duplicator.",
+
+  "addon-genre": "🎨 GenreFixer (AI)",
+  "addon-kiosk": "🛡️ Simple KioskMode",
+  "addon-tree": "🌳 Layout Tree Maker",
+  "addon-menu": "📋 MenuManager",
+  "addon-meta": "📊 Metadata Regenerator",
+  "addon-editor": "🖌️ RetroFeVLC Layout Editor",
+  "addon-rera": "🏆 RetroRa – RetroAchievements Sync",
+  "addon-story": "🌍 Story Translator (AI)",
+  "addon-marquee": "🖼️ Marquee Screen Duplicator"
 }

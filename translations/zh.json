@@ -1,0 +1,62 @@
+{
+  "title": "RetroFeVLC",
+  "subtitle": "RetroFE 的强大进化 — 现支持 VLC、智能插件和顶级自定义",
+
+  "nav-home": "首页",
+  "nav-whatsnew": "最新更新",
+  "nav-quickstart": "快速入门",
+  "nav-features": "核心功能",
+  "nav-addons": "插件工具",
+  "nav-layouts": "主题布局",
+  "nav-about": "关于我们",
+
+  "discord-btn": "🚀 加入 Discord",
+  "download-btn": "⬇️ 下载完整版 V2.1.57",
+  "footer-text": "多语言霓虹赛博风格网站",
+
+  "welcome": "欢迎来到 RetroFeVLC",
+  "welcome-text": "RetroFeVLC 是 RetroFE 的强大分支，它将 GStreamer 替换为 <strong>VLC</strong>，带来了数十项新功能、智能插件系统和更加友好的使用体验。",
+
+  "whatsnew-title": "RetroFeVLC V2.1.57 最新更新",
+
+  "quickstart-title": "快速入门指南",
+
+  "key-features": "核心功能",
+
+  "addons-title": "插件与工具",
+
+  "layouts-title": "主题与布局",
+  "layouts-text": "极其强大的布局引擎，支持网格菜单、单个游戏布局、3D 效果、变量、include 文件和内置 Options Menu。<br>官方 <strong>Phoenix 主题</strong> 是完整演示，展示了 RetroFeVLC 的全部能力。",
+
+  "about-title": "关于 RetroFeVLC",
+  "about-text": "RetroFeVLC 是由社区爱好者开发的 fork 项目。完全开源（GPL3）。目标是让 RetroFE 变得更好，同时保持免费和开放。",
+
+  "whatsnew-1": "菜单选项 – 设置、控制、布局",
+  "whatsnew-2": "完整 4K 支持 + 缩放质量选项",
+  "whatsnew-3": "极致稳定（添加屏幕不会崩溃）",
+  "whatsnew-4": "动画图片支持（GIF + WebP）",
+  "whatsnew-5": "内存泄漏重大修复",
+  "whatsnew-6": "新的播放列表排序选项",
+  "whatsnew-7": "游戏搜索（外部插件）",
+  "whatsnew-8": "动态播放列表实时更新",
+  "whatsnew-9": "新增网格菜单选项",
+  "whatsnew-10": "布局 include 文件 + 变量支持",
+  "whatsnew-11": "游戏信息统计（游玩次数、最常玩游戏等）",
+  "whatsnew-12": "单个游戏独立布局",
+
+  "feature-start": "智能启动器，带系统托盘，自动同步收藏和最近游戏，支持 JoyToKey、SuperF4 等。",
+  "feature-search": "闪电般的游戏搜索（默认 F11），完整手柄支持。",
+  "feature-layout": "网格菜单、单个游戏布局、随机幻灯片、3D 效果和内置选项菜单。",
+  "feature-metadata": "HyperSpin、MAME、truRIP + AI 分类修复和元数据生成器。",
+  "feature-marquee": "高级 Marquee 屏幕复制器。",
+
+  "addon-genre": "🎨 GenreFixer (AI)",
+  "addon-kiosk": "🛡️ 简易 Kiosk 模式",
+  "addon-tree": "🌳 布局树管理器",
+  "addon-menu": "📋 MenuManager",
+  "addon-meta": "📊 元数据生成器",
+  "addon-editor": "🖌️ RetroFeVLC 布局编辑器",
+  "addon-rera": "🏆 RetroRa – RetroAchievements 同步",
+  "addon-story": "🌍 故事翻译器 (AI)",
+  "addon-marquee": "🖼️ Marquee 屏幕复制器"
+}

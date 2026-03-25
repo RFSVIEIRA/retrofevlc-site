@@ -1,0 +1,62 @@
+{
+  "title": "RetroFeVLC",
+  "subtitle": "Мощная эволюция RetroFE — теперь с VLC, умными аддонами и продвинутой кастомизацией",
+
+  "nav-home": "Главная",
+  "nav-whatsnew": "Что нового",
+  "nav-quickstart": "Быстрый старт",
+  "nav-features": "Возможности",
+  "nav-addons": "Аддоны",
+  "nav-layouts": "Темы",
+  "nav-about": "О проекте",
+
+  "discord-btn": "🚀 Присоединиться к Discord",
+  "download-btn": "⬇️ Скачать Полную Версию V2.1.57",
+  "footer-text": "Многоязычный сайт в стиле neon cyber",
+
+  "welcome": "Добро пожаловать в RetroFeVLC",
+  "welcome-text": "RetroFeVLC — это мощный форк RetroFE, который заменяет GStreamer на <strong>VLC</strong>, добавляя десятки новых функций, умную систему аддонов и гораздо более удобный интерфейс.",
+
+  "whatsnew-title": "Что нового в RetroFeVLC V2.1.57",
+
+  "quickstart-title": "Быстрый старт",
+
+  "key-features": "Основные возможности",
+
+  "addons-title": "Аддоны и инструменты",
+
+  "layouts-title": "Темы и Layouts",
+  "layouts-text": "Очень мощный движок тем с меню-сеткой, индивидуальными layouts для игр, 3D-эффектами, переменными, include-файлами и встроенным Options Menu.<br>Официальная тема <strong>Phoenix</strong> — это полноценная демонстрация всех возможностей RetroFeVLC.",
+
+  "about-title": "О RetroFeVLC",
+  "about-text": "RetroFeVLC — это форк, созданный энтузиастом сообщества. Полностью open-source под лицензией GPL3. Цель — сделать RetroFE ещё лучше, сохраняя его бесплатным и открытым для всех.",
+
+  "whatsnew-1": "Опции меню — Настройки, Управление, Layout",
+  "whatsnew-2": "Полная поддержка 4K + параметры качества масштабирования",
+  "whatsnew-3": "Полная стабильность (без крашей при добавлении экранов)",
+  "whatsnew-4": "Анимированные изображения (поддержка GIF + WebP)",
+  "whatsnew-5": "Исправления утечек памяти",
+  "whatsnew-6": "Новые варианты сортировки плейлистов",
+  "whatsnew-7": "Поиск игр (внешний аддон)",
+  "whatsnew-8": "Динамические плейлисты с обновлением в реальном времени",
+  "whatsnew-9": "Новая опция меню в виде сетки",
+  "whatsnew-10": "Include-файлы в layouts + поддержка переменных",
+  "whatsnew-11": "Статистика игр (количество запусков, самый играемый и т.д.)",
+  "whatsnew-12": "Индивидуальные layouts для каждой игры",
+
+  "feature-start": "Умный лаунчер с системным треем, автоматической синхронизацией Избранного и Последних игр, JoyToKey, SuperF4 и многим другим.",
+  "feature-search": "Молниеносный поиск игр (по умолчанию F11) с полной поддержкой геймпада.",
+  "feature-layout": "Меню-сетка, layouts для отдельных игр, случайные слайдшоу, 3D-эффекты и встроенное меню настроек.",
+  "feature-metadata": "HyperSpin, MAME, truRIP + GenreFixer на базе ИИ и Metadata Regenerator.",
+  "feature-marquee": "Продвинутый дубликатор Marquee.",
+
+  "addon-genre": "🎨 GenreFixer (ИИ)",
+  "addon-kiosk": "🛡️ Простой режим Киоск",
+  "addon-tree": "🌳 Layout Tree Maker",
+  "addon-menu": "📋 MenuManager",
+  "addon-meta": "📊 Metadata Regenerator",
+  "addon-editor": "🖌️ Редактор Layouts RetroFeVLC",
+  "addon-rera": "🏆 RetroRa — Синхронизация RetroAchievements",
+  "addon-story": "🌍 Переводчик описаний (ИИ)",
+  "addon-marquee": "🖼️ Дубликатор экрана Marquee"
+}
