@@ -1,6 +1,6 @@
 {
   "title": "RetroFeVLC",
-  "subtitle": "La poderosa evolución de RetroFE — ahora con VLC, addons inteligentes y personalización de alto nivel",
+  "subtitle": "La poderosa evolución de RetroFE — ahora con VLC, addons inteligentes y personalización avanzada",
 
   "nav-home": "Inicio",
   "nav-whatsnew": "Novedades",
@@ -40,14 +40,14 @@
   "whatsnew-7": "Búsqueda de Juegos (addon externo)",
   "whatsnew-8": "Playlists Dinámicas con actualización en tiempo real",
   "whatsnew-9": "Nueva opción de menú en Cuadrícula",
-  "whatsnew-10": "Archivos include en layouts + soporte a Variables",
+  "whatsnew-10": "Archivos include en layouts + soporte Variables",
   "whatsnew-11": "Estadísticas de Juego (veces jugado, juego más jugado, etc.)",
   "whatsnew-12": "Layouts por juego individual",
 
   "feature-start": "Lanzador inteligente con System Tray, sincronización automática de Favoritos y Últimos Jugados, JoyToKey, SuperF4 y más.",
-  "feature-search": "Búsqueda ultrarrápida de juegos (F11 por defecto) con soporte total a gamepad.",
+  "feature-search": "Búsqueda ultrarrápida de juegos (F11 por defecto) con soporte completo gamepad.",
   "feature-layout": "Menús en cuadrícula, layouts por juego, slideshows aleatorios, efectos 3D y Options Menu integrado.",
-  "feature-metadata": "HyperSpin, MAME, truRIP + GenreFixer con IA y Metadata Regenerator.",
+  "feature-metadata": "HyperSpin, MAME, truRIP + GenreFixer IA y Metadata Regenerator.",
   "feature-marquee": "Duplicador avanzado de Marquee.",
 
   "addon-genre": "🎨 GenreFixer (IA)",

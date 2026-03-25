@@ -29,9 +29,9 @@
   "layouts-text": "Motor de layouts extremamente poderoso com menus em grelha, layouts por jogo, efeitos 3D, variáveis, ficheiros include e Options Menu integrado.<br>O tema oficial <strong>Phoenix</strong> é uma demonstração completa de tudo o que o RetroFeVLC pode fazer.",
 
   "about-title": "Sobre o RetroFeVLC",
-  "about-text": "RetroFeVLC é um fork desenvolvido por um entusiasta da comunidade. Totalmente open-source sob licença GPL3. O objetivo é tornar o RetroFE ainda melhor mantendo-o gratuito e aberto para todos.",
+  "about-text": "RetroFeVLC é um fork desenvolvido por um entusiasta da comunidade. Totalmente open-source sob GPL3. O objetivo é tornar o RetroFE ainda melhor mantendo-o gratuito e aberto para todos.",
 
-  "whatsnew-1": "Menu Options – Definições, Controles, Layout",
+  "whatsnew-1": "Opções de Menu – Definições, Controles, Layout",
   "whatsnew-2": "Suporte Total 4K + Opções de Qualidade de Escala",
   "whatsnew-3": "Estabilidade Total (sem crashes ao adicionar ecrãs)",
   "whatsnew-4": "Imagens Animadas (suporte GIF + WebP)",
