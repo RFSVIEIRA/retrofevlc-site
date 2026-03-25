@@ -137,12 +137,11 @@
     
     <img src="assets/retrofevlc-logo.png" alt="RetroFeVLC Logo" class="logo">
 
-    <h1 id="title" data-key="title"></h1> 
+    <h1 id="title" data-key="title">RetroFeVLC</h1>
+    <p class="subtitle" id="subtitle" data-key="subtitle">The powerful evolution of RetroFE — now with VLC, smart addons & next-level customization</p>
     
-    <p class="subtitle" id="subtitle" data-key="subtitle"></p>
-    
-    <a href="https://discord.gg/2aYRHdUrVf" target="_blank" class="btn btn-discord" data-key="discord-btn"></a>
-    <a href="https://www.mediafire.com/file/dnu4eem0fvtriqg/RetroFeVLC_Full_V2.1.57.rar/file" target="_blank" class="btn btn-download" data-key="download-btn"></a>
+    <a href="https://discord.gg/2aYRHdUrVf" target="_blank" class="btn btn-discord" data-key="discord-btn">🚀 Join the Discord</a>
+    <a href="https://www.mediafire.com/file/dnu4eem0fvtriqg/RetroFeVLC_Full_V2.1.57.rar/file" target="_blank" class="btn btn-download" data-key="download-btn">⬇️ Download Full Version V2.1.57</a>
 </header>
 
 <nav>
@@ -157,7 +156,76 @@
 </nav>
 
 <div class="container">
-    <div id="content"></div>
+
+    <!-- ENGLISH - FULL CONTENT -->
+    <div id="content-en" class="lang-content">
+        <section id="home">
+            <h2 data-key="welcome">Welcome to RetroFeVLC</h2>
+            <p data-key="welcome-text">RetroFeVLC is a powerful fork of RetroFE that replaces GStreamer with <strong>VLC</strong>, bringing dozens of new features, a smart addon system, and a much more user-friendly experience.</p>
+        </section>
+
+        <section id="whatsnew">
+            <h2 data-key="whatsnew-title">What's New in RetroFeVLC V2.1.57</h2>
+            <div class="feature-grid">
+                <div class="feature-card">Menu Options – Settings, Controls, Layout</div>
+                <div class="feature-card">4K Support + Scale Quality Options</div>
+                <div class="feature-card">Rock-Solid Stability (add new screens without crashes)</div>
+                <div class="feature-card">Animated Images (GIF + WebP)</div>
+                <div class="feature-card">Memory leak fixes + better performance</div>
+                <div class="feature-card">New playlist ordering options</div>
+                <div class="feature-card">Game Search (external addon)</div>
+                <div class="feature-card">Dynamic Playlists (ALL GAMES, FAVORITES, LASTPLAYED)</div>
+                <div class="feature-card">New Grid menu option</div>
+                <div class="feature-card">Layout include files + Variables support</div>
+                <div class="feature-card">GameInfo stats (play count, most played game)</div>
+                <div class="feature-card">Per-game layouts</div>
+            </div>
+        </section>
+
+        <section id="features">
+            <h2 data-key="key-features">Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card"><h3>🧠 Start.exe – The Brain</h3><p>Intelligent launcher with System Tray, automatic sync of Favorites & Last Played, JoyToKey, SuperF4 and more.</p></div>
+                <div class="feature-card"><h3>🔍 Integrated Search</h3><p>Lightning-fast game search (F11 by default) with full gamepad support.</p></div>
+                <div class="feature-card"><h3>🎨 Advanced VLC Layout Engine</h3><p>Grid menus, per-game layouts, random slideshows, 3D effects, and built-in Options Menu.</p></div>
+                <div class="feature-card"><h3>📊 Powerful Metadata System</h3><p>HyperSpin, MAME, truRIP + AI Genre Fixer and Metadata Regenerator.</p></div>
+                <div class="feature-card"><h3>🖥️ Multi-Monitor & Marquee</h3><p>Advanced Marquee Monitor Duplicator.</p></div>
+                <div class="feature-card"><h3>🔧 Visual Editors</h3><p>MenuManager, Settings, Controls & Layout Editor.</p></div>
+            </div>
+        </section>
+
+        <section id="addons">
+            <h2 data-key="addons-title">Addons & Tools</h2>
+            <div class="addons-grid">
+                <div class="addon-card">🎨 GenreFixer</div>
+                <div class="addon-card">🛡️ KioskMode</div>
+                <div class="addon-card">🌳 Layout Diagram Tree</div>
+                <div class="addon-card">📋 MenuManager</div>
+                <div class="addon-card">📊 MetaDataRegenerator</div>
+                <div class="addon-card">🖌️ RetroFeVLC Layout Editor</div>
+                <div class="addon-card">🏆 RetroRa (RetroAchievements Sync)</div>
+                <div class="addon-card">🌍 Story Translator</div>
+                <div class="addon-card">🖼️ Marquee Screen Duplicator</div>
+            </div>
+        </section>
+
+        <section id="layouts">
+            <h2 data-key="layouts-title">Layouts & Themes</h2>
+            <p>Extremely powerful layout system with grids, per-game layouts, 3D effects, random media, and in-frontend Options Menu.</p>
+            <p>The official <strong>Phoenix Theme</strong> includes 12 menu styles – the ultimate showcase of what RetroFeVLC can do.</p>
+        </section>
+
+        <section id="about">
+            <h2 data-key="about-title">About RetroFeVLC</h2>
+            <p>Community-driven fork developed by an enthusiast. Fully open-source under GPL3.</p>
+        </section>
+    </div>
+
+    <!-- Other languages (you can expand later) -->
+    <div id="content-pt" class="lang-content hidden">PT content will appear here when you translate</div>
+    <div id="content-fr" class="lang-content hidden">FR content will appear here when you translate</div>
+    <div id="content-it" class="lang-content hidden">IT content will appear here when you translate</div>
+    <div id="content-ru" class="lang-content hidden">RU content will appear here when you translate</div>
 </div>
 
 <!-- SOCIAL BAR -->
@@ -172,7 +240,7 @@
 
 <footer>
     <p>RetroFeVLC © 2026 • A community-driven evolution of the RetroFE frontend</p>
-    <p id="footer-text" data-key="footer-text"></p>
+    <p id="footer-text" data-key="footer-text">Multi-language neon cyber style site</p>
 </footer>
 
 <script>
@@ -197,7 +265,7 @@ async function loadLanguage(lang) {
     }
 }
 
-// Create language buttons
+// Language buttons
 const langs = [
     {code:'en', name:'EN'}, {code:'pt', name:'PT'},
     {code:'es', name:'ES'}, {code:'fr', name:'FR'},
@@ -216,6 +284,5 @@ langs.forEach(l => {
 
 loadLanguage('en');
 </script>
-
 </body>
 </html>
