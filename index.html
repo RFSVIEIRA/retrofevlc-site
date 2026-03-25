@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RetroFeVLC | The Evolution of RetroFE</title>
     <meta name="description" content="RetroFeVLC - Powerful RetroFE fork with VLC, smart addons and stunning layouts.">
+    
     <link rel="shortcut icon" type="image/png" href="favicon.png">
 
     <style>
@@ -50,13 +51,7 @@
 
         .logo { max-width: 280px; margin-bottom: 20px; filter: drop-shadow(0 0 25px var(--primary)); }
 
-        h1 {
-            color: var(--primary);
-            font-size: 4.2rem;
-            margin: 10px 0 15px 0;
-            text-shadow: 0 0 30px rgba(0, 255, 204, 0.6);
-            letter-spacing: -2px;
-        }
+        h1 { color: var(--primary); font-size: 4.2rem; margin: 10px 0 15px 0; text-shadow: 0 0 30px rgba(0, 255, 204, 0.6); letter-spacing: -2px; }
 
         .subtitle { font-size: 1.55rem; color: #b0b0ff; margin-bottom: 40px; max-width: 820px; margin-left: auto; margin-right: auto; }
 
@@ -99,11 +94,19 @@
         .addon-card:hover { transform: translateY(-8px); border-color: var(--primary); }
 
         .btn {
-            display: inline-block; padding: 18px 38px; border-radius: 50px;
-            text-decoration: none; font-weight: 700; font-size: 1.25rem; margin: 15px 10px;
+            display: inline-block;
+            padding: 18px 38px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin: 15px 10px;
+            transition: all 0.4s;
         }
+
         .btn-discord { background: linear-gradient(90deg, #5865F2, #7289da); color: white; }
         .btn-discord:hover { transform: scale(1.08); }
+
         .btn-download { background: linear-gradient(90deg, #00ffcc, #00ccaa); color: #000; font-weight: 800; }
         .btn-download:hover { transform: scale(1.08); }
 
@@ -113,12 +116,7 @@
             text-align: center;
             border-top: 2px solid var(--primary);
         }
-        .social-bar a {
-            margin: 0 15px;
-            font-size: 2rem;
-            color: #bbb;
-            transition: all 0.3s;
-        }
+        .social-bar a { margin: 0 15px; font-size: 2rem; color: #bbb; transition: all 0.3s; }
         .social-bar a:hover { color: var(--primary); transform: scale(1.2); }
 
         footer { background: #050508; padding: 40px 20px; text-align: center; color: #777; font-size: 0.9rem; }
@@ -130,11 +128,13 @@
 
 <header>
     <div class="lang-switch" id="langSwitch"></div>
+    
     <img src="assets/retrofevlc-logo.png" alt="RetroFeVLC Logo" class="logo">
-    
+
     <h1 id="title" data-key="title">RetroFeVLC</h1>
-    <p class="subtitle" id="subtitle" data-key="subtitle">The powerful evolution of RetroFE — now with VLC, smart addons & next-level customization</p>
+    <p class="subtitle" id="subtitle" data-key="subtitle"></p>
     
+    <!-- FIXED BUTTONS -->
     <a href="https://discord.gg/2aYRHdUrVf" target="_blank" class="btn btn-discord" data-key="discord-btn">🚀 Join the Discord</a>
     <a href="https://www.mediafire.com/file/dnu4eem0fvtriqg/RetroFeVLC_Full_V2.1.57.rar/file" target="_blank" class="btn btn-download" data-key="download-btn">⬇️ Download Full Version V2.1.57</a>
 </header>
@@ -151,104 +151,10 @@
 </nav>
 
 <div class="container">
-
-    <!-- HOME -->
-    <div id="content-en" class="lang-content">
-        <section id="home">
-            <h2 data-key="welcome">Welcome to RetroFeVLC</h2>
-            <p data-key="welcome-text">RetroFeVLC is a powerful fork of RetroFE that replaces GStreamer with <strong>VLC</strong>, bringing dozens of new features, a smart addon system, and a much more user-friendly experience.</p>
-        </section>
-
-        <!-- WHAT'S NEW -->
-        <section id="whatsnew">
-            <h2 data-key="whatsnew-title">What's New in RetroFeVLC V2.1.57</h2>
-            <div class="feature-grid">
-                <div class="feature-card">Menu Options – Settings, Controls, Layout</div>
-                <div class="feature-card">4K Support + Scale Quality Options</div>
-                <div class="feature-card">Rock-Solid Stability (new screens without crashes)</div>
-                <div class="feature-card">Animated Images (GIF + WebP support)</div>
-                <div class="feature-card">Memory leak fixes + better performance</div>
-                <div class="feature-card">New playlist ordering options</div>
-                <div class="feature-card">Game Search (external addon)</div>
-                <div class="feature-card">Dynamic Playlists (ALL GAMES, FAVORITES, LASTPLAYED)</div>
-                <div class="feature-card">New Grid menu option</div>
-                <div class="feature-card">Layout include files + Variables support</div>
-                <div class="feature-card">GameInfo stats (play count, most played game)</div>
-                <div class="feature-card">Per-game layouts</div>
-            </div>
-            <p><strong>RetroFeVLC supports RetroAchievements sync, Kiosk Mode, and the beautiful Phoenix Demo Theme.</strong></p>
-        </section>
-
-        <!-- WHAT IS RETROFEVLC -->
-        <section id="whatis">
-            <h2 data-key="whatis-title">What is RetroFeVLC?</h2>
-            <p>RetroFeVLC is a complete, high-performance front-end for your retro game collection.</p>
-            <p><strong>RetroFEVLC (The Face)</strong>: Beautiful, fast, powered by VLC for perfect video previews.</p>
-            <p><strong>Start.exe (The Brain)</strong>: One-click management tool for settings, controllers, launchers and playlists.</p>
-            <p>It shows your games with menus, artwork, videos and lets you launch any emulator (MAME, RetroArch, etc.). Think Netflix UI, but for your retro games.</p>
-        </section>
-
-        <!-- ADDONS & TOOLS -->
-        <section id="addons">
-            <h2 data-key="addons-title">Addons & Tools</h2>
-            <div class="addons-grid">
-                <div class="addon-card">🎨 GenreFixer</div>
-                <div class="addon-card">🛡️ KioskMode</div>
-                <div class="addon-card">🌳 Layout Diagram Tree</div>
-                <div class="addon-card">📋 MenuManager</div>
-                <div class="addon-card">📊 MetaDataRegenerator</div>
-                <div class="addon-card">🖌️ RetroFeVLC Layout Editor</div>
-                <div class="addon-card">🏆 RetroRa (RetroAchievements Sync)</div>
-                <div class="addon-card">🌍 Story Translator</div>
-                <div class="addon-card">🖼️ Marquee Screen Duplicator</div>
-            </div>
-            <p style="text-align:center; margin-top:20px;"><strong>RetroFeVLC GUI</strong> – Settings • Controls • Launchers</p>
-        </section>
-
-        <!-- Original sections (Features, Quick Guide, Layouts, About) kept exactly as you had -->
-        <section id="features">
-            <h2 data-key="key-features">Key Features</h2>
-            <div class="feature-grid">
-                <div class="feature-card"><h3>🧠 Start.exe – The Brain</h3><p>Intelligent launcher with System Tray, automatic sync of Favorites & Last Played, JoyToKey, SuperF4 and more.</p></div>
-                <div class="feature-card"><h3>🔍 Integrated Search</h3><p>Lightning-fast game search (F11 by default) with full gamepad support.</p></div>
-                <div class="feature-card"><h3>🎨 Advanced VLC Layout Engine</h3><p>Grid menus, per-game layouts, random slideshows, 3D effects, and built-in Options Menu.</p></div>
-                <div class="feature-card"><h3>📊 Powerful Metadata System</h3><p>HyperSpin, MAME, truRIP + AI Genre Fixer and Metadata Regenerator.</p></div>
-                <div class="feature-card"><h3>🖥️ Multi-Monitor & Marquee</h3><p>Advanced Marquee Monitor Duplicator.</p></div>
-                <div class="feature-card"><h3>🔧 Visual Editors</h3><p>MenuManager, Settings, Controls & Layout Editor.</p></div>
-            </div>
-        </section>
-
-        <section id="quickguide">
-            <h2 data-key="quick-start">Quick Start Guide</h2>
-            <ol>
-                <li>Download the <strong>Full All Addons Include</strong> version</li>
-                <li>Extract to any folder (e.g. <code>E:\RetroFeVLC</code>)</li>
-                <li>Run <strong>Start.exe</strong></li>
-                <li>Right-click tray icon → RetroFeVLC Options</li>
-                <li>Add your game collections and enjoy!</li>
-            </ol>
-        </section>
-
-        <section id="layouts">
-            <h2 data-key="layouts-title">Layouts & Themes</h2>
-            <p>Extremely powerful layout system with grids, per-game layouts, 3D effects, random media, and in-frontend Options Menu.</p>
-            <p>The official <strong>Phoenix Theme</strong> includes 12 menu styles – the ultimate showcase of what RetroFeVLC can do.</p>
-        </section>
-
-        <section id="about">
-            <h2 data-key="about-title">About RetroFeVLC</h2>
-            <p>Community-driven fork developed by an enthusiast. Fully open-source under GPL3.</p>
-        </section>
-    </div>
-
-    <!-- Other languages (PT, FR, IT, RU) kept exactly as you provided -->
-    <div id="content-pt" class="lang-content hidden">... your original PT content ...</div>
-    <div id="content-fr" class="lang-content hidden">... your original FR content ...</div>
-    <div id="content-it" class="lang-content hidden">... your original IT content ...</div>
-    <div id="content-ru" class="lang-content hidden">... your original RU content ...</div>
+    <div id="content"></div>
 </div>
 
-<!-- SOCIAL BOTTOM BAR -->
+<!-- SOCIAL BAR -->
 <div class="social-bar">
     <a href="https://www.facebook.com/groups/742851048352639/?ref=share+" target="_blank" title="Facebook">📘</a>
     <a href="https://discord.gg/2aYRHdUrVf" target="_blank" title="Discord">💬</a>
@@ -260,7 +166,7 @@
 
 <footer>
     <p>RetroFeVLC © 2026 • A community-driven evolution of the RetroFE frontend</p>
-    <p id="footer-text" data-key="footer-text">Multi-language neon cyber style site</p>
+    <p id="footer-text" data-key="footer-text"></p>
 </footer>
 
 <script>
@@ -280,7 +186,9 @@ async function loadLanguage(lang) {
         });
 
         document.documentElement.lang = lang;
-    } catch (e) { console.error("Translation file missing"); }
+    } catch (e) {
+        console.error("Translation file not found");
+    }
 }
 
 // Language buttons
@@ -302,5 +210,6 @@ langs.forEach(l => {
 
 loadLanguage('en');   // Start in English
 </script>
+
 </body>
 </html>
