@@ -158,8 +158,8 @@
 
 <div class="container">
 
-    <!-- ENGLISH -->
-    <div id="content-en" class="lang-content">
+    <!-- SINGLE CONTENT BLOCK - ALL TEXTS TRANSLATABLE -->
+    <div id="content" class="lang-content">
         <section id="home">
             <h2 data-key="welcome">Welcome to RetroFeVLC</h2>
             <p data-key="welcome-text">RetroFeVLC is a powerful fork of RetroFE that replaces GStreamer with <strong>VLC</strong>, bringing dozens of new features, a smart addon system, and a much more user-friendly experience.</p>
@@ -231,12 +231,6 @@
             <p data-key="about-text">RetroFeVLC is a community-driven fork developed by an enthusiast. Fully open-source under GPL3. The goal is to make RetroFE even better while keeping it free and open for everyone.</p>
         </section>
     </div>
-
-    <!-- Other languages (add your translated content here later) -->
-    <div id="content-pt" class="lang-content hidden"></div>
-    <div id="content-fr" class="lang-content hidden"></div>
-    <div id="content-it" class="lang-content hidden"></div>
-    <div id="content-ru" class="lang-content hidden"></div>
 </div>
 
 <!-- SOCIAL BAR -->
@@ -255,34 +249,29 @@
 </footer>
 
 <script>
-// FIXED Translation system - now switches content + updates texts
+// FIXED Translation system - single content block + full data-key support
 async function loadLanguage(lang) {
-    // 1. Hide all language content
-    document.querySelectorAll('.lang-content').forEach(div => {
-        div.classList.add('hidden');
-    });
-
-    // 2. Show the selected language content
-    const contentDiv = document.getElementById(`content-${lang}`);
-    if (contentDiv) contentDiv.classList.remove('hidden');
-
-    // 3. Update all data-key texts
     try {
         const response = await fetch(`translations/${lang}.json`);
         const trans = await response.json();
 
+        // Update ALL data-key elements
         document.querySelectorAll('[data-key]').forEach(el => {
             const key = el.getAttribute('data-key');
-            if (trans[key]) el.innerHTML = trans[key];
+            if (trans[key]) {
+                el.innerHTML = trans[key];
+            }
         });
+
+        // Highlight active button
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+
+        document.documentElement.lang = lang;
     } catch (e) {
         console.error("Translation file not found for", lang);
     }
-
-    // Highlight active button
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
-    });
 }
 
 // Create language buttons
@@ -302,7 +291,7 @@ langs.forEach(l => {
     switchDiv.appendChild(btn);
 });
 
-// Start with English
+// Start in English
 loadLanguage('en');
 </script>
 </body>
