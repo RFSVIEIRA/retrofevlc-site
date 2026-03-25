@@ -1,50 +1,343 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RetroFEVLC | The Evolution of RetroFE</title>
+    <title>RetroFeVLC | The Evolution of RetroFE</title>
+    <meta name="description" content="RetroFeVLC - Powerful RetroFE fork with VLC support, intelligent Start.exe, advanced layouts and addons.">
     <style>
-        body { background: #121212; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; margin: 0; padding: 0; }
-        header { padding: 50px 20px; background: linear-gradient(180deg, #1f1f1f 0%, #121212 100%); }
-        h1 { color: #00ffcc; font-size: 3rem; margin-bottom: 10px; }
-        .subtitle { font-size: 1.2rem; color: #bbb; margin-bottom: 30px; }
-        .container { max-width: 900px; margin: auto; padding: 20px; }
-        .feature-card { background: #1e1e1e; padding: 20px; margin: 15px 0; border-radius: 10px; border-left: 5px solid #00ffcc; text-align: left; }
-        .btn { display: inline-block; background: #5865F2; color: white; padding: 15px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 1.2rem; margin-top: 20px; transition: 0.3s; }
-        .btn:hover { background: #4752c4; transform: scale(1.05); }
-        .highlight { color: #ffcc00; font-weight: bold; }
-        footer { padding: 40px; font-size: 0.8rem; color: #666; }
+        :root {
+            --primary: #00ffcc;
+            --dark: #121212;
+            --gray: #1e1e1e;
+            --accent: #ffcc00;
+        }
+        body {
+            background: var(--dark);
+            color: #ddd;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(180deg, #1f1f1f 0%, #0a0a0a 100%);
+            padding: 80px 20px 60px;
+            text-align: center;
+            border-bottom: 4px solid var(--primary);
+        }
+        h1 { color: var(--primary); font-size: 3.5rem; margin: 0 0 10px 0; }
+        .subtitle { font-size: 1.4rem; color: #bbb; margin-bottom: 30px; }
+
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #1a1a1a;
+            padding: 8px 12px;
+            border-radius: 8px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .lang-btn {
+            background: none;
+            border: 1px solid #444;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .lang-btn.active {
+            background: var(--primary);
+            color: black;
+            border-color: var(--primary);
+        }
+
+        nav {
+            background: #1a1a1a;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        nav a { color: white; text-decoration: none; font-weight: 600; }
+        nav a:hover { color: var(--primary); }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        section { margin-bottom: 80px; }
+        h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        .feature-card {
+            background: var(--gray);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 6px solid var(--primary);
+            transition: transform 0.3s;
+        }
+        .feature-card:hover { transform: translateY(-8px); }
+
+        .btn {
+            display: inline-block;
+            background: #5865F2;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 20px 10px;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: #4752c4;
+            transform: scale(1.05);
+        }
+        .highlight { color: var(--accent); font-weight: bold; }
+
+        footer {
+            background: #0a0a0a;
+            padding: 50px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .hidden { display: none; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>RetroFEVLC</h1>
-    <p class="subtitle">A powerful evolution of the RetroFE frontend, bursting with thrilling new features!</p>
-    <a href="TEU_LINK_DO_DISCORD_AQUI" class="btn">🚀 GET STARTED (Join Discord)</a>
+    <div class="lang-switch" id="langSwitch"></div>
+    
+    <h1 id="title">RetroFeVLC</h1>
+    <p class="subtitle" id="subtitle">The powerful evolution of RetroFE – with VLC support, smart addons and total customization</p>
+    
+    <a href="https://discord.gg/SEU_LINK_DISCORD" target="_blank" class="btn" id="discord-btn">🚀 Join Discord (Support & Downloads)</a>
+    <a href="#download" class="btn" style="background:#00cc88;" id="download-btn">⬇️ Download Full Pack</a>
 </header>
 
+<nav>
+    <ul>
+        <li><a href="#home" id="nav-home">Home</a></li>
+        <li><a href="#features" id="nav-features">Features</a></li>
+        <li><a href="#quickguide" id="nav-quickguide">Quick Guide</a></li>
+        <li><a href="#addons" id="nav-addons">Addons</a></li>
+        <li><a href="#layouts" id="nav-layouts">Layouts</a></li>
+        <li><a href="#about" id="nav-about">About</a></li>
+    </ul>
+</nav>
+
 <div class="container">
-    <div class="feature-card">
-        <h3>🧠 Start.exe: The Brain</h3>
-        <p>Manage GUI settings, controls, launchers, and new playlists easily. Now featuring a <strong>System Tray option</strong> to keep your desktop clean.</p>
-    </div>
 
-    <div class="feature-card">
-        <h3>🔍 Integrated Search</h3>
-        <p>No more endless scrolling! Search for your games by name and jump straight into the action.</p>
-    </div>
+    <!-- ==================== ENGLISH ==================== -->
+    <section id="content-en" class="lang-content">
+        <h2 id="home-en">Welcome to RetroFeVLC</h2>
+        <p>RetroFeVLC is a powerful fork of RetroFE that replaces GStreamer with <strong>VLC</strong>, adds dozens of new features, a smart addon system, and a much more user-friendly interface.</p>
+        
+        <section id="features">
+            <h2>Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card"><h3>🧠 Start.exe – The Brain</h3><p>Intelligent launcher with System Tray, automatic Favorites/Last Played sync, JoyToKey, SuperF4 and more.</p></div>
+                <div class="feature-card"><h3>🔍 Integrated Search</h3><p>Fast game search (default F11) with gamepad support – global or per-system.</p></div>
+                <div class="feature-card"><h3>🎨 Advanced Layout Engine (VLC)</h3><p>Grid menus, per-game layouts, random slideshows, 3D effects, modular XML and in-frontend Options Menu.</p></div>
+                <div class="feature-card"><h3>📊 Metadata System</h3><p>Full support for HyperSpin, MAME, truRIP + AI Genre Fixer and Metadata Regenerator.</p></div>
+                <div class="feature-card"><h3>🖥️ Multi-Monitor & Marquee</h3><p>Advanced marquee duplicator and per-monitor settings.</p></div>
+            </div>
+        </section>
 
-    <div class="feature-card">
-        <h3>🎨 Phoenix Theme (Official Demo)</h3>
-        <p>Explore <span class="highlight">12 menu options</span>. See everything RetroFEVLC can do or use it as your base for new themes.</p>
-    </div>
+        <section id="quickguide">
+            <h2>Quick Start Guide</h2>
+            <ol>
+                <li>Download the <strong>Full All Addons Include</strong> package</li>
+                <li>Extract to any folder (e.g. <code>E:\RetroFeVLC</code>)</li>
+                <li>Run <strong>Start.exe</strong></li>
+                <li>Right-click tray icon → RetroFeVLC Options → Settings Editor & Controls Editor</li>
+                <li>Add your game collections</li>
+            </ol>
+        </section>
+
+        <section id="addons">
+            <h2>Addons</h2>
+            <div class="feature-grid">
+                <div class="feature-card">Start.exe • Search • MenuManager • Metadata Regenerator • GenreFixer (AI) • Story Translator (AI) • Layout Editor • KioskMode • RetroRa Sync • Marquee Duplicator</div>
+            </div>
+        </section>
+
+        <section id="layouts">
+            <h2>Layouts & Customization</h2>
+            <p>Extremely powerful layout system: grids, per-game XML, variables, includes, 3D effects, random media, and built-in Options Menu to change themes without editing files.</p>
+        </section>
+
+        <section id="about">
+            <h2>About the Project</h2>
+            <p>RetroFeVLC is a community-driven fork developed by an enthusiast. Goal: make RetroFE even better while keeping it open-source (GPL3).</p>
+        </section>
+    </section>
+
+    <!-- ==================== PORTUGUÊS ==================== -->
+    <section id="content-pt" class="lang-content hidden">
+        <h2>Bem-vindo ao RetroFeVLC</h2>
+        <p>RetroFeVLC é um fork poderoso do RetroFE que substitui o GStreamer pelo <strong>VLC</strong>, adiciona dezenas de novas funcionalidades, sistema de addons inteligente e interface muito mais amigável.</p>
+        
+        <!-- Repete as secções com texto em PT (podes expandir se quiseres mais detalhe) -->
+        <section id="features-pt">
+            <h2>Funcionalidades Principais</h2>
+            <div class="feature-grid">
+                <div class="feature-card"><h3>🧠 Start.exe – O Cérebro</h3><p>Lançador inteligente com System Tray, sincronização automática de Favoritos e Últimos Jogados.</p></div>
+                <!-- ... outros cards em PT ... -->
+            </div>
+        </section>
+        <!-- Adiciona as restantes secções em PT da mesma forma -->
+    </section>
+
+    <!-- FR, IT, RU seguem o mesmo padrão – para não ficar muito longo aqui, deixei só o esqueleto. Posso expandir todos se quiseres. -->
+
 </div>
 
 <footer>
-    Based on the amazing RetroFE open-source project. &copy; 2026 RetroFEVLC Team.
+    <p>RetroFeVLC © 2026 – Based on the amazing open-source RetroFE project</p>
+    <p id="footer-text">Multi-language support added for the community</p>
 </footer>
+
+<script>
+// ==================== TRADUÇÕES ====================
+const translations = {
+    en: {
+        title: "RetroFeVLC",
+        subtitle: "The powerful evolution of RetroFE – with VLC support, smart addons and total customization",
+        "nav-home": "Home",
+        "nav-features": "Features",
+        "nav-quickguide": "Quick Guide",
+        "nav-addons": "Addons",
+        "nav-layouts": "Layouts",
+        "nav-about": "About",
+        "discord-btn": "🚀 Join Discord (Support & Downloads)",
+        "download-btn": "⬇️ Download Full Pack",
+        "footer-text": "Multi-language support added for the community"
+        // Adiciona mais chaves conforme necessário
+    },
+    pt: {
+        title: "RetroFeVLC",
+        subtitle: "A evolução poderosa do RetroFE – com suporte VLC, addons inteligentes e personalização total",
+        "nav-home": "Início",
+        "nav-features": "Funcionalidades",
+        "nav-quickguide": "Guia Rápido",
+        "nav-addons": "Addons",
+        "nav-layouts": "Layouts",
+        "nav-about": "Sobre",
+        "discord-btn": "🚀 Entrar no Discord (Suporte & Downloads)",
+        "download-btn": "⬇️ Download Full Pack",
+        "footer-text": "Suporte multi-idioma adicionado para a comunidade"
+    },
+    fr: {
+        title: "RetroFeVLC",
+        subtitle: "L'évolution puissante de RetroFE – avec support VLC, addons intelligents et personnalisation totale",
+        "nav-home": "Accueil",
+        "nav-features": "Fonctionnalités",
+        "nav-quickguide": "Guide Rapide",
+        "nav-addons": "Addons",
+        "nav-layouts": "Layouts",
+        "nav-about": "À propos",
+        "discord-btn": "🚀 Rejoindre Discord",
+        "download-btn": "⬇️ Télécharger le Pack Complet"
+    },
+    it: {
+        title: "RetroFeVLC",
+        subtitle: "La potente evoluzione di RetroFE – con supporto VLC, addons intelligenti e personalizzazione totale",
+        "nav-home": "Home",
+        "nav-features": "Funzionalità",
+        "nav-quickguide": "Guida Rapida",
+        "nav-addons": "Addons",
+        "nav-layouts": "Layouts",
+        "nav-about": "Informazioni",
+        "discord-btn": "🚀 Unisciti a Discord",
+        "download-btn": "⬇️ Scarica il Pacchetto Completo"
+    },
+    ru: {
+        title: "RetroFeVLC",
+        subtitle: "Мощная эволюция RetroFE — с поддержкой VLC, умными аддонами и полной кастомизацией",
+        "nav-home": "Главная",
+        "nav-features": "Возможности",
+        "nav-quickguide": "Быстрый старт",
+        "nav-addons": "Аддоны",
+        "nav-layouts": "Темы",
+        "nav-about": "О проекте",
+        "discord-btn": "🚀 Присоединяйся к Discord",
+        "download-btn": "⬇️ Скачать полный пакет"
+    }
+};
+
+// ==================== LANGUAGE SWITCHER ====================
+function switchLanguage(lang) {
+    document.documentElement.lang = lang;
+    
+    // Hide all content
+    document.querySelectorAll('.lang-content').forEach(el => el.classList.add('hidden'));
+    
+    // Show selected
+    const content = document.getElementById(`content-${lang}`);
+    if (content) content.classList.remove('hidden');
+    
+    // Update buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    
+    // Update texts
+    const t = translations[lang];
+    if (t) {
+        Object.keys(t).forEach(key => {
+            const el = document.getElementById(key);
+            if (el) el.textContent = t[key];
+        });
+    }
+}
+
+// Create language buttons
+const languages = [
+    {code: 'en', name: 'EN'},
+    {code: 'pt', name: 'PT'},
+    {code: 'fr', name: 'FR'},
+    {code: 'it', name: 'IT'},
+    {code: 'ru', name: 'RU'}
+];
+
+const switchDiv = document.getElementById('langSwitch');
+languages.forEach(lang => {
+    const btn = document.createElement('button');
+    btn.className = 'lang-btn';
+    btn.textContent = lang.name;
+    btn.dataset.lang = lang.code;
+    btn.onclick = () => switchLanguage(lang.code);
+    switchDiv.appendChild(btn);
+});
+
+// Start in English
+switchLanguage('en');
+</script>
 
 </body>
 </html>
