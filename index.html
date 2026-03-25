@@ -36,6 +36,7 @@
             position: relative;
             overflow: hidden;
             border-bottom: 3px solid var(--primary);
+            z-index: 1;
         }
 
         header::before {
@@ -45,6 +46,7 @@
             width: 200%; height: 200%;
             background: radial-gradient(circle, rgba(0,255,204,0.1) 0%, transparent 70%);
             animation: pulse 20s infinite linear;
+            z-index: -1;
         }
 
         @keyframes pulse { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -58,7 +60,7 @@
         .lang-switch {
             position: absolute; top: 25px; right: 25px;
             background: rgba(15,15,35,0.95); padding: 10px; border-radius: 12px;
-            border: 1px solid rgba(0,255,204,0.3); display: flex; gap: 8px;
+            border: 1px solid rgba(0,255,204,0.3); display: flex; gap: 8px; z-index: 10;
         }
 
         .lang-btn {
@@ -102,13 +104,17 @@
             font-size: 1.25rem;
             margin: 15px 10px;
             transition: all 0.4s;
+            z-index: 10;
+            position: relative;
+            cursor: pointer;
+            pointer-events: auto !important;
         }
 
         .btn-discord { background: linear-gradient(90deg, #5865F2, #7289da); color: white; }
-        .btn-discord:hover { transform: scale(1.08); }
+        .btn-discord:hover { transform: scale(1.08); box-shadow: 0 0 35px rgba(88,101,242,0.7); }
 
         .btn-download { background: linear-gradient(90deg, #00ffcc, #00ccaa); color: #000; font-weight: 800; }
-        .btn-download:hover { transform: scale(1.08); }
+        .btn-download:hover { transform: scale(1.08); box-shadow: 0 0 30px rgba(0, 255, 204, 0.6); }
 
         .social-bar {
             background: #0a0a0f;
@@ -134,7 +140,7 @@
     <h1 id="title" data-key="title">RetroFeVLC</h1>
     <p class="subtitle" id="subtitle" data-key="subtitle"></p>
     
-    <!-- FIXED BUTTONS -->
+    <!-- ✅ FIXED BUTTONS -->
     <a href="https://discord.gg/2aYRHdUrVf" target="_blank" class="btn btn-discord" data-key="discord-btn">🚀 Join the Discord</a>
     <a href="https://www.mediafire.com/file/dnu4eem0fvtriqg/RetroFeVLC_Full_V2.1.57.rar/file" target="_blank" class="btn btn-download" data-key="download-btn">⬇️ Download Full Version V2.1.57</a>
 </header>
@@ -191,7 +197,7 @@ async function loadLanguage(lang) {
     }
 }
 
-// Language buttons
+// Create language buttons
 const langs = [
     {code:'en', name:'EN'}, {code:'pt', name:'PT'},
     {code:'es', name:'ES'}, {code:'fr', name:'FR'},
@@ -208,7 +214,7 @@ langs.forEach(l => {
     switchDiv.appendChild(btn);
 });
 
-loadLanguage('en');   // Start in English
+loadLanguage('en');
 </script>
 
 </body>
