@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RetroFeVLC | The Evolution of RetroFE</title>
     <meta name="description" content="RetroFeVLC - Powerful RetroFE fork with VLC, smart addons and stunning layouts.">
-    
+   
     <link rel="shortcut icon" type="image/png" href="favicon.png">
-
     <style>
         :root {
             --primary: #00ffcc;
@@ -17,18 +16,17 @@
             --darker: #050508;
             --gray: #1f1f2e;
         }
-        
+       
         body {
             background: var(--darker);
             color: #e0e0ff;
             font-family: 'Segoe UI', system-ui, sans-serif;
             margin: 0; padding: 0;
             line-height: 1.7;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 50% 20%, rgba(0, 255, 204, 0.08) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(123, 94, 255, 0.06) 0%, transparent 50%);
         }
-
         header {
             background: linear-gradient(135deg, #1a0033 0%, #0a0a0f 100%);
             padding: 100px 20px 80px;
@@ -38,7 +36,6 @@
             border-bottom: 3px solid var(--primary);
             z-index: 1;
         }
-
         header::before {
             content: '';
             position: absolute;
@@ -48,42 +45,31 @@
             animation: pulse 20s infinite linear;
             z-index: -1;
         }
-
         @keyframes pulse { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
         .logo { max-width: 280px; margin-bottom: 20px; filter: drop-shadow(0 0 25px var(--primary)); }
-
         h1 { color: var(--primary); font-size: 4.2rem; margin: 10px 0 15px 0; text-shadow: 0 0 30px rgba(0, 255, 204, 0.6); letter-spacing: -2px; }
-
         .subtitle { font-size: 1.55rem; color: #b0b0ff; margin-bottom: 40px; max-width: 820px; margin-left: auto; margin-right: auto; }
-
         .lang-switch {
             position: absolute; top: 25px; right: 25px;
             background: rgba(15,15,35,0.95); padding: 10px; border-radius: 12px;
             border: 1px solid rgba(0,255,204,0.3); display: flex; gap: 8px; z-index: 10;
         }
-
         .lang-btn {
             background: transparent; border: 1px solid #444; color: #ccc;
             padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600;
         }
         .lang-btn.active { background: var(--primary); color: #000; box-shadow: 0 0 15px rgba(0,255,204,0.5); }
-
         nav { background: rgba(10,10,15,0.98); padding: 18px 0; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(0,255,204,0.2); }
         nav ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; }
         nav a { color: #ddd; text-decoration: none; font-weight: 600; font-size: 1.05rem; }
         nav a:hover { color: var(--primary); }
-
         .container { max-width: 1180px; margin: 50px auto; padding: 0 20px; }
-
         h2 { color: var(--primary); font-size: 2.6rem; text-align: center; margin-bottom: 40px; text-shadow: 0 0 20px rgba(0,255,204,0.4); }
-
         .feature-grid, .addons-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
         }
-
         .feature-card, .addon-card {
             background: var(--gray);
             padding: 25px;
@@ -91,10 +77,8 @@
             border: 1px solid rgba(0,255,204,0.15);
             transition: all 0.4s;
         }
-
         .addon-card { text-align: center; font-size: 1.1rem; font-weight: 600; }
         .addon-card:hover { transform: translateY(-8px); border-color: var(--primary); }
-
         .btn {
             display: inline-block;
             padding: 18px 38px;
@@ -109,13 +93,10 @@
             cursor: pointer;
             pointer-events: auto !important;
         }
-
         .btn-discord { background: linear-gradient(90deg, #5865F2, #7289da); color: white; }
         .btn-discord:hover { transform: scale(1.08); box-shadow: 0 0 35px rgba(88,101,242,0.7); }
-
         .btn-download { background: linear-gradient(90deg, #00ffcc, #00ccaa); color: #000; font-weight: 800; }
         .btn-download:hover { transform: scale(1.08); box-shadow: 0 0 30px rgba(0, 255, 204, 0.6); }
-
         .social-bar {
             background: #0a0a0f;
             padding: 20px 0;
@@ -124,9 +105,7 @@
         }
         .social-bar a { margin: 0 15px; font-size: 2rem; color: #bbb; transition: all 0.3s; }
         .social-bar a:hover { color: var(--primary); transform: scale(1.2); }
-
         footer { background: #050508; padding: 40px 20px; text-align: center; color: #777; font-size: 0.9rem; }
-
         .hidden { display: none !important; }
     </style>
 </head>
@@ -134,12 +113,11 @@
 
 <header>
     <div class="lang-switch" id="langSwitch"></div>
-    
+   
     <img src="assets/retrofevlc-logo.png" alt="RetroFeVLC Logo" class="logo">
-
     <h1 id="title" data-key="title">RetroFeVLC</h1>
     <p class="subtitle" id="subtitle" data-key="subtitle">The powerful evolution of RetroFE — now with VLC, smart addons & next-level customization</p>
-    
+   
     <a href="https://discord.gg/2aYRHdUrVf" target="_blank" class="btn btn-discord" data-key="discord-btn">🚀 Join the Discord</a>
     <a href="https://www.mediafire.com/file/dnu4eem0fvtriqg/RetroFeVLC_Full_V2.1.57.rar/file" target="_blank" class="btn btn-download" data-key="download-btn">⬇️ Download Full Version V2.1.57</a>
 </header>
@@ -157,8 +135,7 @@
 </nav>
 
 <div class="container">
-
-    <!-- ENGLISH -->
+    <!-- ENGLISH - ALL CARDS NOW TRANSLATABLE -->
     <div id="content-en" class="lang-content">
         <section id="home">
             <h2 data-key="welcome">Welcome to RetroFeVLC</h2>
@@ -168,18 +145,18 @@
         <section id="whatsnew">
             <h2 data-key="whatsnew-title">What's New in RetroFeVLC V2.1.57</h2>
             <div class="feature-grid">
-                <div class="feature-card">Menu Options – Settings, Controls, Layout</div>
-                <div class="feature-card">Full 4K Support + Scale Quality Options</div>
-                <div class="feature-card">Rock-Solid Stability (no crashes when adding screens)</div>
-                <div class="feature-card">Animated Images (GIF + WebP support)</div>
-                <div class="feature-card">Major memory leak fixes</div>
-                <div class="feature-card">New playlist ordering options</div>
-                <div class="feature-card">Game Search (external addon)</div>
-                <div class="feature-card">Dynamic Playlists with real-time updates</div>
-                <div class="feature-card">New Grid menu option</div>
-                <div class="feature-card">Layout include files + Variables support</div>
-                <div class="feature-card">GameInfo stats (play count, most played game, etc.)</div>
-                <div class="feature-card">Per-game layouts</div>
+                <div class="feature-card" data-key="whatsnew-1">Menu Options – Settings, Controls, Layout</div>
+                <div class="feature-card" data-key="whatsnew-2">Full 4K Support + Scale Quality Options</div>
+                <div class="feature-card" data-key="whatsnew-3">Rock-Solid Stability (no crashes when adding screens)</div>
+                <div class="feature-card" data-key="whatsnew-4">Animated Images (GIF + WebP support)</div>
+                <div class="feature-card" data-key="whatsnew-5">Major memory leak fixes</div>
+                <div class="feature-card" data-key="whatsnew-6">New playlist ordering options</div>
+                <div class="feature-card" data-key="whatsnew-7">Game Search (external addon)</div>
+                <div class="feature-card" data-key="whatsnew-8">Dynamic Playlists with real-time updates</div>
+                <div class="feature-card" data-key="whatsnew-9">New Grid menu option</div>
+                <div class="feature-card" data-key="whatsnew-10">Layout include files + Variables support</div>
+                <div class="feature-card" data-key="whatsnew-11">GameInfo stats (play count, most played game, etc.)</div>
+                <div class="feature-card" data-key="whatsnew-12">Per-game layouts</div>
             </div>
         </section>
 
@@ -198,42 +175,41 @@
         <section id="features">
             <h2 data-key="key-features">Key Features</h2>
             <div class="feature-grid">
-                <div class="feature-card"><h3>🧠 Start.exe – The Brain</h3><p>Intelligent launcher with System Tray, automatic Favorites & Last Played sync, JoyToKey, SuperF4 and more.</p></div>
-                <div class="feature-card"><h3>🔍 Integrated Search</h3><p>Lightning-fast game search (F11 by default) with full gamepad support.</p></div>
-                <div class="feature-card"><h3>🎨 Advanced VLC Layout Engine</h3><p>Grid menus, per-game layouts, random slideshows, 3D effects, and built-in Options Menu.</p></div>
-                <div class="feature-card"><h3>📊 Powerful Metadata System</h3><p>HyperSpin, MAME, truRIP + AI Genre Fixer and Metadata Regenerator.</p></div>
-                <div class="feature-card"><h3>🖥️ Multi-Monitor & Marquee</h3><p>Advanced Marquee Monitor Duplicator.</p></div>
+                <div class="feature-card" data-key="feature-start">Intelligent launcher with System Tray, automatic sync of Favorites & Last Played, JoyToKey, SuperF4 and more.</div>
+                <div class="feature-card" data-key="feature-search">Lightning-fast game search (F11 by default) with full gamepad support.</div>
+                <div class="feature-card" data-key="feature-layout">Grid menus, per-game layouts, random slideshows, 3D effects, and built-in Options Menu.</div>
+                <div class="feature-card" data-key="feature-metadata">HyperSpin, MAME, truRIP + AI Genre Fixer and Metadata Regenerator.</div>
+                <div class="feature-card" data-key="feature-marquee">Advanced Marquee Monitor Duplicator.</div>
             </div>
         </section>
 
         <section id="addons">
             <h2 data-key="addons-title">Addons & Tools</h2>
             <div class="addons-grid">
-                <div class="addon-card">🎨 GenreFixer (AI)</div>
-                <div class="addon-card">🛡️ Simple KioskMode</div>
-                <div class="addon-card">🌳 Layout Tree Maker</div>
-                <div class="addon-card">📋 MenuManager</div>
-                <div class="addon-card">📊 Metadata Regenerator</div>
-                <div class="addon-card">🖌️ RetroFeVLC Layout Editor</div>
-                <div class="addon-card">🏆 RetroRa – RetroAchievements Sync</div>
-                <div class="addon-card">🌍 Story Translator (AI)</div>
-                <div class="addon-card">🖼️ Marquee Screen Duplicator</div>
+                <div class="addon-card" data-key="addon-genre">🎨 GenreFixer (AI)</div>
+                <div class="addon-card" data-key="addon-kiosk">🛡️ Simple KioskMode</div>
+                <div class="addon-card" data-key="addon-tree">🌳 Layout Tree Maker</div>
+                <div class="addon-card" data-key="addon-menu">📋 MenuManager</div>
+                <div class="addon-card" data-key="addon-meta">📊 Metadata Regenerator</div>
+                <div class="addon-card" data-key="addon-editor">🖌️ RetroFeVLC Layout Editor</div>
+                <div class="addon-card" data-key="addon-rera">🏆 RetroRa – RetroAchievements Sync</div>
+                <div class="addon-card" data-key="addon-story">🌍 Story Translator (AI)</div>
+                <div class="addon-card" data-key="addon-marquee">🖼️ Marquee Screen Duplicator</div>
             </div>
         </section>
 
         <section id="layouts">
             <h2 data-key="layouts-title">Layouts & Themes</h2>
-            <p>Extremely powerful layout engine with Grid menus, per-game layouts, 3D effects, variables, include files and built-in Options Menu.</p>
-            <p>The official <strong>Phoenix Theme</strong> is a complete demo that shows everything RetroFeVLC can do.</p>
+            <p data-key="layouts-text">Extremely powerful layout engine with Grid menus, per-game layouts, 3D effects, variables, include files and built-in Options Menu.<br>The official <strong>Phoenix Theme</strong> is a complete demo that shows everything RetroFeVLC can do.</p>
         </section>
 
         <section id="about">
             <h2 data-key="about-title">About RetroFeVLC</h2>
-            <p>RetroFeVLC is a community-driven fork developed by an enthusiast. Fully open-source under GPL3. The goal is to make RetroFE even better while keeping it free and open for everyone.</p>
+            <p data-key="about-text">RetroFeVLC is a community-driven fork developed by an enthusiast. Fully open-source under GPL3. The goal is to make RetroFE even better while keeping it free and open for everyone.</p>
         </section>
     </div>
 
-    <!-- Other languages will appear here when you add the files -->
+    <!-- Other languages -->
     <div id="content-pt" class="lang-content hidden"></div>
     <div id="content-fr" class="lang-content hidden"></div>
     <div id="content-it" class="lang-content hidden"></div>
