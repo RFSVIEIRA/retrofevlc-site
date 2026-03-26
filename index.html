@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RetroFeVLC | The Evolution of RetroFE</title>
     <meta name="description" content="RetroFeVLC - Powerful RetroFE fork with VLC, smart addons and stunning layouts.">
-   
+    
     <link rel="shortcut icon" type="image/png" href="favicon.png">
     <style>
         :root {
@@ -22,24 +22,28 @@
             font-family: 'Segoe UI', system-ui, sans-serif;
             margin: 0; padding: 0;
             line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        /* HERO SLIDER */
+        /* --- HERO SLIDER (FIXED) --- */
         .hero-slider {
             position: relative;
             height: 100vh;
             min-height: 520px;
             overflow: hidden;
+            background: #000;
         }
         .slider-container {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            top: 0;
+            left: 0;
             display: flex;
-            transition: transform 0.9s ease-in-out;
+            width: 600%; /* 6 slides = 600% width */
+            height: 100%;
+            transition: transform 0.9s cubic-bezier(0.45, 0, 0.55, 1);
         }
         .slide {
-            min-width: 100%;
+            width: 100vw; /* Each slide is exactly one screen wide */
             height: 100%;
             background-size: cover;
             background-position: center;
@@ -52,13 +56,13 @@
             background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(5,5,15,0.85));
         }
 
-        /* NAV BAR - Duas linhas horizontais full width */
+        /* --- NAVIGATION --- */
         nav {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            z-index: 100;
+            z-index: 1000;
             background: rgba(10,10,15,0.98);
             border-top: 2px solid var(--primary);
             border-bottom: 2px solid var(--primary);
@@ -89,7 +93,7 @@
         }
         nav a:hover { color: var(--primary); }
 
-        /* Language Bar */
+        /* --- LANGUAGE BAR --- */
         .top-lang-bar {
             position: absolute;
             top: 25px;
@@ -111,6 +115,7 @@
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
+            transition: all 0.2s;
         }
         .lang-btn.active {
             background: var(--primary);
@@ -118,22 +123,36 @@
             box-shadow: 0 0 15px rgba(0,255,204,0.5);
         }
 
-        /* Slide Content */
+        /* --- HERO CONTENT --- */
         .slide-content {
             position: absolute;
             bottom: 28%;
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
-            z-index: 3;
+            z-index: 30;
             color: white;
             width: 90%;
             max-width: 900px;
         }
-        .logo { max-width: 280px; margin-bottom: 20px; filter: drop-shadow(0 0 25px var(--primary)); }
-        h1 { color: var(--primary); font-size: clamp(2.8rem, 7vw, 4.2rem); margin: 10px 0 15px; text-shadow: 0 0 30px rgba(0,255,204,0.6); }
-        .subtitle { font-size: clamp(1.2rem, 3.5vw, 1.55rem); color: #b0b0ff; margin-bottom: 35px; }
+        .logo { 
+            max-width: 280px; 
+            margin-bottom: 20px; 
+            filter: drop-shadow(0 0 25px var(--primary)); 
+        }
+        h1 { 
+            color: var(--primary); 
+            font-size: clamp(2.8rem, 7vw, 4.2rem); 
+            margin: 10px 0 15px; 
+            text-shadow: 0 0 30px rgba(0,255,204,0.6); 
+        }
+        .subtitle { 
+            font-size: clamp(1.2rem, 3.5vw, 1.55rem); 
+            color: #b0b0ff; 
+            margin-bottom: 35px; 
+        }
 
+        /* --- MAIN LAYOUT --- */
         .container { 
             max-width: 1180px; 
             margin: 0 auto; 
@@ -159,8 +178,13 @@
             border: 1px solid rgba(0,255,204,0.15);
             transition: all 0.4s;
         }
-        .addon-card:hover { transform: translateY(-8px); border-color: var(--primary); }
+        .feature-card:hover, .addon-card:hover { 
+            transform: translateY(-8px); 
+            border-color: var(--primary); 
+            background: #252538;
+        }
 
+        /* --- BUTTONS --- */
         .btn {
             display: inline-block;
             padding: 18px 38px;
@@ -173,17 +197,31 @@
             cursor: pointer;
         }
         .btn-discord { background: linear-gradient(90deg, #5865F2, #7289da); color: white; }
-        .btn-discord:hover { transform: scale(1.08); }
+        .btn-discord:hover { transform: scale(1.08); box-shadow: 0 0 20px rgba(88, 101, 242, 0.4); }
         .btn-download { background: linear-gradient(90deg, #00ffcc, #00ccaa); color: #000; font-weight: 800; }
-        .btn-download:hover { transform: scale(1.08); }
+        .btn-download:hover { transform: scale(1.08); box-shadow: 0 0 20px rgba(0, 255, 204, 0.4); }
 
+        /* --- SECTIONS --- */
+        section { padding-bottom: 60px; }
+        ol { padding-left: 20px; }
+        ol li { margin-bottom: 15px; font-size: 1.1rem; }
+        code { background: #000; color: var(--primary); padding: 2px 6px; border-radius: 4px; }
+
+        /* --- SOCIALS --- */
         .social-bar {
             background: #0a0a0f;
-            padding: 20px 0;
+            padding: 40px 0;
             text-align: center;
             border-top: 2px solid var(--primary);
         }
-        .social-bar a { margin: 0 15px; font-size: 2rem; color: #bbb; transition: all 0.3s; }
+        .social-bar a { 
+            margin: 0 15px; 
+            font-size: 2rem; 
+            color: #bbb; 
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s; 
+        }
         .social-bar a:hover { color: var(--primary); transform: scale(1.2); }
 
         footer { 
@@ -197,7 +235,6 @@
 </head>
 <body>
 
-<!-- HERO SLIDER -->
 <div class="hero-slider" id="hero">
     <div class="slider-container" id="slider">
         <div class="slide" style="background-image: url('assets/1.png');"></div>
@@ -208,20 +245,17 @@
         <div class="slide" style="background-image: url('assets/6.png');"></div>
     </div>
 
-    <!-- Language bar -->
     <div class="top-lang-bar" id="langSwitch"></div>
 
-    <!-- Slide content -->
     <div class="slide-content">
         <img src="assets/retrofevlc-logo.png" alt="RetroFeVLC Logo" class="logo">
         <h1 id="title" data-key="title">RetroFeVLC</h1>
         <p class="subtitle" id="subtitle" data-key="subtitle">The powerful evolution of RetroFE — now with VLC, smart addons & next-level customization</p>
-       
+        
         <a href="https://discord.gg/2aYRHdUrVf" target="_blank" class="btn btn-discord" data-key="discord-btn">🚀 Join the Discord</a>
         <a href="https://www.mediafire.com/file/dnu4eem0fvtriqg/RetroFeVLC_Full_V2.1.57.rar/file" target="_blank" class="btn btn-download" data-key="download-btn">⬇️ Download Full Version V2.1.57</a>
     </div>
 
-    <!-- Navigation Bar -->
     <nav id="mainNav">
         <ul>
             <li><a href="#hero" data-key="nav-home">Home</a></li>
@@ -235,8 +269,8 @@
     </nav>
 </div>
 
-<!-- Main Content -->
 <div class="container">
+    
     <section id="home">
         <h2 data-key="welcome">Welcome to RetroFeVLC</h2>
         <p data-key="welcome-text">RetroFeVLC is a powerful fork of RetroFE that replaces GStreamer with <strong>VLC</strong>, bringing dozens of new features, a smart addon system, and a much more user-friendly experience.</p>
@@ -307,9 +341,9 @@
         <h2 data-key="about-title">About RetroFeVLC</h2>
         <p data-key="about-text">RetroFeVLC is a community-driven fork developed by an enthusiast. Fully open-source under GPL3. The goal is to make RetroFE even better while keeping it free and open for everyone.</p>
     </section>
+
 </div>
 
-<!-- SOCIAL BAR -->
 <div class="social-bar">
     <a href="https://www.facebook.com/groups/742851048352639/?ref=share+" target="_blank" title="Facebook">📘</a>
     <a href="https://discord.gg/2aYRHdUrVf" target="_blank" title="Discord">💬</a>
@@ -325,82 +359,104 @@
 </footer>
 
 <script>
-// Translation system
+/**
+ * TRANSLATION ENGINE
+ */
 async function loadLanguage(lang) {
     try {
         const response = await fetch(`translations/${lang}.json`);
         if (!response.ok) throw new Error("File not found");
         const trans = await response.json();
+        
         document.querySelectorAll('[data-key]').forEach(el => {
             const key = el.getAttribute('data-key');
             if (trans[key]) el.innerHTML = trans[key];
         });
+        
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === lang);
         });
+        
         document.documentElement.lang = lang;
     } catch (e) {
-        console.error("Failed to load language:", lang);
+        console.warn("Failed to load language:", lang, ". Defaulting to EN.");
+        // Fallback to internal English if the file doesn't exist
         if (lang !== 'en') loadLanguage('en');
     }
 }
 
-// Slider
+/**
+ * SLIDER LOGIC (REWRITTEN FOR STABILITY)
+ */
 let currentSlide = 0;
 const slider = document.getElementById('slider');
 const totalSlides = 6;
 
 function moveSlider() {
     currentSlide = (currentSlide + 1) % totalSlides;
-    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    // Calculate based on the container width (600%)
+    // Move by (100 / 6) = 16.666% each time
+    const step = 100 / totalSlides;
+    slider.style.transform = `translateX(-${currentSlide * step}%)`;
 }
 
+// Set initial state
 slider.style.transform = 'translateX(0%)';
+// Run every 4.8 seconds
 setInterval(moveSlider, 4800);
 
-// Navigation behavior
+/**
+ * STICKY NAVIGATION LOGIC
+ */
 const nav = document.getElementById('mainNav');
+const hero = document.getElementById('hero');
 
-function updateNavPosition() {
-    if (window.scrollY > 150) {   // Ajustado para melhor transição
+function handleScroll() {
+    const heroBottom = hero.offsetHeight - 80; // Trigger slightly before the absolute bottom
+    if (window.scrollY > heroBottom) {
         nav.classList.add('sticky');
     } else {
         nav.classList.remove('sticky');
     }
 }
 
-window.addEventListener('scroll', updateNavPosition);
+window.addEventListener('scroll', handleScroll);
 
-// Smooth scroll + special behavior for Home
+/**
+ * SMOOTH SCROLLING
+ */
 document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = this.getAttribute('href');
-        
-        if (target === '#hero') {
-            // Home → vai para o topo da página
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        } else {
-            const targetSection = document.querySelector(target);
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth'
-                });
+        const targetAttr = this.getAttribute('href');
+        if (targetAttr.startsWith('#')) {
+            e.preventDefault();
+            
+            if (targetAttr === '#hero') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                const targetSection = document.querySelector(targetAttr);
+                if (targetSection) {
+                    const navHeight = nav.classList.contains('sticky') ? nav.offsetHeight : 0;
+                    window.scrollTo({
+                        top: targetSection.offsetTop - navHeight,
+                        behavior: 'smooth'
+                    });
+                }
             }
         }
     });
 });
 
-// Language buttons
+/**
+ * INITIALIZATION
+ */
 const langs = [
     {code:'en', name:'EN'}, {code:'pt', name:'PT'},
     {code:'es', name:'ES'}, {code:'fr', name:'FR'},
     {code:'it', name:'IT'}, {code:'ru', name:'RU'}, {code:'zh', name:'ZH'}
 ];
 const switchDiv = document.getElementById('langSwitch');
+
 langs.forEach(l => {
     const btn = document.createElement('button');
     btn.className = 'lang-btn';
@@ -410,19 +466,20 @@ langs.forEach(l => {
     switchDiv.appendChild(btn);
 });
 
-// Auto-detect language
 function detectLanguage() {
     const lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-    if (lang.startsWith('pt')) return 'pt';
-    if (lang.startsWith('es')) return 'es';
-    if (lang.startsWith('fr')) return 'fr';
-    if (lang.startsWith('it')) return 'it';
-    if (lang.startsWith('ru')) return 'ru';
-    if (lang.startsWith('zh')) return 'zh';
+    const supported = ['en', 'pt', 'es', 'fr', 'it', 'ru', 'zh'];
+    for (let s of supported) {
+        if (lang.startsWith(s)) return s;
+    }
     return 'en';
 }
 
-loadLanguage(detectLanguage());
+// Start
+document.addEventListener('DOMContentLoaded', () => {
+    loadLanguage(detectLanguage());
+});
 </script>
+
 </body>
 </html>
