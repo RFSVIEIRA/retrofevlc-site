@@ -52,7 +52,7 @@
             background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(5,5,15,0.85));
         }
 
-        /* NAV BAR - Duas linhas horizontais full screen */
+        /* NAV BAR - Duas linhas horizontais full width */
         nav {
             position: absolute;
             bottom: 0;
@@ -134,8 +134,18 @@
         h1 { color: var(--primary); font-size: clamp(2.8rem, 7vw, 4.2rem); margin: 10px 0 15px; text-shadow: 0 0 30px rgba(0,255,204,0.6); }
         .subtitle { font-size: clamp(1.2rem, 3.5vw, 1.55rem); color: #b0b0ff; margin-bottom: 35px; }
 
-        .container { max-width: 1180px; margin: 100px auto; padding: 0 20px; }
-        h2 { color: var(--primary); font-size: 2.6rem; text-align: center; margin-bottom: 40px; text-shadow: 0 0 20px rgba(0,255,204,0.4); }
+        .container { 
+            max-width: 1180px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
+        h2 { 
+            color: var(--primary); 
+            font-size: 2.6rem; 
+            text-align: center; 
+            margin: 80px 0 40px; 
+            text-shadow: 0 0 20px rgba(0,255,204,0.4); 
+        }
 
         .feature-grid, .addons-grid {
             display: grid;
@@ -176,13 +186,19 @@
         .social-bar a { margin: 0 15px; font-size: 2rem; color: #bbb; transition: all 0.3s; }
         .social-bar a:hover { color: var(--primary); transform: scale(1.2); }
 
-        footer { background: #050508; padding: 40px 20px; text-align: center; color: #777; font-size: 0.9rem; }
+        footer { 
+            background: #050508; 
+            padding: 60px 20px 40px; 
+            text-align: center; 
+            color: #777; 
+            font-size: 0.9rem; 
+        }
     </style>
 </head>
 <body>
 
 <!-- HERO SLIDER -->
-<div class="hero-slider">
+<div class="hero-slider" id="hero">
     <div class="slider-container" id="slider">
         <div class="slide" style="background-image: url('assets/1.png');"></div>
         <div class="slide" style="background-image: url('assets/2.png');"></div>
@@ -205,10 +221,10 @@
         <a href="https://www.mediafire.com/file/dnu4eem0fvtriqg/RetroFeVLC_Full_V2.1.57.rar/file" target="_blank" class="btn btn-download" data-key="download-btn">⬇️ Download Full Version V2.1.57</a>
     </div>
 
-    <!-- Navigation Bar com duas linhas -->
+    <!-- Navigation Bar -->
     <nav id="mainNav">
         <ul>
-            <li><a href="#home" data-key="nav-home">Home</a></li>
+            <li><a href="#hero" data-key="nav-home">Home</a></li>
             <li><a href="#whatsnew" data-key="nav-whatsnew">What's New</a></li>
             <li><a href="#quickstart" data-key="nav-quickstart">Quick Start</a></li>
             <li><a href="#features" data-key="nav-features">Features</a></li>
@@ -221,78 +237,76 @@
 
 <!-- Main Content -->
 <div class="container">
-    <div id="content">
-        <section id="home">
-            <h2 data-key="welcome">Welcome to RetroFeVLC</h2>
-            <p data-key="welcome-text">RetroFeVLC is a powerful fork of RetroFE that replaces GStreamer with <strong>VLC</strong>, bringing dozens of new features, a smart addon system, and a much more user-friendly experience.</p>
-        </section>
+    <section id="home">
+        <h2 data-key="welcome">Welcome to RetroFeVLC</h2>
+        <p data-key="welcome-text">RetroFeVLC is a powerful fork of RetroFE that replaces GStreamer with <strong>VLC</strong>, bringing dozens of new features, a smart addon system, and a much more user-friendly experience.</p>
+    </section>
 
-        <section id="whatsnew">
-            <h2 data-key="whatsnew-title">What's New in RetroFeVLC V2.1.57</h2>
-            <div class="feature-grid">
-                <div class="feature-card" data-key="whatsnew-1">Menu Options – Settings, Controls, Layout</div>
-                <div class="feature-card" data-key="whatsnew-2">Full 4K Support + Scale Quality Options</div>
-                <div class="feature-card" data-key="whatsnew-3">Rock-Solid Stability (no crashes when adding screens)</div>
-                <div class="feature-card" data-key="whatsnew-4">Animated Images (GIF + WebP support)</div>
-                <div class="feature-card" data-key="whatsnew-5">Major memory leak fixes</div>
-                <div class="feature-card" data-key="whatsnew-6">New playlist ordering options</div>
-                <div class="feature-card" data-key="whatsnew-7">Game Search (external addon)</div>
-                <div class="feature-card" data-key="whatsnew-8">Dynamic Playlists with real-time updates</div>
-                <div class="feature-card" data-key="whatsnew-9">New Grid menu option</div>
-                <div class="feature-card" data-key="whatsnew-10">Layout include files + Variables support</div>
-                <div class="feature-card" data-key="whatsnew-11">GameInfo stats (play count, most played game, etc.)</div>
-                <div class="feature-card" data-key="whatsnew-12">Per-game layouts</div>
-            </div>
-        </section>
+    <section id="whatsnew">
+        <h2 data-key="whatsnew-title">What's New in RetroFeVLC V2.1.57</h2>
+        <div class="feature-grid">
+            <div class="feature-card" data-key="whatsnew-1">Menu Options – Settings, Controls, Layout</div>
+            <div class="feature-card" data-key="whatsnew-2">Full 4K Support + Scale Quality Options</div>
+            <div class="feature-card" data-key="whatsnew-3">Rock-Solid Stability (no crashes when adding screens)</div>
+            <div class="feature-card" data-key="whatsnew-4">Animated Images (GIF + WebP support)</div>
+            <div class="feature-card" data-key="whatsnew-5">Major memory leak fixes</div>
+            <div class="feature-card" data-key="whatsnew-6">New playlist ordering options</div>
+            <div class="feature-card" data-key="whatsnew-7">Game Search (external addon)</div>
+            <div class="feature-card" data-key="whatsnew-8">Dynamic Playlists with real-time updates</div>
+            <div class="feature-card" data-key="whatsnew-9">New Grid menu option</div>
+            <div class="feature-card" data-key="whatsnew-10">Layout include files + Variables support</div>
+            <div class="feature-card" data-key="whatsnew-11">GameInfo stats (play count, most played game, etc.)</div>
+            <div class="feature-card" data-key="whatsnew-12">Per-game layouts</div>
+        </div>
+    </section>
 
-        <section id="quickstart">
-            <h2 data-key="quickstart-title">Quick Start Guide</h2>
-            <ol>
-                <li data-key="quickstart-li1">Download the latest <strong>Full All Addons Include</strong> version</li>
-                <li data-key="quickstart-li2">Extract the archive to any folder (e.g. <code>E:\RetroFeVLC</code>)</li>
-                <li data-key="quickstart-li3">Run <strong>Start.exe</strong></li>
-                <li data-key="quickstart-li4">Right-click the Start icon in the System Tray → RetroFeVLC Options → Settings Editor</li>
-                <li data-key="quickstart-li5">Right-click again → Controls Editor</li>
-                <li data-key="quickstart-li6">Start adding your own game collections</li>
-            </ol>
-        </section>
+    <section id="quickstart">
+        <h2 data-key="quickstart-title">Quick Start Guide</h2>
+        <ol>
+            <li data-key="quickstart-li1">Download the latest <strong>Full All Addons Include</strong> version</li>
+            <li data-key="quickstart-li2">Extract the archive to any folder (e.g. <code>E:\RetroFeVLC</code>)</li>
+            <li data-key="quickstart-li3">Run <strong>Start.exe</strong></li>
+            <li data-key="quickstart-li4">Right-click the Start icon in the System Tray → RetroFeVLC Options → Settings Editor</li>
+            <li data-key="quickstart-li5">Right-click again → Controls Editor</li>
+            <li data-key="quickstart-li6">Start adding your own game collections</li>
+        </ol>
+    </section>
 
-        <section id="features">
-            <h2 data-key="key-features">Key Features</h2>
-            <div class="feature-grid">
-                <div class="feature-card" data-key="feature-start">Intelligent launcher with System Tray, automatic sync of Favorites & Last Played, JoyToKey, SuperF4 and more.</div>
-                <div class="feature-card" data-key="feature-search">Lightning-fast game search (F11 by default) with full gamepad support.</div>
-                <div class="feature-card" data-key="feature-layout">Grid menus, per-game layouts, random slideshows, 3D effects, and built-in Options Menu.</div>
-                <div class="feature-card" data-key="feature-metadata">HyperSpin, MAME, truRIP + AI Genre Fixer and Metadata Regenerator.</div>
-                <div class="feature-card" data-key="feature-marquee">Advanced Marquee Monitor Duplicator.</div>
-            </div>
-        </section>
+    <section id="features">
+        <h2 data-key="key-features">Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card" data-key="feature-start">Intelligent launcher with System Tray, automatic sync of Favorites & Last Played, JoyToKey, SuperF4 and more.</div>
+            <div class="feature-card" data-key="feature-search">Lightning-fast game search (F11 by default) with full gamepad support.</div>
+            <div class="feature-card" data-key="feature-layout">Grid menus, per-game layouts, random slideshows, 3D effects, and built-in Options Menu.</div>
+            <div class="feature-card" data-key="feature-metadata">HyperSpin, MAME, truRIP + AI Genre Fixer and Metadata Regenerator.</div>
+            <div class="feature-card" data-key="feature-marquee">Advanced Marquee Monitor Duplicator.</div>
+        </div>
+    </section>
 
-        <section id="addons">
-            <h2 data-key="addons-title">Addons & Tools</h2>
-            <div class="addons-grid">
-                <div class="addon-card" data-key="addon-genre">🎨 GenreFixer (AI)</div>
-                <div class="addon-card" data-key="addon-kiosk">🛡️ Simple KioskMode</div>
-                <div class="addon-card" data-key="addon-tree">🌳 Layout Tree Maker</div>
-                <div class="addon-card" data-key="addon-menu">📋 MenuManager</div>
-                <div class="addon-card" data-key="addon-meta">📊 Metadata Regenerator</div>
-                <div class="addon-card" data-key="addon-editor">🖌️ RetroFeVLC Layout Editor</div>
-                <div class="addon-card" data-key="addon-rera">🏆 RetroRa – RetroAchievements Sync</div>
-                <div class="addon-card" data-key="addon-story">🌍 Story Translator (AI)</div>
-                <div class="addon-card" data-key="addon-marquee">🖼️ Marquee Screen Duplicator</div>
-            </div>
-        </section>
+    <section id="addons">
+        <h2 data-key="addons-title">Addons & Tools</h2>
+        <div class="addons-grid">
+            <div class="addon-card" data-key="addon-genre">🎨 GenreFixer (AI)</div>
+            <div class="addon-card" data-key="addon-kiosk">🛡️ Simple KioskMode</div>
+            <div class="addon-card" data-key="addon-tree">🌳 Layout Tree Maker</div>
+            <div class="addon-card" data-key="addon-menu">📋 MenuManager</div>
+            <div class="addon-card" data-key="addon-meta">📊 Metadata Regenerator</div>
+            <div class="addon-card" data-key="addon-editor">🖌️ RetroFeVLC Layout Editor</div>
+            <div class="addon-card" data-key="addon-rera">🏆 RetroRa – RetroAchievements Sync</div>
+            <div class="addon-card" data-key="addon-story">🌍 Story Translator (AI)</div>
+            <div class="addon-card" data-key="addon-marquee">🖼️ Marquee Screen Duplicator</div>
+        </div>
+    </section>
 
-        <section id="layouts">
-            <h2 data-key="layouts-title">Layouts & Themes</h2>
-            <p data-key="layouts-text">Extremely powerful layout engine with Grid menus, per-game layouts, 3D effects, variables, include files and built-in Options Menu.<br>The official <strong>Phoenix Theme</strong> is a complete demo that shows everything RetroFeVLC can do.</p>
-        </section>
+    <section id="layouts">
+        <h2 data-key="layouts-title">Layouts & Themes</h2>
+        <p data-key="layouts-text">Extremely powerful layout engine with Grid menus, per-game layouts, 3D effects, variables, include files and built-in Options Menu.<br>The official <strong>Phoenix Theme</strong> is a complete demo that shows everything RetroFeVLC can do.</p>
+    </section>
 
-        <section id="about">
-            <h2 data-key="about-title">About RetroFeVLC</h2>
-            <p data-key="about-text">RetroFeVLC is a community-driven fork developed by an enthusiast. Fully open-source under GPL3. The goal is to make RetroFE even better while keeping it free and open for everyone.</p>
-        </section>
-    </div>
+    <section id="about">
+        <h2 data-key="about-title">About RetroFeVLC</h2>
+        <p data-key="about-text">RetroFeVLC is a community-driven fork developed by an enthusiast. Fully open-source under GPL3. The goal is to make RetroFE even better while keeping it free and open for everyone.</p>
+    </section>
 </div>
 
 <!-- SOCIAL BAR -->
@@ -331,7 +345,7 @@ async function loadLanguage(lang) {
     }
 }
 
-// Slider - Corrigido
+// Slider
 let currentSlide = 0;
 const slider = document.getElementById('slider');
 const totalSlides = 6;
@@ -348,7 +362,7 @@ setInterval(moveSlider, 4800);
 const nav = document.getElementById('mainNav');
 
 function updateNavPosition() {
-    if (window.scrollY > 100) {
+    if (window.scrollY > 150) {   // Ajustado para melhor transição
         nav.classList.add('sticky');
     } else {
         nav.classList.remove('sticky');
@@ -357,17 +371,25 @@ function updateNavPosition() {
 
 window.addEventListener('scroll', updateNavPosition);
 
-// Smooth scroll for nav links
+// Smooth scroll + special behavior for Home
 document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
+        const target = this.getAttribute('href');
         
-        if (targetSection) {
-            targetSection.scrollIntoView({
+        if (target === '#hero') {
+            // Home → vai para o topo da página
+            window.scrollTo({
+                top: 0,
                 behavior: 'smooth'
             });
+        } else {
+            const targetSection = document.querySelector(target);
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         }
     });
 });
