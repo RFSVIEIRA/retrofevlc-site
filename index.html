@@ -157,7 +157,6 @@
 </nav>
 
 <div class="container">
-    <!-- SINGLE CONTENT BLOCK (this fixes the scrolling and PT issue) -->
     <div id="content">
         <section id="home">
             <h2 data-key="welcome">Welcome to RetroFeVLC</h2>
@@ -248,10 +247,12 @@
 </footer>
 
 <script>
-// Auto language detection + translation system
+// Improved Translation system with better error handling
 async function loadLanguage(lang) {
     try {
         const response = await fetch(`translations/${lang}.json`);
+        if (!response.ok) throw new Error(`File not found: translations/${lang}.json`);
+        
         const trans = await response.json();
 
         document.querySelectorAll('[data-key]').forEach(el => {
@@ -265,7 +266,9 @@ async function loadLanguage(lang) {
 
         document.documentElement.lang = lang;
     } catch (e) {
-        console.error("Translation file not found for", lang);
+        console.error("Failed to load language:", lang, e);
+        // Fallback to English if language file fails
+        if (lang !== 'en') loadLanguage('en');
     }
 }
 
