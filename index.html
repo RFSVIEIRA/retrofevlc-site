@@ -249,21 +249,17 @@
 </footer>
 
 <script>
-// FIXED Translation system - single content block + full data-key support
+// Auto language detection + translation system
 async function loadLanguage(lang) {
     try {
         const response = await fetch(`translations/${lang}.json`);
         const trans = await response.json();
 
-        // Update ALL data-key elements
         document.querySelectorAll('[data-key]').forEach(el => {
             const key = el.getAttribute('data-key');
-            if (trans[key]) {
-                el.innerHTML = trans[key];
-            }
+            if (trans[key]) el.innerHTML = trans[key];
         });
 
-        // Highlight active button
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === lang);
         });
@@ -272,6 +268,20 @@ async function loadLanguage(lang) {
     } catch (e) {
         console.error("Translation file not found for", lang);
     }
+}
+
+// Detect browser language
+function detectLanguage() {
+    const browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+    
+    if (browserLang.startsWith('pt')) return 'pt';
+    if (browserLang.startsWith('es')) return 'es';
+    if (browserLang.startsWith('fr')) return 'fr';
+    if (browserLang.startsWith('it')) return 'it';
+    if (browserLang.startsWith('ru')) return 'ru';
+    if (browserLang.startsWith('zh')) return 'zh';
+    
+    return 'en'; // fallback
 }
 
 // Create language buttons
@@ -291,8 +301,9 @@ langs.forEach(l => {
     switchDiv.appendChild(btn);
 });
 
-// Start in English
-loadLanguage('en');
+// Auto-detect and load on page open
+const detectedLang = detectLanguage();
+loadLanguage(detectedLang);
 </script>
 </body>
 </html>
