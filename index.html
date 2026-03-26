@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RetroFeVLC | The Evolution of RetroFE</title>
     <meta name="description" content="RetroFeVLC - Powerful RetroFE fork with VLC, smart addons and stunning layouts.">
-    
+   
     <link rel="shortcut icon" type="image/png" href="favicon.png">
-
     <style>
         :root {
             --primary: #00ffcc;
@@ -17,7 +16,7 @@
             --darker: #050508;
             --gray: #1f1f2e;
         }
-       
+      
         body {
             background: var(--darker);
             color: #e0e0ff;
@@ -26,7 +25,7 @@
             line-height: 1.7;
         }
 
-        /* HERO SLIDER - Full height, responsive */
+        /* HERO SLIDER */
         .hero-slider {
             position: relative;
             height: 100vh;
@@ -38,6 +37,7 @@
             width: 100%;
             height: 100%;
             display: flex;
+            flex-wrap: nowrap;
             transition: transform 0.9s ease-in-out;
         }
         .slide {
@@ -45,6 +45,7 @@
             height: 100%;
             background-size: cover;
             background-position: center;
+            flex-shrink: 0;
         }
         .slide::after {
             content: '';
@@ -53,59 +54,19 @@
             background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(5,5,15,0.85));
         }
 
-        /* Top language bar - CENTERED */
-        .top-lang-bar {
-            position: absolute;
-            top: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 30;
-            background: rgba(15,15,35,0.95);
-            padding: 10px;
-            border-radius: 12px;
-            border: 1px solid rgba(0,255,204,0.3);
-            display: flex;
-            gap: 8px;
-        }
-
-        .lang-btn {
-            background: transparent;
-            border: 1px solid #444;
-            color: #ccc;
-            padding: 8px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-        .lang-btn.active {
-            background: var(--primary);
-            color: #000;
-            box-shadow: 0 0 15px rgba(0,255,204,0.5);
-        }
-
-        .slide-content {
-            position: absolute;
-            bottom: 12%;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            z-index: 3;
-            color: white;
-            width: 90%;
-            max-width: 900px;
-        }
-
-        .logo { max-width: 280px; margin-bottom: 20px; filter: drop-shadow(0 0 25px var(--primary)); }
-        h1 { color: var(--primary); font-size: clamp(2.8rem, 7vw, 4.2rem); margin: 10px 0 15px; text-shadow: 0 0 30px rgba(0,255,204,0.6); }
-        .subtitle { font-size: clamp(1.2rem, 3.5vw, 1.55rem); color: #b0b0ff; margin-bottom: 35px; }
-
+        /* NAV BAR - NO FUNDO DO HERO */
         nav {
-            background: rgba(10,10,15,0.98);
-            padding: 18px 0;
-            position: sticky;
-            top: 0;
+            position: absolute;
+            bottom: 45px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 100;
-            border-bottom: 1px solid rgba(0,255,204,0.2);
+            background: rgba(10,10,15,0.96);
+            padding: 16px 50px;
+            border-radius: 50px;
+            border: 1px solid rgba(0,255,204,0.35);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            width: fit-content;
         }
         nav ul {
             list-style: none;
@@ -124,8 +85,52 @@
         }
         nav a:hover { color: var(--primary); }
 
-        .container { max-width: 1180px; margin: 50px auto; padding: 0 20px; }
+        /* Language Bar */
+        .top-lang-bar {
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 30;
+            background: rgba(15,15,35,0.95);
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(0,255,204,0.3);
+            display: flex;
+            gap: 8px;
+        }
+        .lang-btn {
+            background: transparent;
+            border: 1px solid #444;
+            color: #ccc;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .lang-btn.active {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 15px rgba(0,255,204,0.5);
+        }
 
+        /* Slide Content */
+        .slide-content {
+            position: absolute;
+            bottom: 22%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 3;
+            color: white;
+            width: 90%;
+            max-width: 900px;
+        }
+        .logo { max-width: 280px; margin-bottom: 20px; filter: drop-shadow(0 0 25px var(--primary)); }
+        h1 { color: var(--primary); font-size: clamp(2.8rem, 7vw, 4.2rem); margin: 10px 0 15px; text-shadow: 0 0 30px rgba(0,255,204,0.6); }
+        .subtitle { font-size: clamp(1.2rem, 3.5vw, 1.55rem); color: #b0b0ff; margin-bottom: 35px; }
+
+        .container { max-width: 1180px; margin: 80px auto; padding: 0 20px; }
         h2 { color: var(--primary); font-size: 2.6rem; text-align: center; margin-bottom: 40px; text-shadow: 0 0 20px rgba(0,255,204,0.4); }
 
         .feature-grid, .addons-grid {
@@ -133,7 +138,6 @@
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
         }
-
         .feature-card, .addon-card {
             background: var(--gray);
             padding: 25px;
@@ -184,36 +188,36 @@
         <div class="slide" style="background-image: url('assets/6.png');"></div>
     </div>
 
-    <!-- Language bar at TOP CENTER -->
+    <!-- Language bar -->
     <div class="top-lang-bar" id="langSwitch"></div>
 
-    <!-- Content on slider -->
+    <!-- Slide content -->
     <div class="slide-content">
         <img src="assets/retrofevlc-logo.png" alt="RetroFeVLC Logo" class="logo">
         <h1 id="title" data-key="title">RetroFeVLC</h1>
         <p class="subtitle" id="subtitle" data-key="subtitle">The powerful evolution of RetroFE — now with VLC, smart addons & next-level customization</p>
-        
+       
         <a href="https://discord.gg/2aYRHdUrVf" target="_blank" class="btn btn-discord" data-key="discord-btn">🚀 Join the Discord</a>
         <a href="https://www.mediafire.com/file/dnu4eem0fvtriqg/RetroFeVLC_Full_V2.1.57.rar/file" target="_blank" class="btn btn-download" data-key="download-btn">⬇️ Download Full Version V2.1.57</a>
     </div>
+
+    <!-- Navigation Bar - No fundo do hero -->
+    <nav>
+        <ul>
+            <li><a href="#home" data-key="nav-home">Home</a></li>
+            <li><a href="#whatsnew" data-key="nav-whatsnew">What's New</a></li>
+            <li><a href="#quickstart" data-key="nav-quickstart">Quick Start</a></li>
+            <li><a href="#features" data-key="nav-features">Features</a></li>
+            <li><a href="#addons" data-key="nav-addons">Addons</a></li>
+            <li><a href="#layouts" data-key="nav-layouts">Layouts</a></li>
+            <li><a href="#about" data-key="nav-about">About</a></li>
+        </ul>
+    </nav>
 </div>
 
-<!-- NAVIGATION BAR (visible immediately) -->
-<nav>
-    <ul>
-        <li><a href="#home" data-key="nav-home">Home</a></li>
-        <li><a href="#whatsnew" data-key="nav-whatsnew">What's New</a></li>
-        <li><a href="#quickstart" data-key="nav-quickstart">Quick Start</a></li>
-        <li><a href="#features" data-key="nav-features">Features</a></li>
-        <li><a href="#addons" data-key="nav-addons">Addons</a></li>
-        <li><a href="#layouts" data-key="nav-layouts">Layouts</a></li>
-        <li><a href="#about" data-key="nav-about">About</a></li>
-    </ul>
-</nav>
-
+<!-- Main Content -->
 <div class="container">
     <div id="content">
-        <!-- All your sections (kept exactly as before) -->
         <section id="home">
             <h2 data-key="welcome">Welcome to RetroFeVLC</h2>
             <p data-key="welcome-text">RetroFeVLC is a powerful fork of RetroFE that replaces GStreamer with <strong>VLC</strong>, bringing dozens of new features, a smart addon system, and a much more user-friendly experience.</p>
@@ -323,7 +327,7 @@ async function loadLanguage(lang) {
     }
 }
 
-// Slider rotation
+// Slider
 let currentSlide = 0;
 const slider = document.getElementById('slider');
 const totalSlides = 6;
@@ -333,9 +337,10 @@ function moveSlider() {
     slider.style.transform = `translateX(-${currentSlide * 100}%)`;
 }
 
+slider.style.transform = 'translateX(0%)';
 setInterval(moveSlider, 4800);
 
-// Language buttons (top center)
+// Language buttons
 const langs = [
     {code:'en', name:'EN'}, {code:'pt', name:'PT'},
     {code:'es', name:'ES'}, {code:'fr', name:'FR'},
