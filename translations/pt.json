@@ -59,4 +59,12 @@
   "addon-rera": "🏆 RetroRa – Sincronização RetroAchievements",
   "addon-story": "🌍 Story Translator (IA)",
   "addon-marquee": "🖼️ Duplicador de Ecrã Marquee"
+  
+  "quickstart-title": "Guia Rápido",
+  "quickstart-li1": "Descarrega a versão mais recente <strong>Full All Addons Include</strong>",
+  "quickstart-li2": "Extrai o arquivo para qualquer pasta (ex: <code>E:\\RetroFeVLC</code>)",
+  "quickstart-li3": "Executa <strong>Start.exe</strong>",
+  "quickstart-li4": "Clique direito no ícone do Start na System Tray → RetroFeVLC Options → Settings Editor",
+  "quickstart-li5": "Clique direito novamente → Controls Editor",
+  "quickstart-li6": "Começa a adicionar as tuas próprias coleções de jogos"
 }

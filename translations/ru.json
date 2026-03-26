@@ -58,5 +58,13 @@
   "addon-editor": "🖌️ Редактор Layouts RetroFeVLC",
   "addon-rera": "🏆 RetroRa — Синхронизация RetroAchievements",
   "addon-story": "🌍 Переводчик описаний (ИИ)",
-  "addon-marquee": "🖼️ Дубликатор экрана Marquee"
+  "addon-marquee": "🖼️ Дубликатор экрана Marquee",
+  
+  "quickstart-title": "Быстрый старт",
+  "quickstart-li1": "Скачайте последнюю версию <strong>Full All Addons Include</strong>",
+  "quickstart-li2": "Распакуйте архив в любую папку (например <code>E:\\RetroFeVLC</code>)",
+  "quickstart-li3": "Запустите <strong>Start.exe</strong>",
+  "quickstart-li4": "Щёлкните правой кнопкой по иконке Start в системном трее → RetroFeVLC Options → Settings Editor",
+  "quickstart-li5": "Щёлкните правой кнопкой ещё раз → Controls Editor",
+  "quickstart-li6": "Начните добавлять свои собственные коллекции игр"
 }

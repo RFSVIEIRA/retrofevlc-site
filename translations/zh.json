@@ -58,5 +58,13 @@
   "addon-editor": "🖌️ RetroFeVLC 布局编辑器",
   "addon-rera": "🏆 RetroRa – RetroAchievements 同步",
   "addon-story": "🌍 故事翻译器 (AI)",
-  "addon-marquee": "🖼️ Marquee 屏幕复制器"
+  "addon-marquee": "🖼️ Marquee 屏幕复制器",
+  
+  "quickstart-title": "快速入门",
+  "quickstart-li1": "下载最新 <strong>Full All Addons Include</strong> 版本",
+  "quickstart-li2": "将压缩包解压到任意文件夹（例如 <code>E:\\RetroFeVLC</code>）",
+  "quickstart-li3": "运行 <strong>Start.exe</strong>",
+  "quickstart-li4": "右键点击系统托盘中的 Start 图标 → RetroFeVLC Options → Settings Editor",
+  "quickstart-li5": "再次右键 → Controls Editor",
+  "quickstart-li6": "开始添加你自己的游戏合集"
 }
