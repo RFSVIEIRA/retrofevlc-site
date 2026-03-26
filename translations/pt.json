@@ -26,7 +26,7 @@
   "addons-title": "Addons & Ferramentas",
 
   "layouts-title": "Layouts e Temas",
-  "layouts-text": "Motor de layouts extremamente poderoso com menus em grelha, layouts por jogo, efeitos 3D, variáveis, ficheiros include e Options Menu integrado.<br>O tema oficial <strong>Phoenix</strong> é uma demonstração completa de tudo o que o RetroFeVLC pode fazer.",
+  "layouts-text": "Motor de layouts extremamente poderoso com menus em grelha, layouts por jogo individual, efeitos 3D, variáveis, ficheiros include e Options Menu integrado.<br>O tema oficial <strong>Phoenix</strong> é uma demonstração completa de tudo o que o RetroFeVLC pode fazer.",
 
   "about-title": "Sobre o RetroFeVLC",
   "about-text": "RetroFeVLC é um fork desenvolvido por um entusiasta da comunidade. Totalmente open-source sob GPL3. O objetivo é tornar o RetroFE ainda melhor mantendo-o gratuito e aberto para todos.",
@@ -59,7 +59,7 @@
   "addon-rera": "🏆 RetroRa – Sincronização RetroAchievements",
   "addon-story": "🌍 Story Translator (IA)",
   "addon-marquee": "🖼️ Duplicador de Ecrã Marquee",
-  
+
   "quickstart-title": "Guia Rápido",
   "quickstart-li1": "Descarrega a versão mais recente <strong>Full All Addons Include</strong>",
   "quickstart-li2": "Extrai o arquivo para qualquer pasta (ex: <code>E:\\RetroFeVLC</code>)",
