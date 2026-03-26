@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RetroFeVLC | The Evolution of RetroFE</title>
     <meta name="description" content="RetroFeVLC - Powerful RetroFE fork with VLC, smart addons and stunning layouts.">
-   
+    
     <link rel="shortcut icon" type="image/png" href="favicon.png">
     <style>
         :root {
@@ -22,40 +22,44 @@
             font-family: 'Segoe UI', system-ui, sans-serif;
             margin: 0; padding: 0;
             line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        /* ====================== HERO SLIDER ====================== */
+        /* HERO SLIDER - FIX: Largura definida para permitir o movimento */
         .hero-slider {
             position: relative;
             height: 100vh;
             min-height: 520px;
             overflow: hidden;
+            background: #000;
         }
         .slider-container {
             position: absolute;
-            width: 600%;                    /* 100% × 6 slides */
-            height: 100%;
+            top: 0;
+            left: 0;
             display: flex;
-            flex-wrap: nowrap;
-            transition: transform 1.2s ease-in-out;   /* mais suave */
-            will-change: transform;         /* performance */
+            width: 600%; /* 6 imagens = 600% */
+            height: 100%;
+            transition: transform 0.9s ease-in-out;
+            will-change: transform;
         }
         .slide {
-            min-width: 100%;
+            width: 100vw; /* Cada slide ocupa exatamente a largura da tela */
             height: 100%;
             background-size: cover;
             background-position: center;
             flex-shrink: 0;
+            position: relative;
         }
+        /* Ajuste do brilho: Escurecemos o fundo para destacar o texto */
         .slide::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(5,5,15,0.92));
-            z-index: 2;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(5,5,15,0.85));
         }
 
-        /* NAV BAR - Duas linhas full width */
+        /* NAV BAR - Duas linhas horizontais full width */
         nav {
             position: absolute;
             bottom: 0;
@@ -137,8 +141,18 @@
         h1 { color: var(--primary); font-size: clamp(2.8rem, 7vw, 4.2rem); margin: 10px 0 15px; text-shadow: 0 0 30px rgba(0,255,204,0.6); }
         .subtitle { font-size: clamp(1.2rem, 3.5vw, 1.55rem); color: #b0b0ff; margin-bottom: 35px; }
 
-        .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
-        h2 { color: var(--primary); font-size: 2.6rem; text-align: center; margin: 80px 0 40px; text-shadow: 0 0 20px rgba(0,255,204,0.4); }
+        .container { 
+            max-width: 1180px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
+        h2 { 
+            color: var(--primary); 
+            font-size: 2.6rem; 
+            text-align: center; 
+            margin: 80px 0 40px; 
+            text-shadow: 0 0 20px rgba(0,255,204,0.4); 
+        }
 
         .feature-grid, .addons-grid {
             display: grid;
@@ -176,15 +190,20 @@
             text-align: center;
             border-top: 2px solid var(--primary);
         }
-        .social-bar a { margin: 0 15px; font-size: 2rem; color: #bbb; transition: all 0.3s; }
+        .social-bar a { margin: 0 15px; font-size: 2rem; color: #bbb; transition: all 0.3s; text-decoration: none; display: inline-block; }
         .social-bar a:hover { color: var(--primary); transform: scale(1.2); }
 
-        footer { background: #050508; padding: 60px 20px 40px; text-align: center; color: #777; font-size: 0.9rem; }
+        footer { 
+            background: #050508; 
+            padding: 60px 20px 40px; 
+            text-align: center; 
+            color: #777; 
+            font-size: 0.9rem; 
+        }
     </style>
 </head>
 <body>
 
-<!-- HERO SLIDER -->
 <div class="hero-slider" id="hero">
     <div class="slider-container" id="slider">
         <div class="slide" style="background-image: url('assets/1.png');"></div>
@@ -195,20 +214,17 @@
         <div class="slide" style="background-image: url('assets/6.png');"></div>
     </div>
 
-    <!-- Language bar -->
     <div class="top-lang-bar" id="langSwitch"></div>
 
-    <!-- Slide content -->
     <div class="slide-content">
         <img src="assets/retrofevlc-logo.png" alt="RetroFeVLC Logo" class="logo">
         <h1 id="title" data-key="title">RetroFeVLC</h1>
         <p class="subtitle" id="subtitle" data-key="subtitle">The powerful evolution of RetroFE — now with VLC, smart addons & next-level customization</p>
-       
+        
         <a href="https://discord.gg/2aYRHdUrVf" target="_blank" class="btn btn-discord" data-key="discord-btn">🚀 Join the Discord</a>
         <a href="https://www.mediafire.com/file/dnu4eem0fvtriqg/RetroFeVLC_Full_V2.1.57.rar/file" target="_blank" class="btn btn-download" data-key="download-btn">⬇️ Download Full Version V2.1.57</a>
     </div>
 
-    <!-- Navigation Bar -->
     <nav id="mainNav">
         <ul>
             <li><a href="#hero" data-key="nav-home">Home</a></li>
@@ -222,7 +238,6 @@
     </nav>
 </div>
 
-<!-- Main Content -->
 <div class="container">
     <section id="home">
         <h2 data-key="welcome">Welcome to RetroFeVLC</h2>
@@ -296,7 +311,6 @@
     </section>
 </div>
 
-<!-- SOCIAL BAR -->
 <div class="social-bar">
     <a href="https://www.facebook.com/groups/742851048352639/?ref=share+" target="_blank" title="Facebook">📘</a>
     <a href="https://discord.gg/2aYRHdUrVf" target="_blank" title="Discord">💬</a>
@@ -332,31 +346,25 @@ async function loadLanguage(lang) {
     }
 }
 
-// ====================== SLIDER CORRIGIDO ======================
-window.addEventListener('load', () => {
-    const slider = document.getElementById('slider');
-    let currentSlide = 0;
-    const totalSlides = 6;
-    let intervalId = null;
+// Slider LOGIC FIX: Calculando baseado na largura de 600%
+let currentSlide = 0;
+const slider = document.getElementById('slider');
+const totalSlides = 6;
 
-    function moveSlider() {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
+function moveSlider() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    // Cada slide ocupa 1/6 (16.666%) da largura total do container que é 600%
+    const step = 100 / totalSlides;
+    slider.style.transform = `translateX(-${currentSlide * step}%)`;
+}
 
-    // Posição inicial
-    slider.style.transform = 'translateX(0%)';
+// Inicia o slider
+slider.style.transform = 'translateX(0%)';
+setInterval(moveSlider, 4800);
 
-    // Inicia o slideshow só depois de tudo carregado
-    // Intervalo de 5 segundos (5000ms)
-    setTimeout(() => {
-        if (intervalId) clearInterval(intervalId); // evita duplicados
-        intervalId = setInterval(moveSlider, 5000);
-    }, 1200); // pequeno delay para garantir que o browser renderizou tudo
-});
-
-// Navigation behavior (mantido)
+// Navigation behavior
 const nav = document.getElementById('mainNav');
+
 function updateNavPosition() {
     if (window.scrollY > 150) {
         nav.classList.add('sticky');
@@ -364,17 +372,27 @@ function updateNavPosition() {
         nav.classList.remove('sticky');
     }
 }
+
 window.addEventListener('scroll', updateNavPosition);
 
-// Smooth scroll
+// Smooth scroll + special behavior for Home
 document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
         const target = this.getAttribute('href');
+        
         if (target === '#hero') {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         } else {
-            document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' });
+            const targetSection = document.querySelector(target);
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         }
     });
 });
@@ -395,6 +413,7 @@ langs.forEach(l => {
     switchDiv.appendChild(btn);
 });
 
+// Auto-detect language
 function detectLanguage() {
     const lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
     if (lang.startsWith('pt')) return 'pt';
