@@ -24,9 +24,43 @@
             font-family: 'Segoe UI', system-ui, sans-serif;
             margin: 0; padding: 0;
             line-height: 1.7;
-            background-image: 
-                radial-gradient(circle at 50% 20%, rgba(0, 255, 204, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(123, 94, 255, 0.06) 0%, transparent 50%);
+        }
+
+        /* Hero Slider */
+        .hero-slider {
+            position: relative;
+            height: 520px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        .slider-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(10,10,15,0.85));
+        }
+        .slide-content {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 2;
+            color: white;
         }
 
         header {
@@ -271,7 +305,38 @@ async function loadLanguage(lang) {
         if (lang !== 'en') loadLanguage('en');
     }
 }
+// Auto language detection + translation
+async function loadLanguage(lang) {
+    try {
+        const response = await fetch(`translations/${lang}.json`);
+        const trans = await response.json();
 
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            if (trans[key]) el.innerHTML = trans[key];
+        });
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+
+        document.documentElement.lang = lang;
+    } catch (e) {
+        console.error("Translation file not found for", lang);
+    }
+}
+
+// Simple auto-rotating slider
+let currentSlide = 0;
+const slider = document.getElementById('slider');
+const totalSlides = 6;
+
+function moveSlider() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
+setInterval(moveSlider, 5000); // Change image every 5 seconds
 // Detect browser language
 function detectLanguage() {
     const browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
