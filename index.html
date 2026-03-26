@@ -26,7 +26,7 @@
             line-height: 1.7;
         }
 
-        /* HERO SLIDER - Full height and responsive */
+        /* HERO SLIDER - Full height, responsive */
         .hero-slider {
             position: relative;
             height: 100vh;
@@ -45,7 +45,6 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            position: relative;
         }
         .slide::after {
             content: '';
@@ -54,26 +53,12 @@
             background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(5,5,15,0.85));
         }
 
-        .slide-content {
-            position: absolute;
-            bottom: 12%;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            z-index: 5;
-            color: white;
-            width: 90%;
-            max-width: 900px;
-        }
-
-        .logo { max-width: 280px; margin-bottom: 20px; filter: drop-shadow(0 0 25px var(--primary)); }
-        h1 { color: var(--primary); font-size: clamp(2.8rem, 7vw, 4.2rem); margin: 10px 0 15px; text-shadow: 0 0 30px rgba(0,255,204,0.6); }
-        .subtitle { font-size: clamp(1.2rem, 3.5vw, 1.55rem); color: #b0b0ff; margin-bottom: 35px; }
-
-        .lang-switch {
+        /* Top language bar - CENTERED */
+        .top-lang-bar {
             position: absolute;
             top: 25px;
-            right: 25px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 30;
             background: rgba(15,15,35,0.95);
             padding: 10px;
@@ -82,6 +67,7 @@
             display: flex;
             gap: 8px;
         }
+
         .lang-btn {
             background: transparent;
             border: 1px solid #444;
@@ -96,6 +82,22 @@
             color: #000;
             box-shadow: 0 0 15px rgba(0,255,204,0.5);
         }
+
+        .slide-content {
+            position: absolute;
+            bottom: 12%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 3;
+            color: white;
+            width: 90%;
+            max-width: 900px;
+        }
+
+        .logo { max-width: 280px; margin-bottom: 20px; filter: drop-shadow(0 0 25px var(--primary)); }
+        h1 { color: var(--primary); font-size: clamp(2.8rem, 7vw, 4.2rem); margin: 10px 0 15px; text-shadow: 0 0 30px rgba(0,255,204,0.6); }
+        .subtitle { font-size: clamp(1.2rem, 3.5vw, 1.55rem); color: #b0b0ff; margin-bottom: 35px; }
 
         nav {
             background: rgba(10,10,15,0.98);
@@ -122,7 +124,7 @@
         }
         nav a:hover { color: var(--primary); }
 
-        .container { max-width: 1180px; margin: 40px auto; padding: 0 20px; }
+        .container { max-width: 1180px; margin: 50px auto; padding: 0 20px; }
 
         h2 { color: var(--primary); font-size: 2.6rem; text-align: center; margin-bottom: 40px; text-shadow: 0 0 20px rgba(0,255,204,0.4); }
 
@@ -139,7 +141,6 @@
             border: 1px solid rgba(0,255,204,0.15);
             transition: all 0.4s;
         }
-        .addon-card { text-align: center; font-size: 1.1rem; font-weight: 600; }
         .addon-card:hover { transform: translateY(-8px); border-color: var(--primary); }
 
         .btn {
@@ -183,9 +184,11 @@
         <div class="slide" style="background-image: url('assets/6.png');"></div>
     </div>
 
+    <!-- Language bar at TOP CENTER -->
+    <div class="top-lang-bar" id="langSwitch"></div>
+
+    <!-- Content on slider -->
     <div class="slide-content">
-        <div class="lang-switch" id="langSwitch"></div>
-        
         <img src="assets/retrofevlc-logo.png" alt="RetroFeVLC Logo" class="logo">
         <h1 id="title" data-key="title">RetroFeVLC</h1>
         <p class="subtitle" id="subtitle" data-key="subtitle">The powerful evolution of RetroFE — now with VLC, smart addons & next-level customization</p>
@@ -195,6 +198,7 @@
     </div>
 </div>
 
+<!-- NAVIGATION BAR (visible immediately) -->
 <nav>
     <ul>
         <li><a href="#home" data-key="nav-home">Home</a></li>
@@ -209,6 +213,7 @@
 
 <div class="container">
     <div id="content">
+        <!-- All your sections (kept exactly as before) -->
         <section id="home">
             <h2 data-key="welcome">Welcome to RetroFeVLC</h2>
             <p data-key="welcome-text">RetroFeVLC is a powerful fork of RetroFE that replaces GStreamer with <strong>VLC</strong>, bringing dozens of new features, a smart addon system, and a much more user-friendly experience.</p>
@@ -303,17 +308,14 @@ async function loadLanguage(lang) {
     try {
         const response = await fetch(`translations/${lang}.json`);
         if (!response.ok) throw new Error("File not found");
-        
         const trans = await response.json();
         document.querySelectorAll('[data-key]').forEach(el => {
             const key = el.getAttribute('data-key');
             if (trans[key]) el.innerHTML = trans[key];
         });
-
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === lang);
         });
-
         document.documentElement.lang = lang;
     } catch (e) {
         console.error("Failed to load language:", lang);
@@ -321,7 +323,7 @@ async function loadLanguage(lang) {
     }
 }
 
-// Slider
+// Slider rotation
 let currentSlide = 0;
 const slider = document.getElementById('slider');
 const totalSlides = 6;
@@ -333,13 +335,12 @@ function moveSlider() {
 
 setInterval(moveSlider, 4800);
 
-// Language buttons
+// Language buttons (top center)
 const langs = [
     {code:'en', name:'EN'}, {code:'pt', name:'PT'},
     {code:'es', name:'ES'}, {code:'fr', name:'FR'},
     {code:'it', name:'IT'}, {code:'ru', name:'RU'}, {code:'zh', name:'ZH'}
 ];
-
 const switchDiv = document.getElementById('langSwitch');
 langs.forEach(l => {
     const btn = document.createElement('button');
@@ -350,7 +351,7 @@ langs.forEach(l => {
     switchDiv.appendChild(btn);
 });
 
-// Auto detect and load
+// Auto-detect language
 function detectLanguage() {
     const lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
     if (lang.startsWith('pt')) return 'pt';
