@@ -40,8 +40,15 @@
   "ad-4": "📋 <strong>MenuManager</strong>: Ordenação de Sistemas",
   "ad-5": "🖌️ <strong>Theme Editor</strong>: Design em Tempo Real",
   "ad-6": "🏆 <strong>RetroRa</strong>: Sincronização de Conquistas",  
-  "  "legal-title": "Termos, Privacidade e Notas Legais",
-  "legal-p1": "O RetroFeVLC é um software de interface open-source (GPL v3) sediado em Portugal. Não inclui ou distribui ROMs ou BIOS protegidas. De acordo com o Direito de Autor e legislação da UE (RGPD), o utilizador deve possuir os suportes físicos originais para qualquer conteúdo utilizado.",
-  "legal-p2": "Este site é alojado no GitHub Pages; a recolha de dados limita-se aos registos técnicos do servidor. Não utilizamos cookies de rastreio ou publicidade. Para qualquer questão jurídica, aplica-se a lei portuguesa e a jurisdição dos tribunais competentes.",
+    "legal-title": "Termos de Utilização",
+  "legal-terms": "O RetroFeVLC é um software de interface open-source sob a licença GPL v3. O software é fornecido 'tal como está', sem garantias. O utilizador é o único responsável pela utilização legal do software e de quaisquer ficheiros (ROMs, BIOS) utilizados.",
+  "legal-downloads": "Todos os downloads e recursos externos são fornecidos por sua conta e risco. Não garantimos a segurança ou integridade de ficheiros alojados em terceiros.",
+  "legal-priv-h": "Privacidade e Cookies",
+  "legal-priv-p": "Este site cumpre o RGPD. É alojado no GitHub Pages, que pode recolher dados técnicos mínimos (IP) para fins de segurança e operação.",
+  "legal-cookies": "Não utilizamos cookies de rastreio ou publicidade. Podem ser utilizados cookies técnicos essenciais pelo GitHub ou CDNs (como FontAwesome) para o correto funcionamento.",
+  "legal-ext-h": "Serviços Externos",
+  "legal-ext-p": "Não somos responsáveis pelo conteúdo ou políticas de plataformas externas como Discord, MediaFire ou Reddit.",
+  "legal-id": "Entidade Responsável: Projeto RetroFeVLC (Lisboa, Portugal)",
+  "legal-juris": "Jurisdição: Aplica-se a lei portuguesa. Litígios resolvidos pelos tribunais competentes.",
   "footer-text": "RetroFeVLC © 2026 • Uma evolução open-source do frontend RetroFE"
 }
