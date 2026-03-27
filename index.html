@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RetroFeVLC | The Evolution of RetroFE</title>
     <meta name="description" content="RetroFeVLC - Powerful RetroFE fork with VLC, smart addons and stunning layouts.">
-    
+   
     <link rel="shortcut icon" type="image/png" href="favicon.png">
     <style>
         :root {
@@ -15,7 +15,7 @@
             --darker: #050508;
             --gray: #1f1f2e;
         }
-      
+     
         body {
             background: var(--darker);
             color: #e0e0ff;
@@ -24,7 +24,6 @@
             line-height: 1.7;
             overflow-x: hidden;
         }
-
         /* --- HERO SLIDER (FIXED) --- */
         .hero-slider {
             position: relative;
@@ -58,7 +57,6 @@
             inset: 0;
             background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(5,5,15,0.85));
         }
-
         /* --- NAVIGATION --- */
         nav {
             position: absolute;
@@ -95,7 +93,6 @@
             transition: color 0.3s;
         }
         nav a:hover { color: var(--primary); }
-
         /* --- LANGUAGE BAR --- */
         .top-lang-bar {
             position: absolute;
@@ -125,7 +122,6 @@
             color: #000;
             box-shadow: 0 0 15px rgba(0,255,204,0.5);
         }
-
         /* --- HERO CONTENT --- */
         .slide-content {
             position: absolute;
@@ -138,37 +134,29 @@
             width: 90%;
             max-width: 900px;
         }
-        .logo { 
-            max-width: 280px; 
-            margin-bottom: 20px; 
-            filter: drop-shadow(0 0 25px var(--primary)); 
+        .logo {
+            max-width: 380px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 25px var(--primary));
         }
-        h1 { 
-            color: var(--primary); 
-            font-size: clamp(2.8rem, 7vw, 4.2rem); 
-            margin: 10px 0 15px; 
-            text-shadow: 0 0 30px rgba(0,255,204,0.6); 
+        .subtitle {
+            font-size: clamp(1.2rem, 3.5vw, 1.55rem);
+            color: #b0b0ff;
+            margin-bottom: 35px;
         }
-        .subtitle { 
-            font-size: clamp(1.2rem, 3.5vw, 1.55rem); 
-            color: #b0b0ff; 
-            margin-bottom: 35px; 
-        }
-
         /* --- MAIN LAYOUT --- */
-        .container { 
-            max-width: 1180px; 
-            margin: 0 auto; 
-            padding: 0 20px; 
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        h2 { 
-            color: var(--primary); 
-            font-size: 2.6rem; 
-            text-align: center; 
-            margin: 80px 0 40px; 
-            text-shadow: 0 0 20px rgba(0,255,204,0.4); 
+        h2 {
+            color: var(--primary);
+            font-size: 2.6rem;
+            text-align: center;
+            margin: 80px 0 40px;
+            text-shadow: 0 0 20px rgba(0,255,204,0.4);
         }
-
         .feature-grid, .addons-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -181,12 +169,11 @@
             border: 1px solid rgba(0,255,204,0.15);
             transition: all 0.4s;
         }
-        .feature-card:hover, .addon-card:hover { 
-            transform: translateY(-8px); 
-            border-color: var(--primary); 
+        .feature-card:hover, .addon-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
             background: #252538;
         }
-
         /* --- BUTTONS --- */
         .btn {
             display: inline-block;
@@ -203,13 +190,11 @@
         .btn-discord:hover { transform: scale(1.08); box-shadow: 0 0 20px rgba(88, 101, 242, 0.4); }
         .btn-download { background: linear-gradient(90deg, #00ffcc, #00ccaa); color: #000; font-weight: 800; }
         .btn-download:hover { transform: scale(1.08); box-shadow: 0 0 20px rgba(0, 255, 204, 0.4); }
-
         /* --- SECTIONS --- */
         section { padding-bottom: 60px; }
         ol { padding-left: 20px; }
         ol li { margin-bottom: 15px; font-size: 1.1rem; }
         code { background: #000; color: var(--primary); padding: 2px 6px; border-radius: 4px; }
-
         /* --- SOCIALS --- */
         .social-bar {
             background: #0a0a0f;
@@ -217,27 +202,25 @@
             text-align: center;
             border-top: 2px solid var(--primary);
         }
-        .social-bar a { 
-            margin: 0 15px; 
-            font-size: 2rem; 
-            color: #bbb; 
+        .social-bar a {
+            margin: 0 15px;
+            font-size: 2rem;
+            color: #bbb;
             text-decoration: none;
             display: inline-block;
-            transition: all 0.3s; 
+            transition: all 0.3s;
         }
         .social-bar a:hover { color: var(--primary); transform: scale(1.2); }
-
-        footer { 
-            background: #050508; 
-            padding: 60px 20px 40px; 
-            text-align: center; 
-            color: #777; 
-            font-size: 0.9rem; 
+        footer {
+            background: #050508;
+            padding: 60px 20px 40px;
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
-
 <div class="hero-slider" id="hero">
     <div class="slider-container" id="slider">
         <div class="slide" style="background-image: url('assets/1.jpg');"></div>
@@ -247,21 +230,18 @@
         <div class="slide" style="background-image: url('assets/5.jpg');"></div>
         <div class="slide" style="background-image: url('assets/6.jpg');"></div>
     </div>
-
     <div class="top-lang-bar" id="langSwitch"></div>
-
     <div class="slide-content">
         <img src="assets/retrofevlc-logo.png" alt="RetroFeVLC Logo" class="logo">
-        <h1 id="title" data-key="title">RetroFeVLC</h1>
         <p class="subtitle" id="subtitle" data-key="subtitle">The powerful evolution of RetroFE — now with VLC, smart addons & next-level customization</p>
-        
+       
         <a href="https://discord.gg/2aYRHdUrVf" target="_blank" class="btn btn-discord" data-key="discord-btn">🚀 Join the Discord</a>
         <a href="https://www.mediafire.com/file/dnu4eem0fvtriqg/RetroFeVLC_Full_V2.1.57.rar/file" target="_blank" class="btn btn-download" data-key="download-btn">⬇️ Download Full Version V2.1.57</a>
     </div>
-
     <nav id="mainNav">
         <ul>
             <li><a href="#hero" data-key="nav-home">Home</a></li>
+            <li><a href="#whatis" data-key="nav-whatis">What is RetroFeVLC</a></li>
             <li><a href="#whatsnew" data-key="nav-whatsnew">What's New</a></li>
             <li><a href="#quickstart" data-key="nav-quickstart">Quick Start</a></li>
             <li><a href="#features" data-key="nav-features">Features</a></li>
@@ -271,11 +251,45 @@
         </ul>
     </nav>
 </div>
-
 <div class="container">
     <section id="home">
         <h2 data-key="welcome">Welcome to RetroFeVLC</h2>
         <p data-key="welcome-text">RetroFeVLC is a powerful fork of RetroFE that replaces GStreamer with <strong>VLC</strong>, bringing dozens of new features, a smart addon system, and a much more user-friendly experience.</p>
+    </section>
+
+    <!-- NEW SECTION: WHAT IS RETROFEVLC (fully translatable) -->
+    <section id="whatis">
+        <h2 data-key="whatis-title">What is RetroFeVLC</h2>
+        
+        <p data-key="whatis-subtitle" style="text-align:center; font-size:1.65rem; color:var(--primary); margin:0 0 35px 0; font-weight:700;">RetroFeVLC – The Fast & Powerful Retro Gaming Frontend</p>
+        
+        <p data-key="whatis-p1">RetroFeVLC is a modern, actively developed fork of the popular open-source RetroFE frontend, rebuilt with VLC media library support and optimized for Windows. It delivers a beautiful, highly customizable, and lightning-fast interface for launching and managing your retro game collection across 100+ systems.</p>
+        
+        <p data-key="whatis-p2">Born as an evolution of RetroFE, RetroFeVLC replaces the older GStreamer backend with VLC for superior video, image, and animated media handling. The result is a smoother, more stable, and visually stunning experience — perfect for arcade cabinets, HTPCs, or dedicated retro gaming PCs.</p>
+        
+        <h3 data-key="whatis-why-title" style="color:var(--primary); text-align:center; margin:50px 0 25px;">Why RetroFeVLC Stands Out</h3>
+        
+        <p data-key="whatis-p3">It combines the deep customization power of classic frontends with modern conveniences and performance improvements that make setup and daily use a joy:</p>
+        
+        <p data-key="whatis-p4">Built-in GUI for easy configuration — No more editing text files for basic settings. Access Menus, Controls, Layouts, and more directly from the interface.</p>
+        <p data-key="whatis-p5">Blazing-fast performance — Menu navigation is quick and responsive, even with large collections.</p>
+        <p data-key="whatis-p6">Stunning 4K visuals — Full 4K support with customizable scale quality options for crystal-clear artwork and videos.</p>
+        <p data-key="whatis-p7">Rich media & animations — Native support for animated GIFs and WebP images, plus major memory leak fixes for rock-solid stability.</p>
+        <p data-key="whatis-p8">Advanced layout tools — Include files, variables, per-game personalized views, GameInfo stats (times played, most played games, etc.), and a clean single-game focus page.</p>
+        <p data-key="whatis-p9">Dynamic playlists — Real-time “All Games”, “All Favorites”, and “All Last Played” playlists that update automatically (via external add-on).</p>
+        <p data-key="whatis-p10">Powerful external add-ons — Including start.exe launcher with playlist management, settings, controls, and quick access to everything. Additional tools like marquee animation control, screen mirroring to marquee, layout creator/editor, menu hierarchy manager, and kiosk mode (launch directly from shell without Windows desktop).</p>
+        
+        <p data-key="whatis-p11">Navigation feels intuitive, layouts are flexible and easy to manage, and adding new systems or screens happens without crashes or headaches.</p>
+        
+        <h3 data-key="whatis-top-title" style="color:var(--primary); text-align:center; margin:50px 0 25px;">One of the Top Retro Gaming Frontends</h3>
+        
+        <p data-key="whatis-p12">RetroFeVLC earns its place among the top 5 best retro gaming frontends in 2026, standing proudly alongside heavyweights like RetroBat (EmulationStation-based), LaunchBox/BigBox, PlayNite, and classic RetroArch setups. It offers a perfect balance of visual flair, speed, stability, and customization depth — ideal for users who want more than a basic launcher but less complexity than full cabinet-focused suites.</p>
+        
+        <p data-key="whatis-p13">Whether you're building a sleek home theater setup, a dedicated arcade cabinet, or just want the fastest and most enjoyable way to browse and play your ROM collection, RetroFeVLC delivers pure magic in a lightweight, portable package.</p>
+        
+        <p data-key="whatis-p14" style="text-align:center; font-size:1.4rem; color:var(--accent); margin-top:40px; font-weight:700;">Fast. Dynamic. Easy to configure. Built for retro gamers who love beautiful menus and zero hassle.</p>
+        
+        <p data-key="whatis-p15" style="text-align:center; margin-top:30px;">Ready to experience it?</p>
     </section>
 
     <section id="whatsnew">
@@ -295,7 +309,6 @@
             <div class="feature-card" data-key="whatsnew-12">Per-game layouts</div>
         </div>
     </section>
-
     <section id="quickstart">
         <h2 data-key="quickstart-title">Quick Start Guide</h2>
         <ol>
@@ -307,7 +320,6 @@
             <li data-key="quickstart-li6">Start adding your own game collections</li>
         </ol>
     </section>
-
     <section id="features">
         <h2 data-key="key-features">Key Features</h2>
         <div class="feature-grid">
@@ -318,7 +330,6 @@
             <div class="feature-card" data-key="feature-marquee">Advanced Marquee Monitor Duplicator.</div>
         </div>
     </section>
-
     <section id="addons">
         <h2 data-key="addons-title">Addons & Tools</h2>
         <div class="addons-grid">
@@ -333,19 +344,15 @@
             <div class="addon-card" data-key="addon-marquee">🖼️ Marquee Screen Duplicator</div>
         </div>
     </section>
-
     <section id="layouts">
         <h2 data-key="layouts-title">Layouts & Themes</h2>
         <p data-key="layouts-text">Extremely powerful layout engine with Grid menus, per-game layouts, 3D effects, variables, include files and built-in Options Menu.<br>The official <strong>Phoenix Theme</strong> is a complete demo that shows everything RetroFeVLC can do.</p>
     </section>
-
     <section id="about">
         <h2 data-key="about-title">About RetroFeVLC</h2>
         <p data-key="about-text">RetroFeVLC is a community-driven fork developed by an enthusiast. Fully open-source under GPL3. The goal is to make RetroFE even better while keeping it free and open for everyone.</p>
     </section>
-
 </div>
-
 <div class="social-bar">
     <a href="https://www.facebook.com/groups/742851048352639/?ref=share+" target="_blank">📘</a>
     <a href="https://discord.gg/2aYRHdUrVf" target="_blank">💬</a>
@@ -354,11 +361,9 @@
     <a href="https://www.reddit.com/r/RetroFeVLC/" target="_blank">🔴</a>
     <a href="mailto:retrofevlc@gmail.com">✉️</a>
 </div>
-
 <footer>
     <p>RetroFeVLC © 2026 • A community-driven evolution of the RetroFE frontend</p>
 </footer>
-
 <script>
 /**
  * SISTEMA DE TRADUÇÃO
@@ -368,12 +373,12 @@ async function loadLanguage(lang) {
         const response = await fetch(`translations/${lang}.json`);
         if (!response.ok) throw new Error("File not found");
         const trans = await response.json();
-        
+       
         document.querySelectorAll('[data-key]').forEach(el => {
             const key = el.getAttribute('data-key');
             if (trans[key]) el.innerHTML = trans[key];
         });
-        
+       
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === lang);
         });
@@ -383,31 +388,26 @@ async function loadLanguage(lang) {
         if (lang !== 'en') loadLanguage('en');
     }
 }
-
 /**
  * SLIDER LOGIC - FIX DEFINITIVO
  */
 let currentSlide = 0;
 const slider = document.getElementById('slider');
 const totalSlides = 6;
-
 function moveSlider() {
     currentSlide = (currentSlide + 1) % totalSlides;
     // Como o container tem 600%, cada imagem ocupa 1/6 (16.666%) do container
     const step = 100 / totalSlides;
     slider.style.transform = `translateX(-${currentSlide * step}%)`;
 }
-
 // Inicializa e roda a cada 4.8 segundos
 slider.style.transform = 'translateX(0%)';
 setInterval(moveSlider, 4800);
-
 /**
  * STICKY NAV
  */
 const nav = document.getElementById('mainNav');
 const hero = document.getElementById('hero');
-
 window.addEventListener('scroll', () => {
     if (window.scrollY > (hero.offsetHeight - 80)) {
         nav.classList.add('sticky');
@@ -415,7 +415,6 @@ window.addEventListener('scroll', () => {
         nav.classList.remove('sticky');
     }
 });
-
 /**
  * SMOOTH SCROLL
  */
@@ -434,7 +433,6 @@ document.querySelectorAll('nav a').forEach(link => {
         }
     });
 });
-
 /**
  * SETUP LINGUAGEM
  */
@@ -444,7 +442,6 @@ const langs = [
     {code:'it', name:'IT'}, {code:'ru', name:'RU'}, {code:'zh', name:'ZH'}
 ];
 const switchDiv = document.getElementById('langSwitch');
-
 langs.forEach(l => {
     const btn = document.createElement('button');
     btn.className = 'lang-btn';
@@ -453,14 +450,12 @@ langs.forEach(l => {
     btn.onclick = () => loadLanguage(l.code);
     switchDiv.appendChild(btn);
 });
-
 function detectLanguage() {
     const lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
     const supported = ['en', 'pt', 'es', 'fr', 'it', 'ru', 'zh'];
     for (let s of supported) if (lang.startsWith(s)) return s;
     return 'en';
 }
-
 document.addEventListener('DOMContentLoaded', () => loadLanguage(detectLanguage()));
 </script>
 </body>
