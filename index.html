@@ -56,6 +56,70 @@
             inset: 0;
             background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(5,5,15,0.85));
         }
+
+        /* === NEW: SEPARATE CENTERED LOGO (independent from text/buttons) === */
+        .logo-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 140;                /* behind language bar */
+            text-align: center;
+            width: 100%;
+        }
+        .logo-center img {
+            max-width: 480px;
+            filter: drop-shadow(0 0 25px var(--primary));
+        }
+
+        /* --- LANGUAGE BAR (stays on top) --- */
+        .top-lang-bar {
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 160;
+            background: rgba(15,15,35,0.95);
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(0,255,204,0.3);
+            display: flex;
+            gap: 8px;
+        }
+        .lang-btn {
+            background: transparent;
+            border: 1px solid #444;
+            color: #ccc;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .lang-btn.active {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 15px rgba(0,255,204,0.5);
+        }
+
+        /* --- BOTTOM CONTENT (subtitle + buttons) --- */
+        .slide-content {
+            position: absolute;
+            bottom: 28%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 150;
+            color: white;
+            width: 90%;
+            max-width: 900px;
+        }
+        .subtitle {
+            font-size: clamp(1.2rem, 3.5vw, 1.55rem);
+            color: #b0b0ff;
+            margin-bottom: 35px;
+        }
+
         /* --- NAVIGATION --- */
         nav {
             position: absolute;
@@ -92,57 +156,24 @@
             transition: color 0.3s;
         }
         nav a:hover { color: var(--primary); }
-        /* --- LANGUAGE BAR --- */
-        .top-lang-bar {
-            position: absolute;
-            top: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 160;               /* language bar stays ON TOP */
-            background: rgba(15,15,35,0.95);
-            padding: 10px;
-            border-radius: 12px;
-            border: 1px solid rgba(0,255,204,0.3);
-            display: flex;
-            gap: 8px;
-        }
-        .lang-btn {
-            background: transparent;
-            border: 1px solid #444;
-            color: #ccc;
-            padding: 8px 16px;
-            border-radius: 8px;
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 18px 38px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin: 15px 10px;
+            transition: all 0.4s;
             cursor: pointer;
-            font-weight: 600;
-            transition: all 0.2s;
         }
-        .lang-btn.active {
-            background: var(--primary);
-            color: #000;
-            box-shadow: 0 0 15px rgba(0,255,204,0.5);
-        }
-        /* --- HERO CONTENT (LOGO + SUBTITLE + BUTTONS) --- */
-        .slide-content {
-            position: absolute;
-            top: 46%;                    /* ← slightly higher so buttons fit perfectly */
-            left: 50%;
-            transform: translate(-50%, -50%);   /* ← perfect X,Y center for logo */
-            text-align: center;
-            z-index: 140;                /* logo stays BEHIND language bar */
-            color: white;
-            width: 90%;
-            max-width: 900px;
-        }
-        .logo {
-            max-width: 480px;
-            margin-bottom: 8px;          /* logo stays very close to subtitle */
-            filter: drop-shadow(0 0 25px var(--primary));
-        }
-        .subtitle {
-            font-size: clamp(1.2rem, 3.5vw, 1.55rem);
-            color: #b0b0ff;
-            margin-bottom: 35px;
-        }
+        .btn-discord { background: linear-gradient(90deg, #5865F2, #7289da); color: white; }
+        .btn-discord:hover { transform: scale(1.08); box-shadow: 0 0 20px rgba(88, 101, 242, 0.4); }
+        .btn-download { background: linear-gradient(90deg, #00ffcc, #00ccaa); color: #000; font-weight: 800; }
+        .btn-download:hover { transform: scale(1.08); box-shadow: 0 0 20px rgba(0, 255, 204, 0.4); }
+
         /* --- MAIN LAYOUT --- */
         .container {
             max-width: 1180px;
@@ -173,22 +204,6 @@
             border-color: var(--primary);
             background: #252538;
         }
-        /* --- BUTTONS --- */
-        .btn {
-            display: inline-block;
-            padding: 18px 38px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin: 15px 10px;
-            transition: all 0.4s;
-            cursor: pointer;
-        }
-        .btn-discord { background: linear-gradient(90deg, #5865F2, #7289da); color: white; }
-        .btn-discord:hover { transform: scale(1.08); box-shadow: 0 0 20px rgba(88, 101, 242, 0.4); }
-        .btn-download { background: linear-gradient(90deg, #00ffcc, #00ccaa); color: #000; font-weight: 800; }
-        .btn-download:hover { transform: scale(1.08); box-shadow: 0 0 20px rgba(0, 255, 204, 0.4); }
         /* --- SECTIONS --- */
         section { padding-bottom: 60px; }
         ol { padding-left: 20px; }
@@ -229,14 +244,23 @@
         <div class="slide" style="background-image: url('assets/5.jpg');"></div>
         <div class="slide" style="background-image: url('assets/6.jpg');"></div>
     </div>
+
+    <!-- LANGUAGE BAR (always on top) -->
     <div class="top-lang-bar" id="langSwitch"></div>
+
+    <!-- PERFECTLY CENTERED LOGO (independent container) -->
+    <div class="logo-center">
+        <img src="assets/retrofevlc-logo.png" alt="RetroFeVLC Logo">
+    </div>
+
+    <!-- BOTTOM CONTENT (subtitle + buttons) - stays at bottom like originally -->
     <div class="slide-content">
-        <img src="assets/retrofevlc-logo.png" alt="RetroFeVLC Logo" class="logo">
         <p class="subtitle" id="subtitle" data-key="subtitle">The powerful evolution of RetroFE — now with VLC, smart addons & next-level customization</p>
        
         <a href="https://discord.gg/2aYRHdUrVf" target="_blank" class="btn btn-discord" data-key="discord-btn">🚀 Join the Discord</a>
         <a href="https://www.mediafire.com/file/dnu4eem0fvtriqg/RetroFeVLC_Full_V2.1.57.rar/file" target="_blank" class="btn btn-download" data-key="download-btn">⬇️ Download Full Version V2.1.57</a>
     </div>
+
     <nav id="mainNav">
         <ul>
             <li><a href="#hero" data-key="nav-home">Home</a></li>
@@ -250,6 +274,7 @@
         </ul>
     </nav>
 </div>
+
 <div class="container">
     <section id="home">
         <h2 data-key="welcome">Welcome to RetroFeVLC</h2>
@@ -339,6 +364,7 @@
         <p data-key="about-text">RetroFeVLC is a community-driven fork developed by an enthusiast. Fully open-source under GPL3. The goal is to make RetroFE even better while keeping it free and open for everyone.</p>
     </section>
 </div>
+
 <div class="social-bar">
     <a href="https://www.facebook.com/groups/742851048352639/?ref=share+" target="_blank">📘</a>
     <a href="https://discord.gg/2aYRHdUrVf" target="_blank">💬</a>
@@ -350,6 +376,7 @@
 <footer>
     <p>RetroFeVLC © 2026 • A community-driven evolution of the RetroFE frontend</p>
 </footer>
+
 <script>
 /**
  * SISTEMA DE TRADUÇÃO
@@ -387,6 +414,7 @@ function moveSlider() {
 }
 slider.style.transform = 'translateX(0%)';
 setInterval(moveSlider, 4800);
+
 /**
  * STICKY NAV
  */
@@ -399,6 +427,7 @@ window.addEventListener('scroll', () => {
         nav.classList.remove('sticky');
     }
 });
+
 /**
  * SMOOTH SCROLL
  */
@@ -417,6 +446,7 @@ document.querySelectorAll('nav a').forEach(link => {
         }
     });
 });
+
 /**
  * SETUP LANGUAGE
  */
