@@ -40,9 +40,15 @@
   "ad-4": "📋 <strong>MenuManager</strong>: Tri des Systèmes",
   "ad-5": "🖌️ <strong>Theme Editor</strong>: Design en Direct",
   "ad-6": "🏆 <strong>RetroRa</strong>: Succès Synchronisés",
-    "legal-title": "Mentions Légales et Utilisation",
-  "legal-p1": "RetroFeVLC est une interface de gestion et n'inclut pas, ne distribue pas et ne promeut pas l'utilisation de ROMs, d'ISOs ou de fichiers BIOS protégés par le droit d'auteur. Les utilisateurs ne doivent utiliser des sauvegardes numériques que s'ils possèdent les supports physiques originaux (CD, cartouches, cartes) ou si la loi locale le permet.",
-  "legal-p2": "La version de démonstration fournie <strong>NE CONTIENT AUCUN JEU</strong>. Elle utilise des illustrations du domaine public et des fichiers vides de 0 octet (ex: nomdujeu.zip) uniquement pour démontrer le moteur de thèmes et l'interface.",
-
+      "legal-title": "Conditions d'Utilisation",
+  "legal-terms": "RetroFeVLC est un logiciel d'interface open-source sous licence GPL v3. Le logiciel est fourni 'tel quel', sans garantie. L'utilisateur est seul responsable de l'utilisation légale du logiciel et des fichiers (ROMs, BIOS) utilisés.",
+  "legal-downloads": "Tous les téléchargements et ressources externes sont fournis à vos propres risques. Nous ne garantissons pas la sécurité ou l'intégrité des fichiers hébergés par des tiers.",
+  "legal-priv-h": "Confidentialité et Cookies",
+  "legal-priv-p": "Ce site est conforme au RGPD. Il est hébergé sur GitHub Pages, qui peut collecter des données techniques minimales (IP) à des fins de sécurité et de fonctionnement.",
+  "legal-cookies": "Nous n'utilisons pas de cookies de suivi ou de publicité. Des cookies techniques essentiels peuvent être utilisés par GitHub ou les CDN (comme FontAwesome) pour le bon fonctionnement.",
+  "legal-ext-h": "Services Externes",
+  "legal-ext-p": "Nous ne sommes pas responsables du contenu ou des politiques des plateformes externes comme Discord, MediaFire ou Reddit.",
+  "legal-id": "Entité Responsable : Projet RetroFeVLC (Lisbonne, Portugal)",
+  "legal-juris": "Juridiction : La loi portugaise s'applique. Litiges résolus par les tribunaux compétents.",
   "footer-text": "RetroFeVLC © 2026 • Une évolution open-source du frontend RetroFE"
 }
