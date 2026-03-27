@@ -40,8 +40,15 @@
   "ad-4": "📋 <strong>MenuManager</strong>: 系统排序管理",
   "ad-5": "🖌️ <strong>Theme Editor</strong>: 实时主题设计",
   "ad-6": "🏆 <strong>RetroRa</strong>: 成就系统同步",
-    "legal-title": "法律声明与使用须知",
-  "legal-p1": "RetroFeVLC 是一个管理界面，不包含、不分发也不鼓励使用受版权保护的 ROM、ISO 或 BIOS 文件。用户仅在拥有原始实体介质（CD、卡带、卡片）或当地法律允许的情况下，方可使用数字备份文件。",
-  "legal-p2": "所提供的演示版本<strong>不包含任何游戏</strong>。它仅使用公共领域的插图和 0 字节的虚设文件（例如：文件名.zip）来展示布局引擎和界面功能。",
+      "legal-title": "使用条款",
+  "legal-terms": "RetroFeVLC 是一款基于 GPL v3 许可的开源前端软件。本软件按“原样”提供，不附带任何担保。用户对软件及其使用的任何文件（ROM、BIOS）的合法使用负全部责任。",
+  "legal-downloads": "所有下载和外部资源均由您自行承担风险。我们不保证第三方托管文件的安全性或完整性。",
+  "legal-priv-h": "隐私与 Cookie",
+  "legal-priv-p": "本网站符合 GDPR（通用数据保护条例）。它托管在 GitHub Pages 上，可能会收集最少的终端技术数据（如 IP 地址）用于安全目的。",
+  "legal-cookies": "我们不使用追踪或广告 Cookie。GitHub 或 CDN（如 FontAwesome）可能会使用必要的运行技术 Cookie 以确保功能正常。",
+  "legal-ext-h": "外部服务",
+  "legal-ext-p": "我们不对 Discord、MediaFire 或 Reddit 等外部平台的内容或政策负责。",
+  "legal-id": "责任主体：RetroFeVLC 项目（葡萄牙里斯本）",
+  "legal-juris": "管辖权：适用葡萄牙法律。争议由主管法院裁决。",
   "footer-text": "RetroFeVLC © 2026 • RetroFE 前端的开源进化版"
 }
