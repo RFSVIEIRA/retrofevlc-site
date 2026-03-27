@@ -50,5 +50,9 @@
   "legal-ext-p": "Мы не несем ответственности за контент или политику внешних платформ, таких как Discord, MediaFire или Reddit.",
   "legal-id": "Ответственное лицо: Проект RetroFeVLC (Лиссабон, Португалия)",
   "legal-juris": "Юрисдикция: Применяется законодательство Португалии. Споры решаются в компетентных судах.",
-  "footer-text": "RetroFeVLC © 2026 • Open-source эволюция фронтенда RetroFE"
+  "footer-text": "RetroFeVLC © 2026 • Open-source эволюция фронтенда RetroFE",
+  "footer-priv": "Приватность",
+  "footer-terms": "Условия использования",
+  "footer-cookies": "Информация о куки"
+
 }
