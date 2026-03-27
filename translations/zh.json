@@ -18,7 +18,28 @@
   "welcome-text": "RetroFeVLC 是 RetroFE 的强大分支，它将 GStreamer 替换为 <strong>VLC</strong>，带来了数十项新功能、智能插件系统和更加友好的使用体验。",
 
   "whatsnew-title": "RetroFeVLC V2.1.57 最新更新",
-
+  
+  "nav-whatis": "RetroFeVLC 是什么",
+  "whatis-title": "RetroFeVLC 是什么",
+  "whatis-subtitle": "RetroFeVLC – 快速而强大的复古游戏前端",
+  "whatis-p1": "RetroFeVLC 是广受欢迎的开源 RetroFE 前端的现代、积极开发的 fork，使用 VLC 媒体库重新构建并针对 Windows 优化。它提供美观、高度可定制且闪电般快速的界面，用于启动和管理您跨越 100 多个系统的复古游戏收藏。",
+  "whatis-p2": "作为 RetroFE 的进化版本诞生，RetroFeVLC 用 VLC 取代了旧的 GStreamer 后端，以实现更出色的视频、图像和动画媒体处理。结果是更流畅、更稳定且视觉惊艳的体验——非常适合街机柜、HTPC 或专用复古游戏电脑。",
+  "whatis-why-title": "RetroFeVLC 的突出优势",
+  "whatis-p3": "它将经典前端的深度定制能力与现代便利性和性能改进相结合，让设置和日常使用成为一种享受：",
+  "whatis-p4": "内置图形界面，轻松配置——无需再为基本设置编辑文本文件。直接从界面访问菜单、控制、布局等。",
+  "whatis-p5": "极速性能——即使收藏量很大，菜单导航也快速流畅。",
+  "whatis-p6": "惊艳的 4K 画质——完整 4K 支持，可自定义缩放质量选项，让艺术图和视频清晰如水晶。",
+  "whatis-p7": "丰富的媒体与动画——原生支持 GIF 和 WebP 动画图像，并修复了主要内存泄漏问题，实现坚如磐石的稳定性。",
+  "whatis-p8": "高级布局工具——包含 include 文件、变量、每款游戏个性化视图、GameInfo 统计数据（游玩次数、最常玩游戏等）以及干净的单游戏焦点页面。",
+  "whatis-p9": "动态播放列表——实时“所有游戏”、“所有收藏”和“所有最近游玩”播放列表，通过外部插件自动更新。",
+  "whatis-p10": "强大的外部插件——包括带播放列表管理、设置、控制和快速访问一切的 start.exe 启动器。额外工具如 marquee 动画控制、屏幕镜像到 marquee、布局创建/编辑器、菜单层级管理器和 kiosk 模式（直接从 shell 启动，无需 Windows 桌面）。",
+  "whatis-p11": "导航感觉直观，布局灵活易管理，添加新系统或屏幕时不会出现崩溃或麻烦。",
+  "whatis-top-title": "顶级复古游戏前端之一",
+  "whatis-p12": "RetroFeVLC 在 2026 年跻身五大最佳复古游戏前端之列，与 RetroBat（基于 EmulationStation）、LaunchBox/BigBox、PlayNite 以及经典 RetroArch 设置等重量级选手并肩。它在视觉风格、速度、稳定性和定制深度之间达到了完美平衡——适合想要比基础启动器更多、但又不想面对完整柜机套件复杂性的用户。",
+  "whatis-p13": "无论您是在打造优雅的家庭影院、专用街机柜，还是只想以最快、最愉快的方式浏览和游玩您的 ROM 收藏，RetroFeVLC 都在轻量便携的包中带来纯粹的魔法。",
+  "whatis-p14": "快速。动态。易于配置。专为喜爱漂亮菜单且零烦恼的复古游戏玩家打造。",
+  "whatis-p15": "准备好体验了吗？",
+  
   "quickstart-title": "快速入门指南",
 
   "key-features": "核心功能",
