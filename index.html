@@ -98,7 +98,7 @@
             top: 25px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 160;
+            z-index: 160;               /* ← language bar stays ON TOP */
             background: rgba(15,15,35,0.95);
             padding: 10px;
             border-radius: 12px;
@@ -121,21 +121,21 @@
             color: #000;
             box-shadow: 0 0 15px rgba(0,255,204,0.5);
         }
-        /* --- HERO CONTENT --- */
+        /* --- HERO CONTENT (LOGO + SUBTITLE + BUTTONS) --- */
         .slide-content {
             position: absolute;
-            bottom: 28%; /* AJUSTADO: agora mais centrado na tela (logo já não fica quase fora) */
+            top: 50%;                    /* ← X,Y CENTER */
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);   /* ← true perfect center */
             text-align: center;
-            z-index: 140;
+            z-index: 140;                /* ← LOWER than language bar (logo stays BEHIND) */
             color: white;
             width: 90%;
             max-width: 900px;
         }
         .logo {
             max-width: 480px;
-            margin-bottom: 8px; /* continua colado ao subtítulo */
+            margin-bottom: 8px;          /* logo stays very close to subtitle */
             filter: drop-shadow(0 0 25px var(--primary));
         }
         .subtitle {
