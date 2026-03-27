@@ -40,9 +40,8 @@
   "ad-4": "📋 <strong>MenuManager</strong>: Ordenação de Sistemas",
   "ad-5": "🖌️ <strong>Theme Editor</strong>: Design em Tempo Real",
   "ad-6": "🏆 <strong>RetroRa</strong>: Sincronização de Conquistas",  
-  "legal-title": "Aviso Legal e Utilização",
-  "legal-p1": "O RetroFeVLC é uma interface de gestão e não inclui, distribui ou promove a utilização de ROMs, ISOs ou ficheiros BIOS protegidos por direitos de autor. Os utilizadores devem apenas usar cópias digitais se possuírem os suportes físicos originais (CDs, Cartuchos, Cartões) ou se for permitido pela lei local.",
-  "legal-p2": "A versão de demonstração fornecida <strong>NÃO CONTÉM JOGOS</strong>. Utiliza apenas arte de capa pública e ficheiros vazios de 0-bytes (ex: nome.zip) exclusivamente para demonstrar o motor de layouts e as capacidades da interface.",
-
+  "  "legal-title": "Termos, Privacidade e Notas Legais",
+  "legal-p1": "O RetroFeVLC é um software de interface open-source (GPL v3) sediado em Portugal. Não inclui ou distribui ROMs ou BIOS protegidas. De acordo com o Direito de Autor e legislação da UE (RGPD), o utilizador deve possuir os suportes físicos originais para qualquer conteúdo utilizado.",
+  "legal-p2": "Este site é alojado no GitHub Pages; a recolha de dados limita-se aos registos técnicos do servidor. Não utilizamos cookies de rastreio ou publicidade. Para qualquer questão jurídica, aplica-se a lei portuguesa e a jurisdição dos tribunais competentes.",
   "footer-text": "RetroFeVLC © 2026 • Uma evolução open-source do frontend RetroFE"
 }
