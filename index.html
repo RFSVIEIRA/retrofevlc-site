@@ -6,6 +6,8 @@
     <title>RetroFeVLC | The Evolution of RetroFE</title>
     <meta name="description" content="RetroFeVLC - Powerful RetroFE fork with VLC, smart addons and stunning layouts.">
    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <style>
         :root {
@@ -69,10 +71,13 @@
             align-items: center;
         }
         .lang-select-wrapper::before {
-            content: '🌐';
+            content: '\f0ac'; /* Globe icon from FA */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
             position: absolute;
             left: 10px;
             font-size: 0.9rem;
+            color: var(--primary);
             pointer-events: none;
         }
         #langSelect {
@@ -97,7 +102,7 @@
         /* --- HERO SLIDER --- */
         .hero-slider {
             position: relative;
-            height: 100vh; /* Full Height */
+            height: 100vh;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -125,7 +130,6 @@
             background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(5,5,8,1) 90%);
         }
 
-        /* --- REPOSITIONED HERO CONTENT --- */
         .hero-overlay {
             position: relative;
             z-index: 100;
@@ -137,13 +141,10 @@
             padding: 0 20px;
             width: 100%;
             max-width: 1000px;
-            /* Negative margin to pull entire stack slightly up from absolute center */
             margin-top: -40px; 
         }
 
-        .logo-center {
-            margin-bottom: 30px; /* Space between logo and text */
-        }
+        .logo-center { margin-bottom: 30px; }
         .logo-center img {
             max-width: 90%;
             width: 520px;
@@ -154,10 +155,9 @@
             font-size: clamp(1.2rem, 3vw, 1.6rem);
             color: #b0b0ff;
             max-width: 850px;
-            margin: 0 0 40px 0; /* Centered in the middle of the stack */
+            margin: 0 0 40px 0;
             font-weight: 300;
             line-height: 1.4;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .btn-group {
@@ -167,21 +167,20 @@
             flex-wrap: wrap;
         }
 
-        /* --- BUTTONS --- */
         .btn {
             padding: 18px 36px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
             font-size: 1.15rem;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s;
             display: flex;
             align-items: center;
             gap: 12px;
         }
         .btn-discord { background: #5865F2; color: white; }
         .btn-download { background: var(--primary); color: #000; box-shadow: 0 0 15px rgba(0, 255, 204, 0.3); }
-        .btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+        .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
 
         /* --- MAIN LAYOUT --- */
         .container {
@@ -226,10 +225,8 @@
             .nav-container { flex-direction: column; gap: 10px; }
             .bento-grid { grid-template-columns: repeat(2, 1fr); }
             .large, .wide, .tall { grid-column: span 2; grid-row: span 1; }
-            .hero-overlay { margin-top: 0; }
         }
 
-        /* --- CARDS --- */
         .grid-simple {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -242,7 +239,6 @@
             border-left: 6px solid var(--primary);
             transition: 0.3s;
         }
-        .card:hover { transform: translateX(10px); background: #252538; }
 
         .quickstart-box {
             background: linear-gradient(145deg, #161625 0%, #050508 100%);
@@ -250,10 +246,9 @@
             border-radius: 30px;
             border: 1px solid rgba(0, 255, 204, 0.2);
         }
-        .quickstart-box ol li { margin-bottom: 25px; font-size: 1.2rem; }
         code { background: #000; color: var(--primary); padding: 4px 12px; border-radius: 8px; font-weight: bold; }
 
-        /* --- FOOTER --- */
+        /* --- SOCIAL BAR WITH BRAND LOGOS --- */
         .social-bar {
             background: #0a0a0f;
             padding: 60px 0;
@@ -261,13 +256,22 @@
             border-top: 1px solid rgba(0, 255, 204, 0.2);
         }
         .social-bar a {
-            margin: 0 25px;
+            margin: 0 20px;
             font-size: 2.2rem;
             color: #555;
-            transition: 0.3s;
+            transition: all 0.3s ease;
             display: inline-block;
+            text-decoration: none;
         }
-        .social-bar a:hover { color: var(--primary); transform: translateY(-10px) scale(1.2); }
+        /* Specific Hover Colors */
+        .social-bar a.fb:hover { color: #1877f2; text-shadow: 0 0 15px rgba(24, 119, 242, 0.5); }
+        .social-bar a.dc:hover { color: #5865f2; text-shadow: 0 0 15px rgba(88, 101, 242, 0.5); }
+        .social-bar a.gh:hover { color: #ffffff; text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); }
+        .social-bar a.wk:hover { color: var(--primary); text-shadow: 0 0 15px rgba(0, 255, 204, 0.5); }
+        .social-bar a.rd:hover { color: #ff4500; text-shadow: 0 0 15px rgba(255, 69, 0, 0.5); }
+        .social-bar a.ml:hover { color: var(--accent); text-shadow: 0 0 15px rgba(255, 0, 170, 0.5); }
+        
+        .social-bar a:hover { transform: translateY(-10px) scale(1.2); }
 
         footer {
             text-align: center;
@@ -275,7 +279,6 @@
             font-size: 0.95rem;
             color: #444;
             background: #050508;
-            border-top: 1px solid #111;
         }
     </style>
 </head>
@@ -318,8 +321,12 @@
         </p>
        
         <div class="btn-group">
-            <a href="https://discord.gg/2aYRHdUrVf" target="_blank" class="btn btn-discord" data-key="discord-btn">🚀 Join Discord</a>
-            <a href="https://www.mediafire.com/file/dnu4eem0fvtriqg/RetroFeVLC_Full_V2.1.57.rar/file" target="_blank" class="btn btn-download" data-key="download-btn">⬇️ Download V2.1.57</a>
+            <a href="https://discord.gg/2aYRHdUrVf" target="_blank" class="btn btn-discord" data-key="discord-btn">
+                <i class="fab fa-discord"></i> Join Discord
+            </a>
+            <a href="https://www.mediafire.com/file/dnu4eem0fvtriqg/RetroFeVLC_Full_V2.1.57.rar/file" target="_blank" class="btn btn-download" data-key="download-btn">
+                <i class="fas fa-download"></i> Download V2.1.57
+            </a>
         </div>
     </div>
 </div>
@@ -387,12 +394,12 @@
 </div>
 
 <div class="social-bar">
-    <a href="https://www.facebook.com/groups/742851048352639/?ref=share+" target="_blank">📘</a>
-    <a href="https://discord.gg/2aYRHdUrVf" target="_blank">💬</a>
-    <a href="https://github.com/RFSVIEIRA/RetroFe_VLC" target="_blank">🐙</a>
-    <a href="https://retrofevlc.infy.uk/" target="_blank">📖</a>
-    <a href="https://www.reddit.com/r/RetroFeVLC/" target="_blank">🔴</a>
-    <a href="mailto:retrofevlc@gmail.com">✉️</a>
+    <a href="https://www.facebook.com/groups/742851048352639/?ref=share+" target="_blank" class="fb" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://discord.gg/2aYRHdUrVf" target="_blank" class="dc" title="Discord"><i class="fab fa-discord"></i></a>
+    <a href="https://github.com/RFSVIEIRA/RetroFe_VLC" target="_blank" class="gh" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://retrofevlc.infy.uk/" target="_blank" class="wk" title="Wiki"><i class="fas fa-book"></i></a>
+    <a href="https://www.reddit.com/r/RetroFeVLC/" target="_blank" class="rd" title="Reddit"><i class="fab fa-reddit-alien"></i></a>
+    <a href="mailto:retrofevlc@gmail.com" class="ml" title="Email"><i class="fas fa-envelope"></i></a>
 </div>
 
 <footer>
