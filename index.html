@@ -6,7 +6,7 @@
     <title>RetroFeVLC | The Evolution of RetroFE</title>
     <meta name="description" content="RetroFeVLC - Powerful RetroFE fork with VLC, smart addons and stunning layouts.">
    
-    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <style>
         :root {
             --primary: #00ffcc;
@@ -125,17 +125,17 @@
         /* --- HERO CONTENT --- */
         .slide-content {
             position: absolute;
-            bottom: 28%;
+            bottom: 35%; /* Logo no local exato onde estava o texto RetroFeVLC */
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
-            z-index: 30;
+            z-index: 130; /* Logo fica à frente da barra de idiomas */
             color: white;
             width: 90%;
             max-width: 900px;
         }
         .logo {
-            max-width: 380px;
+            max-width: 480px; /* Ligeiramente maior */
             margin-bottom: 20px;
             filter: drop-shadow(0 0 25px var(--primary));
         }
@@ -257,7 +257,7 @@
         <p data-key="welcome-text">RetroFeVLC is a powerful fork of RetroFE that replaces GStreamer with <strong>VLC</strong>, bringing dozens of new features, a smart addon system, and a much more user-friendly experience.</p>
     </section>
 
-    <!-- NEW SECTION: WHAT IS RETROFEVLC (fully translatable) -->
+    <!-- NEW SECTION: WHAT IS RETROFEVLC -->
     <section id="whatis">
         <h2 data-key="whatis-title">What is RetroFeVLC</h2>
         
@@ -396,11 +396,9 @@ const slider = document.getElementById('slider');
 const totalSlides = 6;
 function moveSlider() {
     currentSlide = (currentSlide + 1) % totalSlides;
-    // Como o container tem 600%, cada imagem ocupa 1/6 (16.666%) do container
     const step = 100 / totalSlides;
     slider.style.transform = `translateX(-${currentSlide * step}%)`;
 }
-// Inicializa e roda a cada 4.8 segundos
 slider.style.transform = 'translateX(0%)';
 setInterval(moveSlider, 4800);
 /**
