@@ -40,5 +40,8 @@
   "ad-4": "📋 <strong>MenuManager</strong>: Ordine Sistemi",
   "ad-5": "🖌️ <strong>Theme Editor</strong>: Design Live",
   "ad-6": "🏆 <strong>RetroRa</strong>: Obiettivi Sincronizzati",
+    "legal-title": "Note Legali e Utilizzo",
+  "legal-p1": "RetroFeVLC è un'interfaccia di gestione e non include, distribuisce o promuove l'uso di ROM, ISO o file BIOS protetti da copyright. Gli utenti devono utilizzare backup digitali solo se possiedono i supporti fisici originali (CD, cartucce, schede) o se consentito dalla legge locale.",
+  "legal-p2": "La versione demo fornita <strong>NON CONTIENE GIOCHI</strong>. Utilizza esclusivamente artwork di pubblico dominio e file vuoti da 0 byte (es: nomefile.zip) al solo scopo di dimostrare il motore grafico e l'interfaccia.",
   "footer-text": "RetroFeVLC © 2026 • Evoluzione open-source di RetroFE"
 }
