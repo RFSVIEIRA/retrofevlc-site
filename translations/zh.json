@@ -40,5 +40,8 @@
   "ad-4": "📋 <strong>MenuManager</strong>: 系统排序管理",
   "ad-5": "🖌️ <strong>Theme Editor</strong>: 实时主题设计",
   "ad-6": "🏆 <strong>RetroRa</strong>: 成就系统同步",
+    "legal-title": "法律声明与使用须知",
+  "legal-p1": "RetroFeVLC 是一个管理界面，不包含、不分发也不鼓励使用受版权保护的 ROM、ISO 或 BIOS 文件。用户仅在拥有原始实体介质（CD、卡带、卡片）或当地法律允许的情况下，方可使用数字备份文件。",
+  "legal-p2": "所提供的演示版本<strong>不包含任何游戏</strong>。它仅使用公共领域的插图和 0 字节的虚设文件（例如：文件名.zip）来展示布局引擎和界面功能。",
   "footer-text": "RetroFeVLC © 2026 • RetroFE 前端的开源进化版"
 }
