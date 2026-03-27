@@ -40,8 +40,15 @@
   "ad-4": "📋 <strong>MenuManager</strong>: Ordine Sistemi",
   "ad-5": "🖌️ <strong>Theme Editor</strong>: Design Live",
   "ad-6": "🏆 <strong>RetroRa</strong>: Obiettivi Sincronizzati",
-    "legal-title": "Note Legali e Utilizzo",
-  "legal-p1": "RetroFeVLC è un'interfaccia di gestione e non include, distribuisce o promuove l'uso di ROM, ISO o file BIOS protetti da copyright. Gli utenti devono utilizzare backup digitali solo se possiedono i supporti fisici originali (CD, cartucce, schede) o se consentito dalla legge locale.",
-  "legal-p2": "La versione demo fornita <strong>NON CONTIENE GIOCHI</strong>. Utilizza esclusivamente artwork di pubblico dominio e file vuoti da 0 byte (es: nomefile.zip) al solo scopo di dimostrare il motore grafico e l'interfaccia.",
+  "legal-title": "Termini di Utilizzo",
+  "legal-terms": "RetroFeVLC è un software di interfaccia open-source rilasciato sotto licenza GPL v3. Il software viene fornito 'così com'è', senza garanzie. L'utente è l'unico responsabile dell'uso legale del software e di qualsiasi file (ROM, BIOS) utilizzato.",
+  "legal-downloads": "Tutti i download e le risorse esterne sono forniti a proprio rischio. Non garantiamo la sicurezza o l'integrità dei file ospitati da terze parti.",
+  "legal-priv-h": "Privacy e Cookie",
+  "legal-priv-p": "Questo sito è conforme al GDPR. È ospitato su GitHub Pages, che può raccogliere dati tecnici minimi (IP) per scopi di sicurezza e operativi.",
+  "legal-cookies": "Non utilizziamo cookie di tracciamento o pubblicità. Cookie tecnici essenziali possono essere utilizzati da GitHub o CDN (come FontAwesome) per il corretto funzionamento.",
+  "legal-ext-h": "Servizi Esterni",
+  "legal-ext-p": "Non siamo responsabili per il contenuto o le politiche di piattaforme esterne come Discord, MediaFire o Reddit.",
+  "legal-id": "Entità Responsabile: Progetto RetroFeVLC (Lisbona, Portogallo)",
+  "legal-juris": "Giurisdizione: Si applica la legge portoghese. Controversie risolte dai tribunali competenti.",
   "footer-text": "RetroFeVLC © 2026 • Evoluzione open-source di RetroFE"
 }
