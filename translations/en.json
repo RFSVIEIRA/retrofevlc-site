@@ -40,8 +40,15 @@
   "ad-4": "📋 <strong>MenuManager</strong>: System Sorting",
   "ad-5": "🖌️ <strong>Theme Editor</strong>: Real-time Design",
   "ad-6": "🏆 <strong>RetroRa</strong>: Achievements Sync",
-  "legal-title": "Terms, Privacy & Legal Notice",
-  "legal-p1": "RetroFeVLC is an open-source (GPL v3) frontend software based in Portugal. It does not include or distribute copyrighted ROMs or BIOS files. In compliance with Copyright laws and EU legislation (GDPR), users must own the original physical media for any content used.",
-  "legal-p2": "This site is hosted on GitHub Pages; data collection is limited to technical server logs. We do not use tracking or advertising cookies. Any legal disputes shall be settled under Portuguese law and the jurisdiction of the competent courts.",
-  "footer-text": "RetroFeVLC © 2026 • An open-source evolution of the RetroFE frontend"
+    "legal-title": "Terms of Use",
+  "legal-terms": "RetroFeVLC is an open-source frontend software distributed under the GPL v3 license. This software is provided 'as is', without warranty. The user is solely responsible for the legal use of the software and any files used with it.",
+  "legal-downloads": "All downloads and external resources are provided at your own risk. We do not guarantee the security or availability of third-party hosted files.",
+  "legal-priv-h": "Privacy & Cookies",
+  "legal-priv-p": "This website complies with the GDPR. It is hosted on GitHub Pages, which may collect minimal technical data such as IP addresses for security purposes.",
+  "legal-cookies": "We do not use tracking or advertising cookies. Essential technical cookies may be used by GitHub Pages or CDNs (like FontAwesome) for functionality.",
+  "legal-ext-h": "External Services",
+  "legal-ext-p": "We are not responsible for the content or policies of external platforms like Discord, MediaFire, or Reddit.",
+  "legal-id": "Responsible Entity: RetroFeVLC Project (Lisbon, Portugal)",
+  "legal-juris": "Jurisdiction: Portuguese law applies. Competent courts.",
+"footer-text": "RetroFeVLC © 2026 • An open-source evolution of the RetroFE frontend"
 }
