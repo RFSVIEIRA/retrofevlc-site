@@ -50,5 +50,9 @@
   "legal-ext-p": "我们不对 Discord、MediaFire 或 Reddit 等外部平台的内容或政策负责。",
   "legal-id": "责任主体：RetroFeVLC 项目（葡萄牙里斯本）",
   "legal-juris": "管辖权：适用葡萄牙法律。争议由主管法院裁决。",
-  "footer-text": "RetroFeVLC © 2026 • RetroFE 前端的开源进化版"
+  "footer-text": "RetroFeVLC © 2026 • RetroFE 前端的开源进化版",
+  "footer-priv": "隐私政策",
+  "footer-terms": "使用条款",
+  "footer-cookies": "Cookie 说明"
+
 }
