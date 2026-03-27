@@ -95,7 +95,7 @@
             padding-right: 30px;
         }
 
-        /* --- HERO --- */
+        /* --- HERO SLIDER --- */
         .hero-slider {
             position: relative;
             height: 100vh;
@@ -119,32 +119,39 @@
             background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(5,5,8,1) 90%);
         }
 
+        /* --- HERO OVERLAY (LOGO TOP | TEXT CENTER | BUTTONS BOTTOM) --- */
         .hero-overlay {
             position: relative; z-index: 100;
             display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            text-align: center; padding: 0 20px;
-            width: 100%; max-width: 1000px;
-            margin-top: -40px; 
+            align-items: center; justify-content: space-between;
+            text-align: center; padding: 60px 20px;
+            width: 100%; height: 60vh; /* Controlled stack height */
+            max-width: 1000px;
+            margin-top: 40px;
         }
 
-        .logo-center { margin-bottom: 30px; }
+        .logo-center { margin-bottom: auto; }
         .logo-center img {
-            max-width: 90%; width: 520px;
+            max-width: 90%; width: 500px;
             filter: drop-shadow(0 0 30px var(--primary));
         }
 
         .subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
             color: #b0b0ff; max-width: 850px;
-            margin: 0 0 40px 0; font-weight: 300;
+            margin: auto 0; font-weight: 300;
+            line-height: 1.4;
         }
 
-        .btn-group { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .btn-group { 
+            display: flex; justify-content: center; gap: 20px; 
+            flex-wrap: wrap; margin-top: auto; 
+        }
+
         .btn {
             padding: 18px 36px; border-radius: 50px;
             text-decoration: none; font-weight: 700;
-            font-size: 1.1rem; transition: 0.3s;
+            font-size: 1.15rem; transition: all 0.3s;
             display: flex; align-items: center; gap: 12px;
         }
         .btn-discord { background: #5865F2; color: white; }
@@ -153,62 +160,56 @@
 
         /* --- MAIN LAYOUT --- */
         .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
-        h2 { font-size: 2.8rem; text-align: center; margin-bottom: 60px; color: var(--primary); text-transform: uppercase; }
+        h2 { font-size: 2.8rem; text-align: center; margin-bottom: 60px; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
 
         /* --- BENTO GRID --- */
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: minmax(180px, auto);
+            grid-auto-rows: minmax(200px, auto);
             gap: 25px;
         }
         .bento-item {
             background: var(--card-bg);
-            border-radius: 28px;
-            padding: 30px;
+            border-radius: 30px;
+            padding: 40px;
             border: 1px solid rgba(0, 255, 204, 0.1);
-            transition: 0.4s ease;
-            display: flex;
-            flex-direction: column;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; flex-direction: column; justify-content: center;
         }
-        .bento-item h3 { margin: 0 0 15px 0; font-size: 1.4rem; color: var(--primary); display: flex; align-items: center; gap: 10px; }
-        .bento-item p { margin: 0; font-size: 0.95rem; color: #b0b0ff; }
+        .bento-item h3 { margin-top: 0; font-size: 1.6rem; color: var(--primary); }
+        .bento-item p { margin: 10px 0 0 0; color: #b0b0ff; }
         .bento-item:hover {
             border-color: var(--primary);
-            background: rgba(31, 31, 46, 0.95);
-            transform: translateY(-8px);
+            background: rgba(31, 31, 46, 0.9);
+            transform: translateY(-10px);
         }
         .large { grid-column: span 2; grid-row: span 2; }
         .tall { grid-row: span 2; }
         .wide { grid-column: span 2; }
 
-        /* Quick List for Bento */
-        .bento-list { list-style: none; padding: 0; margin: 15px 0 0 0; }
-        .bento-list li { font-size: 0.85rem; margin-bottom: 8px; display: flex; align-items: start; gap: 8px; }
-        .bento-list li i { color: var(--primary); margin-top: 4px; font-size: 0.7rem; }
-
         @media (max-width: 950px) {
             .nav-container { flex-direction: column; gap: 10px; }
             .bento-grid { grid-template-columns: repeat(2, 1fr); }
             .large, .wide, .tall { grid-column: span 2; grid-row: span 1; }
+            .hero-overlay { height: auto; gap: 40px; }
         }
 
-        /* --- CARDS & QUICKSTART --- */
+        /* --- SECTIONS --- */
         .grid-simple { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
         .card { background: var(--gray); padding: 35px; border-radius: 20px; border-left: 6px solid var(--primary); }
         .quickstart-box { background: linear-gradient(145deg, #161625 0%, #050508 100%); padding: 60px; border-radius: 30px; border: 1px solid rgba(0, 255, 204, 0.2); }
-        code { background: #000; color: var(--primary); padding: 4px 12px; border-radius: 8px; font-weight: bold; }
-
+        
         /* --- SOCIAL BAR --- */
         .social-bar { background: #0a0a0f; padding: 60px 0; text-align: center; border-top: 1px solid rgba(0, 255, 204, 0.2); }
-        .social-bar a { margin: 0 20px; font-size: 2.2rem; color: #555; transition: 0.3s; display: inline-block; text-decoration: none; }
+        .social-bar a { margin: 0 20px; font-size: 2.2rem; color: #444; transition: 0.3s; display: inline-block; text-decoration: none; }
         .social-bar a.fb:hover { color: #1877f2; }
         .social-bar a.dc:hover { color: #5865f2; }
-        .social-bar a.gh:hover { color: #ffffff; }
+        .social-bar a.gh:hover { color: #fff; }
         .social-bar a.wk:hover { color: var(--primary); }
         .social-bar a.rd:hover { color: #ff4500; }
         .social-bar a.ml:hover { color: var(--accent); }
-        .social-bar a:hover { transform: translateY(-10px) scale(1.2); }
+        .social-bar a:hover { transform: translateY(-8px); }
 
         footer { text-align: center; padding: 50px; font-size: 0.95rem; color: #444; background: #050508; }
     </style>
@@ -219,10 +220,10 @@
     <div class="nav-container">
         <ul>
             <li><a href="#hero" data-key="nav-home">Home</a></li>
-            <li><a href="#about" data-key="nav-whatis">About</a></li>
-            <li><a href="#whatsnew" data-key="nav-whatsnew">Updates</a></li>
-            <li><a href="#quickstart" data-key="nav-quickstart">Guide</a></li>
-            <li><a href="#addons" data-key="nav-addons">Addons</a></li>
+            <li><a href="#about" data-key="nav-about">About</a></li>
+            <li><a href="#whatsnew" data-key="nav-updates">Updates</a></li>
+            <li><a href="#quickstart" data-key="nav-guide">Guide</a></li>
+            <li><a href="#addons" data-key="nav-tools">Tools</a></li>
         </ul>
         <div class="lang-select-wrapper">
             <select id="langSelect" onchange="loadLanguage(this.value)"></select>
@@ -241,11 +242,21 @@
     </div>
 
     <div class="hero-overlay">
-        <div class="logo-center"><img src="assets/retrofevlc-logo.png" alt="RetroFeVLC Logo"></div>
-        <p class="subtitle" id="subtitle" data-key="subtitle">The powerful evolution of RetroFE — now with VLC, smart addons & next-level customization</p>
+        <div class="logo-center">
+            <img src="assets/retrofevlc-logo.png" alt="RetroFeVLC Logo">
+        </div>
+
+        <p class="subtitle" id="subtitle" data-key="hero-subtitle">
+            The powerful evolution of RetroFE — now with VLC, smart addons & next-level customization
+        </p>
+       
         <div class="btn-group">
-            <a href="https://discord.gg/2aYRHdUrVf" target="_blank" class="btn btn-discord"><i class="fab fa-discord"></i> Join Discord</a>
-            <a href="https://www.mediafire.com/file/dnu4eem0fvtriqg/RetroFeVLC_Full_V2.1.57.rar/file" target="_blank" class="btn btn-download"><i class="fas fa-download"></i> Download V2.1.57</a>
+            <a href="https://discord.gg/2aYRHdUrVf" target="_blank" class="btn btn-discord" data-key="btn-discord">
+                <i class="fab fa-discord"></i> Join Discord
+            </a>
+            <a href="https://www.mediafire.com/file/dnu4eem0fvtriqg/RetroFeVLC_Full_V2.1.57.rar/file" target="_blank" class="btn btn-download" data-key="btn-download">
+                <i class="fas fa-download"></i> Download V2.1.57
+            </a>
         </div>
     </div>
 </div>
@@ -253,75 +264,63 @@
 <div class="container">
     
     <section id="about">
-        <h2 data-key="whatis-title">Project Overview</h2>
+        <h2 data-key="title-about">The RetroFeVLC Engine</h2>
         <div class="bento-grid">
             <div class="bento-item large">
-                <h3><i class="fas fa-rocket"></i> What is RetroFeVLC?</h3>
-                <p data-key="whatis-p1">A modern, high-performance fork of the RetroFE frontend, optimized for Windows with VLC media support.</p>
-                <p style="margin-top:15px;" data-key="whatis-p2">We've eliminated memory leaks and video stutter, providing a rock-solid foundation for high-end arcade builds and home consoles.</p>
-                <ul class="bento-list">
-                    <li><i class="fas fa-check"></i> Native 4K & High-FPS support</li>
-                    <li><i class="fas fa-check"></i> Animated GIF & WebP Integration</li>
-                    <li><i class="fas fa-check"></i> Real-time metadata syncing</li>
-                </ul>
+                <h3 data-key="bento-evo-h">The Evolution of RetroFE</h3>
+                <p data-key="bento-evo-p">RetroFeVLC is a modern, actively developed fork built for stability. By integrating the VLC media library, we’ve achieved native 4K handling, zero video stutter, and support for high-performance animated assets like WebP and GIF.</p>
             </div>
 
             <div class="bento-item tall" style="border-color: var(--accent);">
-                <h3 style="color:var(--accent)"><i class="fas fa-microchip"></i> Start Launcher</h3>
-                <p>The brain of the system. <strong>Start.exe</strong> is more than a loader; it's a complete control center.</p>
-                <ul class="bento-list">
-                    <li><i class="fas fa-gamepad"></i> <strong>Gamepad Detection:</strong> Automatic GUI for controller mapping.</li>
-                    <li><i class="fas fa-sliders-h"></i> <strong>Live Settings:</strong> Manage emulators and playlists instantly.</li>
-                    <li><i class="fas fa-tv"></i> <strong>Marquee Pro:</strong> Mirror screens or run custom animations.</li>
-                    <li><i class="fas fa-shield-alt"></i> <strong>Kiosk Mode:</strong> Launch as a Windows Shell (no desktop).</li>
-                    <li><i class="fas fa-edit"></i> <strong>Layout Editor:</strong> Real-time visual theme adjustments.</li>
-                </ul>
+                <h3 style="color:var(--accent)" data-key="bento-start-h">Start.exe Launcher</h3>
+                <p data-key="bento-start-p1">The core command center. Manage your experience with a powerful GUI for settings, playlist management, and dynamic emulator configurations.</p>
+                <p style="font-size: 0.9rem; margin-top: 15px; opacity: 0.8;" data-key="bento-start-p2">Featuring Marquee Pro for screen mirroring, real-time layout editing, and direct-to-shell Kiosk mode for arcade cabinets.</p>
             </div>
 
             <div class="bento-item">
-                <h3><i class="fas fa-bolt"></i> Speed</h3>
-                <p>Browse 50,000+ games with zero lag. Our caching system is built for massive collections.</p>
+                <h3 data-key="bento-ctrl-h">Smart Controls</h3>
+                <p data-key="bento-ctrl-p">Automatic gamepad detection and a dedicated GUI for mapping controls instantly without editing text files.</p>
             </div>
 
             <div class="bento-item wide">
-                <h3><i class="fas fa-star"></i> Built for 2026</h3>
-                <p>Standing alongside the best frontends, RetroFeVLC offers the perfect balance of visual flair and extreme customization through the <strong>Hierarchy Manager</strong> and <strong>Menu Manager</strong> tools.</p>
+                <h3 data-key="bento-2026-h">Built for 2026</h3>
+                <p data-key="bento-2026-p">A frontend that stands alongside the world's best. Balanced visual flair with the extreme flexibility of a Menu Hierarchy Manager and real-time Metadata syncing.</p>
             </div>
         </div>
     </section>
 
     <section id="whatsnew">
-        <h2 data-key="whatsnew-title">Latest Updates</h2>
+        <h2 data-key="title-updates">Latest Toolset Updates</h2>
         <div class="grid-simple">
-            <div class="card" data-key="whatsnew-1">Integrated Settings GUI in Start.exe</div>
-            <div class="card" data-key="whatsnew-2">Gamepad auto-detection for emulator config</div>
-            <div class="card" data-key="whatsnew-4">Advanced Marquee animation control</div>
-            <div class="card" data-key="whatsnew-8">Direct-to-Shell Kiosk Mode</div>
-            <div class="card" data-key="whatsnew-11">Dynamic Playlist Management GUI</div>
-            <div class="card" data-key="whatsnew-12">Next-Gen Grid Menus & Per-Game Layouts</div>
+            <div class="card" data-key="upd-1"><strong>Settings GUI:</strong> Manage settings.conf instantly in Start.exe</div>
+            <div class="card" data-key="upd-2"><strong>Controls GUI:</strong> Auto-detect and map gamepads via GUI</div>
+            <div class="card" data-key="upd-3"><strong>Marquee Pro:</strong> Mirror screens or run custom animations</div>
+            <div class="card" data-key="upd-4"><strong>Kiosk Mode:</strong> Boot directly to RetroFeVLC as a Windows Shell</div>
+            <div class="card" data-key="upd-5"><strong>Layout Editor:</strong> Visual, real-time theme adjustments</div>
+            <div class="card" data-key="upd-6"><strong>Playlist Manager:</strong> Edit and sort games inside the launcher</div>
         </div>
     </section>
 
     <section id="quickstart">
-        <h2 data-key="quickstart-title">Quick Installation</h2>
+        <h2 data-key="title-guide">Quick Start Guide</h2>
         <div class="quickstart-box">
             <ol>
-                <li data-key="quickstart-li1">Download the <strong>Full Release</strong> package.</li>
-                <li data-key="quickstart-li2">Extract to your drive (e.g., <code>D:\RetroFeVLC</code>).</li>
-                <li data-key="quickstart-li3">Launch <strong>Start.exe</strong>.</li>
-                <li data-key="quickstart-li4">Use the <strong>Launcher GUI</strong> to configure your gamepads and emulators.</li>
+                <li data-key="qs-1">Download the <strong>Full Release</strong> package.</li>
+                <li data-key="qs-2">Extract to your drive (e.g., <code>D:\RetroFeVLC</code>).</li>
+                <li data-key="qs-3">Launch <strong>Start.exe</strong> to open the Control Center.</li>
+                <li data-key="qs-4">Configure your gamepads and emulators using the integrated GUI.</li>
             </ol>
         </div>
     </section>
 
     <section id="addons">
-        <h2 data-key="addons-title">Toolbox</h2>
+        <h2 data-key="title-tools">Essential Addons</h2>
         <div class="grid-simple">
-            <div class="card">🎨 <strong>GenreFixer</strong>: AI Category Tool</div>
-            <div class="card">🛡️ <strong>KioskMode</strong>: Shell Launcher</div>
-            <div class="card">🌳 <strong>Layout Tree</strong>: Hierarchy Tool</div>
+            <div class="card">🎨 <strong>GenreFixer</strong>: AI Category Management</div>
+            <div class="card">🛡️ <strong>KioskMode</strong>: Shell Launcher Tool</div>
+            <div class="card">🌳 <strong>Layout Tree</strong>: Visual Hierarchy Tool</div>
             <div class="card">📋 <strong>MenuManager</strong>: System Sorting</div>
-            <div class="card">🖌️ <strong>Theme Editor</strong>: Visual Designer</div>
+            <div class="card">🖌️ <strong>Theme Editor</strong>: Real-time Design</div>
             <div class="card">🏆 <strong>RetroRa</strong>: Achievements Sync</div>
         </div>
     </section>
@@ -336,11 +335,12 @@
     <a href="mailto:retrofevlc@gmail.com" class="ml" title="Email"><i class="fas fa-envelope"></i></a>
 </div>
 
-<footer>
-    <p>RetroFeVLC © 2026 • An open-source evolution of the RetroFE frontend</p>
+<footer data-key="footer-text">
+    RetroFeVLC © 2026 • The Ultimate RetroFE Evolution
 </footer>
 
 <script>
+/** SLIDER **/
 let currentSlide = 0;
 const slider = document.getElementById('slider');
 const totalSlides = 6;
@@ -350,15 +350,18 @@ function moveSlider() {
 }
 setInterval(moveSlider, 5000);
 
+/** TRANSLATOR **/
 async function loadLanguage(lang) {
     try {
         const response = await fetch(`translations/${lang}.json`);
-        if (!response.ok) throw new Error("File not found");
+        if (!response.ok) throw new Error();
         const trans = await response.json();
+        
         document.querySelectorAll('[data-key]').forEach(el => {
             const key = el.getAttribute('data-key');
             if (trans[key]) el.innerHTML = trans[key];
         });
+        
         document.getElementById('langSelect').value = lang;
         document.documentElement.lang = lang;
     } catch (e) {
@@ -366,15 +369,21 @@ async function loadLanguage(lang) {
     }
 }
 
+/** LANGUAGES SETUP **/
 const langs = [
-    {code:'en', name:'English (EN)'}, {code:'pt', name:'Português (PT)'}, 
-    {code:'es', name:'Español (ES)'}, {code:'fr', name:'Français (FR)'}, 
-    {code:'it', name:'Italiano (IT)'}, {code:'ru', name:'Pусский (RU)'}, {code:'zh', name:'中文 (ZH)'}
+    {code:'en', name:'English (EN)'}, 
+    {code:'pt', name:'Português (PT)'}, 
+    {code:'es', name:'Español (ES)'}, 
+    {code:'fr', name:'Français (FR)'}, 
+    {code:'it', name:'Italiano (IT)'}, 
+    {code:'ru', name:'Pусский (RU)'}, 
+    {code:'zh', name:'中文 (ZH)'}
 ];
 const selectBox = document.getElementById('langSelect');
 langs.forEach(l => {
     const opt = document.createElement('option');
-    opt.value = l.code; opt.textContent = l.name;
+    opt.value = l.code;
+    opt.textContent = l.name;
     selectBox.appendChild(opt);
 });
 
@@ -387,10 +396,10 @@ function detectLanguage() {
 
 document.addEventListener('DOMContentLoaded', () => {
     const detected = detectLanguage();
-    selectBox.value = detected;
     loadLanguage(detected);
 });
 
+/** SMOOTH SCROLL **/
 document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
