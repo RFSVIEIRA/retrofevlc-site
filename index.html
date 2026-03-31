@@ -413,7 +413,7 @@ async function loadLanguage(lang) {
 }
 
 const langs = [
-    {code:'en', name:'English (EN)'}, {code:'pt', name:'Português (PT)'}, 
+    {code:'en', name:'English (EN)'}, {code:'pt', name:'Português (PT)'}, {code:'de', name:'Deutsch (DE)'},
     {code:'es', name:'Español (ES)'}, {code:'fr', name:'Français (FR)'}, 
     {code:'it', name:'Italiano (IT)'}, {code:'ru', name:'Pусский (RU)'}, {code:'zh', name:'中文 (ZH)'}
 ];
@@ -425,11 +425,11 @@ langs.forEach(l => {
 });
 
 function detectLanguage() {
-    const lang = (navigator.language || 'en').toLowerCase();
-    const supported = ['en', 'pt', 'es', 'fr', 'it', 'ru', 'zh'];
-    for (let s of supported) if (lang.startsWith(s)) return s;
-    return 'en';
-}
+        const lang = (navigator.language || 'en').toLowerCase();
+        const supported = ['en', 'de', 'pt', 'es', 'fr', 'it', 'ru', 'zh'];
+        for (let s of supported) if (lang.startsWith(s)) return s;
+        return 'en';
+    }
 
 document.addEventListener('DOMContentLoaded', () => {
     const detected = detectLanguage();
