@@ -415,6 +415,7 @@ async function loadLanguage(lang) {
 const langs = [
     {code:'en', name:'English (EN)'}, {code:'pt', name:'Português (PT)'}, {code:'de', name:'Deutsch (DE)'},
     {code:'es', name:'Español (ES)'}, {code:'fr', name:'Français (FR)'},  {code:'el', name:'Ελληνικά (GR)'},
+    {code:'nl', name:'Nederlands (NL)'},
     {code:'it', name:'Italiano (IT)'}, {code:'ru', name:'Pусский (RU)'}, {code:'zh', name:'中文 (ZH)'}
 ];
 const selectBox = document.getElementById('langSelect');
@@ -426,10 +427,10 @@ langs.forEach(l => {
 
 function detectLanguage() {
         const lang = (navigator.language || 'en').toLowerCase();
-        const supported = ['en', 'de', 'el', 'pt', 'es', 'fr', 'it', 'ru', 'zh'];
+        const supported = ['en', 'de', 'el', 'nl', 'pt', 'es', 'fr', 'it', 'ru', 'zh'];
         for (let s of supported) if (lang.startsWith(s)) return s;
         return 'en';
-}
+    }
 
 document.addEventListener('DOMContentLoaded', () => {
     const detected = detectLanguage();
