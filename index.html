@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroFeVLC | The Ultimate Retro Gaming Frontend with VLC</title>
+  
+    <meta name="description" content="RetroFeVLC - Top 5 Retro Gaming Frontends 2026. Fastest frontend: scroll 1 to 2350 games in 1 minute. VLC-powered evolution of RetroFE. Full Jukebox mode, one-click sorting, rich metadata and multi-display support. Perfect alternative to RetroBat, LaunchBox and Batocera.">
+    <meta name="keywords" content="retrofevlc, retro gaming frontend, top 5 retro gaming frontends, retro frontend, retrofe vlc, emulator frontend, best retro frontend 2026, fastest frontend, jukebox mode, batocera alternative, retrobat alternative, launchbox alternative, 4k arcade frontend, vlc frontend">
+    <link rel="canonical" href="https://retrofevlc.eu/" />
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="55fa5697-f564-4aa6-a646-abe0355995c3"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        :root {
+            --primary: #00f5d4;
+            --primary-glow: #00f5d4;
+            --accent: #ff2d95;
+            --accent2: #a855f7;
+            --gold: #ffcc00;
+            --blue: #38bdf8;
+            --dark: #07070f;
+            --darker: #030308;
+            --card: rgba(18, 18, 32, 0.75);
+            --card-border: rgba(0, 245, 212, 0.18);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background: var(--darker);
+            color: #e8e8ff;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(ellipse 80% 50% at 20% -10%, rgba(0, 245, 212, 0.12), transparent),
+                radial-gradient(ellipse 60% 40% at 80% 10%, rgba(255, 45, 149, 0.10), transparent),
+                radial-gradient(ellipse 50% 30% at 50% 100%, rgba(168, 85, 247, 0.08), transparent);
+        }
+
+        /* ========== NAV BAR - MUITO MAIS VIVA ========== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 2000;
+            background: linear-gradient(180deg, 
+                rgba(8, 8, 18, 0.97) 0%, 
+                rgba(5, 5, 14, 0.94) 100%);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid transparent;
+            padding: 13px 0;
+            box-shadow: 
+                0 4px 30px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(0, 245, 212, 0.08);
+        }
+
+        /* Borda inferior com glow animado */
+        nav::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--primary) 20%, 
+                var(--accent) 50%, 
+                var(--primary) 80%, 
+                transparent 100%);
+            background-size: 200% 100%;
+            animation: nav-glow 6s linear infinite;
+            opacity: 0.85;
+        }
+        @keyframes nav-glow {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 22px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0; padding: 0;
+            display: flex;
+            gap: 8px;
+        }
+
+        nav a {
+            color: #c8c8ff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 1.1px;
+            padding: 9px 16px;
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            color: #fff;
+            background: rgba(0, 245, 212, 0.15);
+            box-shadow: 
+                0 0 20px rgba(0, 245, 212, 0.35),
+                inset 0 0 12px rgba(0, 245, 212, 0.1);
+            text-shadow: 0 0 12px rgba(0, 245, 212, 0.8);
+            transform: translateY(-1px);
+        }
+
+        /* SELECT DE IDIOMA */
+.lang-select-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .lang-select-wrapper::before {
+            content: '\f0ac';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute; left: 12px;
+            font-size: 0.9rem; color: var(--primary);
+            pointer-events: none;
+        }
+        #langSelect {
+            background: #12121f;
+            color: var(--primary);
+            border: 1px solid rgba(0, 245, 212, 0.4);
+            padding: 7px 12px 7px 34px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2300f5d4' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: calc(100% - 10px) center;
+            padding-right: 32px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        #langSelect:hover, #langSelect:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 245, 212, 0.25);
+        }
+
+        /* ========== HERO ========== */
+        .hero-slider {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slider-container {
+            position: absolute; inset: 0;
+            display: flex; width: 600%; height: 100%;
+            transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .slide {
+            width: 100vw; height: 100%;
+            background-size: cover; background-position: center;
+            position: relative;
+        }
+        .slide::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, rgba(3,3,8,0.92) 75%);
+        }
+        .hero-overlay {
+            position: relative; z-index: 100;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center; padding: 0 20px;
+            width: 100%; max-width: 980px;
+            margin-top: -30px;
+        }
+        .logo-center { margin-bottom: 28px; }
+        .logo-center img {
+            max-width: 92%; width: 540px;
+            filter: drop-shadow(0 0 40px rgba(0, 245, 212, 0.55))
+                    drop-shadow(0 0 80px rgba(255, 45, 149, 0.25));
+            transition: filter 0.4s;
+        }
+        .logo-center img:hover {
+            filter: drop-shadow(0 0 55px rgba(0, 245, 212, 0.8))
+                    drop-shadow(0 0 100px rgba(255, 45, 149, 0.4));
+        }
+        .subtitle {
+            font-size: clamp(1.15rem, 2.6vw, 1.45rem);
+            color: #c8c8ff;
+            max-width: 860px;
+            margin: 0 0 22px 0;
+            font-weight: 300;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+        }
+        .speed-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, rgba(255, 204, 0, 0.15), rgba(255, 45, 149, 0.12));
+            border: 1px solid rgba(255, 204, 0, 0.55);
+            color: var(--gold);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            box-shadow: 0 0 25px rgba(255, 204, 0, 0.2);
+            animation: pulse-gold 3s ease-in-out infinite;
+        }
+        @keyframes pulse-gold {
+            0%, 100% { box-shadow: 0 0 25px rgba(255, 204, 0, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(255, 204, 0, 0.4); }
+        }
+        .speed-badge i { font-size: 1.15rem; }
+
+        /* ========== BOTÕES DO HERO - MUITO MAIS APELATIVOS ========== */
+        .btn-group { 
+            display: flex; 
+            justify-content: center; 
+            gap: 20px; 
+            flex-wrap: wrap; 
+        }
+
+        .btn {
+            padding: 18px 38px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.08rem;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            letter-spacing: 0.3px;
+        }
+
+        /* Efeito de brilho que passa */
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 70%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.35),
+                transparent
+            );
+            transition: left 0.55s ease;
+        }
+        .btn:hover::before {
+            left: 130%;
+        }
+
+        /* Discord */
+        .btn-discord {
+            background: linear-gradient(135deg, #5865F2 0%, #4752c4 100%);
+            color: white;
+            box-shadow: 
+                0 8px 28px rgba(88, 101, 242, 0.55),
+                0 0 0 1px rgba(255,255,255,0.1) inset;
+        }
+        .btn-discord:hover {
+            transform: translateY(-7px) scale(1.045);
+            box-shadow: 
+                0 16px 40px rgba(88, 101, 242, 0.7),
+                0 0 30px rgba(88, 101, 242, 0.5);
+            background: linear-gradient(135deg, #6572ff 0%, #5865F2 100%);
+        }
+
+        /* Download */
+        .btn-download {
+            background: linear-gradient(135deg, #00f5d4 0%, #00c9a7 100%);
+            color: #000;
+            box-shadow: 
+                0 8px 32px rgba(0, 245, 212, 0.55),
+                0 0 0 1px rgba(255,255,255,0.15) inset;
+        }
+        .btn-download:hover {
+            transform: translateY(-7px) scale(1.045);
+            box-shadow: 
+                0 16px 45px rgba(0, 245, 212, 0.7),
+                0 0 35px rgba(0, 245, 212, 0.55);
+            background: linear-gradient(135deg, #00ffe0 0%, #00f5d4 100%);
+        }
+
+        /* ========== RESTO DO SITE (igual ao anterior) ========== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 110px 20px;
+        }
+        h2 {
+            font-size: 2.9rem;
+            text-align: center;
+            margin-bottom: 55px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 18px auto 0;
+            border-radius: 2px;
+        }
+
+        .speed-highlight {
+            background: linear-gradient(135deg, rgba(255,204,0,0.1) 0%, rgba(0,245,212,0.07) 50%, rgba(255,45,149,0.08) 100%);
+            border: 1px solid rgba(255, 204, 0, 0.4);
+            border-radius: 28px;
+            padding: 42px;
+            margin-bottom: 70px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+            justify-content: space-between;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .speed-highlight::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,204,0,0.08) 0%, transparent 60%);
+            animation: rotate 18s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .speed-highlight-content { flex: 1; min-width: 280px; position: relative; z-index: 1; }
+        .speed-highlight h3 {
+            margin: 0 0 14px 0;
+            font-size: 1.7rem;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .speed-highlight p {
+            margin: 0 0 22px 0;
+            color: #d8d8ff;
+            font-size: 1.08rem;
+            line-height: 1.65;
+        }
+        .btn-speed {
+            background: linear-gradient(135deg, var(--gold), #ffaa00);
+            color: #000;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(255, 204, 0, 0.35);
+        }
+        .btn-speed:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(255, 204, 0, 0.5);
+        }
+        .speed-stat {
+            font-size: 3.1rem;
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 1;
+            text-shadow: 0 0 30px rgba(255, 204, 0, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+        .speed-stat span {
+            font-size: 1.05rem;
+            font-weight: 600;
+            display: block;
+            color: #b8b8ff;
+            margin-top: 8px;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(180px, auto);
+            gap: 24px;
+        }
+        .bento-item {
+            background: var(--card);
+            border-radius: 26px;
+            padding: 28px;
+            border: 1px solid var(--card-border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+        }
+        .bento-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0,245,212,0.08), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .bento-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(0, 245, 212, 0.18);
+        }
+        .bento-item:hover::before { opacity: 1; }
+        .bento-item h3 {
+            margin: 0 0 14px 0;
+            font-size: 1.35rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .bento-item p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #b8b8ff;
+            position: relative;
+            z-index: 1;
+        }
+        .large { grid-column: span 2; grid-row: span 2; }
+        .tall { grid-row: span 2; }
+        .wide { grid-column: span 2; }
+
+        .bento-list { list-style: none; padding: 0; margin: 16px 0 0 0; position: relative; z-index: 1; }
+        .bento-list li {
+            font-size: 0.88rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #c8c8ff;
+        }
+        .bento-list li i {
+            color: var(--primary);
+            margin-top: 4px;
+            font-size: 0.75rem;
+            text-shadow: 0 0 8px rgba(0,245,212,0.6);
+        }
+
+        .grid-simple {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 22px;
+        }
+        .card {
+            background: linear-gradient(145deg, rgba(22,22,40,0.9), rgba(12,12,22,0.95));
+            padding: 28px 30px;
+            border-radius: 20px;
+            border-left: 5px solid var(--primary);
+            transition: all 0.35s;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 80px; height: 80px;
+            background: radial-gradient(circle, rgba(0,245,212,0.12), transparent 70%);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            border-left-color: var(--accent);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+        }
+
+        .quickstart-box {
+            background: linear-gradient(160deg, #12121f 0%, #080810 100%);
+            padding: 50px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 245, 212, 0.22);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .btn-guide {
+            background: linear-gradient(135deg, var(--accent), #e11d74) !important;
+            color: #fff !important;
+            padding: 15px 32px !important;
+            width: fit-content;
+            box-shadow: 0 8px 25px rgba(255, 45, 149, 0.4);
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        .btn-guide:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(255, 45, 149, 0.55) !important;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0, 245, 212, 0.25);
+            border: 1px solid rgba(0, 245, 212, 0.3);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        table {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background: rgba(18,18,32,0.7);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        }
+        thead tr {
+            background: linear-gradient(90deg, rgba(0,245,212,0.2), rgba(255,45,149,0.15));
+        }
+        th {
+            padding: 18px 15px;
+            text-align: left;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        td {
+            padding: 16px 15px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        tbody tr:hover {
+            background: rgba(0, 245, 212, 0.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 55px 20px;
+            font-size: 0.9rem;
+            color: #555;
+            background: #030308;
+            border-top: 1px solid rgba(0, 245, 212, 0.12);
+        }
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer a:hover { color: var(--accent); }
+
+        #legal {
+            background: #030308;
+            padding: 80px 20px 100px;
+            border-top: 1px solid rgba(0, 245, 212, 0.12);
+        }
+
+        @media (max-width: 950px) {
+            .nav-container { flex-direction: column; gap: 12px; }
+            nav ul { gap: 4px; flex-wrap: wrap; justify-content: center; }
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .large, .wide, .tall { grid-column: span 2; grid-row: span 1; }
+            h2 { font-size: 2.2rem; }
+        }
+        @media (max-width: 600px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .large, .wide, .tall { grid-column: span 1; }
+            .speed-stat { font-size: 2.4rem; }
+            nav a { padding: 8px 12px; font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <div class="nav-container">
+        <ul>
+            <li><a href="#hero" data-key="nav-home">Home</a></li>
+            <li><a href="#about" data-key="nav-about">About</a></li>
+            <li><a href="#whatsnew" data-key="nav-whatsnew">Updates</a></li>
+            <li><a href="#quickstart" data-key="nav-quickstart">Guide</a></li>
+            <li><a href="#addons" data-key="nav-addons">Addons</a></li>
+            <li><a href="#comparison" data-key="nav-comparison">Comparison</a></li>
+        </ul>
+        <div class="lang-select-wrapper">
+            <select id="langSelect" onchange="loadLanguage(this.value)"></select>
+        </div>
+    </div>
+</nav>
+
+<div class="hero-slider" id="hero">
+    <div class="slider-container" id="slider">
+        <div class="slide" style="background-image: url('assets/1.jpg');"></div>
+        <div class="slide" style="background-image: url('assets/2.png');"></div>
+        <div class="slide" style="background-image: url('assets/3.jpg');"></div>
+        <div class="slide" style="background-image: url('assets/4.jpg');"></div>
+        <div class="slide" style="background-image: url('assets/5.jpg');"></div>
+        <div class="slide" style="background-image: url('assets/6.jpg');"></div>
+    </div>
+    <div class="hero-overlay">
+        <div class="logo-center"><img src="assets/retrofevlc-logo.png" alt="RetroFeVLC Logo"></div>
+        <p class="subtitle" id="subtitle" data-key="subtitle">The powerful evolution of RetroFE — now with VLC, smart addons & next-level customization</p>
+        <div class="speed-badge">
+            <i class="fas fa-bolt"></i>
+            <span data-key="speed-badge">Fastest Frontend — 1 → 2350 games in 1 minute</span>
+        </div>
+        <div class="btn-group">
+            <a href="https://discord.gg/2aYRHdUrVf" target="_blank" class="btn btn-discord" data-key="btn-discord"><i class="fab fa-discord"></i> Join Discord</a>
+            <a href="https://www.mediafire.com/file/tpt6uaj90btglpl/RetroFeVLC_Full.rar/file" target="_blank" class="btn btn-download" data-key="btn-download"><i class="fas fa-download"></i> Download V3.0.32</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+ 
+<section id="about">
+    <h2 data-key="about-title">Why RetroFeVLC?</h2>
+    
+    <div class="speed-highlight">
+    <div class="speed-highlight-content">
+        <h3><i class="fas fa-rocket"></i> <span data-key="speed-title">Built for Blazing-Fast Performance</span></h3>
+        <p data-key="speed-desc">RetroFeVLC is engineered for speed. It scrolls from game #1 to game #2350 in just 1 minute, delivering a smooth, responsive experience without compromises.</p>
+        <a href="https://youtu.be/uOE82OXQe7c" target="_blank" class="btn-speed">
+            <i class="fas fa-play-circle"></i>
+            <span data-key="btn-speed-video">Watch the Speed Demo</span>
+        </a>
+    </div>
+</div>
+        <div style="text-align:center;">
+            <div class="speed-stat">1 → 2350<span data-key="speed-stat-label">games in 60 seconds</span></div>
+        </div>
+    </div>
+
+    <div class="bento-grid">
+        <div class="bento-item large">
+            <h3><i class="fas fa-rocket"></i> <span data-key="bento-whatis-h">The VLC Engine Revolution</span></h3>
+            <p data-key="bento-whatis-p1">Forget the limitations of old frameworks. RetroFeVLC is a next-generation evolution that replaces GStreamer with the powerhouse <strong>VLC Media Library</strong>.</p>
+            <p style="margin-top:15px;" data-key="bento-whatis-p2">Whether you have 500 or 50,000+ games, experience ultra-fluid navigation and superior video playback that makes your collection look like a high-end cinematic experience.</p>
+        </div>
+        <div class="bento-item tall" style="border-color: rgba(255,45,149,0.4);">
+            <h3 style="color:var(--accent)"><i class="fas fa-microchip"></i> <span data-key="bento-start-h">The Start.exe Ecosystem</span></h3>
+            <p data-key="bento-start-p1">Stop fighting with text files. Our custom <strong>Start.exe</strong> acts as the central brain, providing a seamless GUI to manage your entire build instantly.</p>
+            <ul class="bento-list">
+                <li><i class="fas fa-gamepad"></i> <strong data-key="bento-list-1">Zero-Config Gamepad Integration</strong></li>
+                <li><i class="fas fa-tv"></i> <strong data-key="bento-list-2">Marquee Pro Mirroring</strong></li>
+                <li><i class="fas fa-shield-alt"></i> <strong data-key="bento-list-3">Kiosk Mode: Transform Windows into a dedicated console</strong></li>
+                <li><i class="fas fa-edit"></i> <strong data-key="bento-list-4">Real-time Layout Editor</strong></li>
+            </ul>
+        </div>
+        <div class="bento-item">
+            <h3><i class="fas fa-bolt"></i> <span data-key="bento-speed-h">Breathtaking Visuals</span></h3>
+            <p data-key="bento-speed-p">Push boundaries with <strong>3D Effects & Warp</strong> perspective. With support for <strong>Per-Game Layouts</strong>, every game can have its own unique, handcrafted theme.</p>
+        </div>
+        <div class="bento-item wide">
+            <h3><i class="fas fa-trophy"></i> <span data-key="bento-rank-h">The Elite Choice</span></h3>
+            <p data-key="bento-rank-p">Ranked among the top 5 retro gaming frontends in 2026. RetroFeVLC combines lightweight speed with premium features, offering total creative freedom without the bloat.</p>
+        </div>
+        <div class="bento-item wide" style="border-color: rgba(0,245,212,0.4);">
+            <h3><i class="fas fa-music"></i> <span data-key="bento-jukebox-h">Full Jukebox Mode</span></h3>
+            <p data-key="bento-jukebox-p">RetroFeVLC can also be used as a complete Jukebox. Save custom lists, recall them instantly, control volume, enable <strong>repeat</strong>, <strong>repeat track</strong> and <strong>shuffle</strong>. Create up to <strong>32 individual lists per collection</strong>.</p>
+        </div>
+        <div class="bento-item wide" style="border-color: rgba(255,45,149,0.4);">
+            <h3 style="color:var(--accent)"><i class="fas fa-sort-amount-down"></i> <span data-key="bento-sort-h">One-Click Organization</span></h3>
+            <p data-key="bento-sort-p">Organize your view instantly by clicking. Sort by <strong>Year, Manufacturer, Genre, Metadata</strong> and more — no menus, no configuration files needed.</p>
+        </div>
+        <div class="bento-item wide" style="border-color: rgba(255,170,0,0.45);">
+            <h3 style="color:#ffaa00"><i class="fas fa-tags"></i> <span data-key="bento-meta-h">Rich Metadata Support</span></h3>
+            <p data-key="bento-meta-p">New metadata fields: <strong>Artist</strong>, <strong>Album</strong>, <strong>Track Number</strong> and <strong>Disc Number</strong>. Perfect for music and multi-disc collections.</p>
+        </div>
+        <div class="bento-item wide" style="border-color: rgba(56,189,248,0.45);">
+            <h3 style="color:#38bdf8"><i class="fas fa-th-large"></i> <span data-key="bento-layout-h">Smart Layout Engine</span></h3>
+            <p data-key="bento-layout-p">Automatic text resizing, multi-grid support, independent configuration per display, and background layer (layer 20) when launching smaller windows. Animations on secondary displays when no primary is active.</p>
+        </div>
+    </div>
+</section>
+
+<section id="whatsnew">
+    <h2 data-key="whatsnew-title">Latest Updates</h2>
+    <div class="grid-simple">
+        <div class="card" data-key="upd-1">Menu Options – Settings, Controls, Layout</div>
+        <div class="card" data-key="upd-2">Full 4K Support + Scale Quality Options</div>
+        <div class="card" data-key="upd-3">Animated Images (GIF + WebP support)</div>
+        <div class="card" data-key="upd-4">Dynamic Playlists with real-time updates</div>
+        <div class="card" data-key="upd-5">New Grid menu option & include files</div>
+        <div class="card" data-key="upd-6">GameInfo stats (play count, most played)</div>
+        <div class="card" data-key="upd-7">World-class scrolling speed (1→2350 in 60s)</div>
+        <div class="card" data-key="upd-8">Jukebox Mode – lists, volume, repeat, repeat track & shuffle</div>
+        <div class="card" data-key="upd-9">One-click sort by Year / Manufacturer / Genre</div>
+        <div class="card" data-key="upd-10">New metadata: Artist, Album, TrackNumber, DiscNumber</div>
+        <div class="card" data-key="upd-11">Layout text auto-resize + Multi-grid support</div>
+        <div class="card" data-key="upd-12">Layer 20 background on launch + per-display config & animations</div>
+    </div>
+</section>
+
+<section id="quickstart">
+    <h2 data-key="quickstart-title">Quick Start Guide</h2>
+    <div class="quickstart-box">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center;">
+            <div>
+                <h3 data-key="guide-title" style="color: var(--primary); margin-bottom: 20px;">
+                    <i class="fas fa-book-open"></i> User Documentation
+                </h3>
+                <p data-key="guide-desc" style="margin-bottom: 30px; color: #b8b8ff;"></p>
+              
+                <a id="userGuideLink" target="_blank" class="btn btn-guide">
+                    <i class="fas fa-file-pdf"></i>
+                    <span data-key="btn-guide-pdf">Download PDF Guide</span>
+                </a>
+            </div>
+            <div>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/FUBS3rJ8uuA" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="addons">
+    <h2 data-key="addons-title">Essential Addons</h2>
+    <p style="text-align: center; max-width: 900px; margin: 0 auto 50px auto; color: #b0b0ff;" data-key="addons-subtitle">
+        Powerful tools that work together to make RetroFeVLC faster, smarter, and easier to use.
+    </p>
+  
+    <div class="grid-simple">
+        <div class="card" data-key="ad-start">
+            <strong>🚀 Start.exe (Starter)</strong><br>
+            The brain of the system. Auto-launches everything, syncs playlists, manages gamepads, and gives you a powerful system tray menu.
+        </div>
+        <div class="card" data-key="ad-search">
+            <strong>🔍 Search (F11)</strong><br>
+            Lightning-fast game search with per-system or full library mode. Fully gamepad friendly.
+        </div>
+        <div class="card" data-key="ad-menumanager">
+            <strong>📋 MenuManager</strong><br>
+            Visual drag-and-drop menu editor. Create, reorder and organize categories and submenus easily.
+        </div>
+        <div class="card" data-key="ad-metadata">
+            <strong>🔄 Metadata ReGenerator</strong><br>
+            Creates optimized smaller hyperlists and shows accurate game counts.
+        </div>
+        <div class="card" data-key="ad-genrefixer">
+            <strong>🎨 GenreFixer</strong><br>
+            AI-powered automatic genre correction across your entire collection.
+        </div>
+        <div class="card" data-key="ad-kioskmode">
+            <strong>🛡️ KioskMode</strong><br>
+            Locks Windows into a dedicated console mode with auto-relaunch and password protection.
+        </div>
+        <div class="card" data-key="ad-story">
+            <strong>🌐 Story Translator</strong><br>
+            AI translation of game stories into multiple languages.
+        </div>
+        <div class="card" data-key="ad-layouteditor">
+            <strong>🖌️ Layout Editor</strong><br>
+            Visual drag-and-drop layout creator with tree view.
+        </div>
+        <div class="card" data-key="ad-retroRa">
+            <strong>🏆 RetroRa Sync</strong><br>
+            Syncs RetroAchievements progress into your frontend for beautiful in-game stats.
+        </div>
+        <div class="card" data-key="ad-marquee">
+            <strong>🖼️ Marquee MonitorDuplicator</strong><br>
+            Mirrors gameplay to your marquee monitor with full control via JSON.
+        </div>
+    </div>
+</section>
+
+<section id="comparison" style="margin-top: 100px;">
+    <h2 style="text-align: center; margin-bottom: 50px;" data-key="comparison-title">
+        2026 Windows Frontend Comparison
+    </h2>
+ 
+    <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th data-key="comparison-feature">Feature</th>
+                    <th style="text-align: center;" data-key="comparison-retrofe">RetroFE (Legacy)</th>
+                    <th style="text-align: center; background: rgba(0,245,212,0.25); color: #000; font-weight: bold;" data-key="comparison-retrofevlc">RetroFeVLC (Custom 2026)</th>
+                    <th style="text-align: center;" data-key="comparison-retrobat">RetroBat (v7+)</th>
+                    <th style="text-align: center;" data-key="comparison-launchbox">LaunchBox (Premium)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-key="comparison-setup">Setup Style</td>
+                    <td style="text-align: center;" data-key="comparison-retrofe-setup">Manual / Advanced</td>
+                    <td style="text-align: center; background: rgba(0,245,212,0.12); font-weight: 600;" data-key="comparison-retrofevlc-setup">Plug & Play Portable</td>
+                    <td style="text-align: center;" data-key="comparison-retrobat-setup">Automated Installer</td>
+                    <td style="text-align: center;" data-key="comparison-launchbox-setup">Traditional Installer</td>
+                </tr>
+                <tr>
+                    <td data-key="comparison-config">Config Manager</td>
+                    <td style="text-align: center;" data-key="comparison-retrofe-config">Notepad (.conf files)</td>
+                    <td style="text-align: center; background: rgba(0,245,212,0.12); font-weight: 600;" data-key="comparison-retrofevlc-config">Integrated GUI (START)</td>
+                    <td style="text-align: center;" data-key="comparison-retrobat-config">EmulationStation UI</td>
+                    <td style="text-align: center;" data-key="comparison-launchbox-config">Modern GUI (Premium)</td>
+                </tr>
+                <tr>
+                    <td data-key="comparison-video">Video Engine</td>
+                    <td style="text-align: center;" data-key="comparison-retrofe-video">GStreamer (Legacy)</td>
+                    <td style="text-align: center;" data-key="comparison-retrofevlc-video">VLC Library (4K Support)</td>
+                    <td style="text-align: center;" data-key="comparison-retrobat-video">VLC / FFmpeg</td>
+                    <td style="text-align: center;" data-key="comparison-launchbox-video">VLC / Internal</td>
+                </tr>
+                <tr>
+                    <td data-key="comparison-visual">Visual Effects</td>
+                    <td style="text-align: center;" data-key="comparison-retrofe-visual">Basic / Custom (Manual)</td>
+                    <td style="text-align: center; background: rgba(0,245,212,0.12); font-weight: 600;" data-key="comparison-retrofevlc-visual">3D Effects + Per-Game Layouts</td>
+                    <td style="text-align: center;" data-key="comparison-retrobat-visual">Theme-based presets</td>
+                    <td style="text-align: center;" data-key="comparison-launchbox-visual">Advanced Themes (Big Box)</td>
+                </tr>
+                <tr>
+                    <td data-key="comparison-theme">Theme / Layout Creation</td>
+                    <td style="text-align: center;" data-key="comparison-retrofe-theme">XML / Text Coding</td>
+                    <td style="text-align: center; background: rgba(0,245,212,0.12); font-weight: 600;" data-key="comparison-retrofevlc-theme">Visual Layout Creator</td>
+                    <td style="text-align: center;" data-key="comparison-retrobat-theme">Theme system</td>
+                    <td style="text-align: center;" data-key="comparison-launchbox-theme">Advanced (Premium)</td>
+                </tr>
+                <tr>
+                    <td data-key="comparison-achievements">Achievements</td>
+                    <td style="text-align: center;" data-key="comparison-retrofe-achievements">None</td>
+                    <td style="text-align: center; background: rgba(0,245,212,0.12); font-weight: 600;" data-key="comparison-retrofevlc-achievements">RetroAchievements Sync (emulator-based)</td>
+                    <td style="text-align: center;" data-key="comparison-retrobat-achievements">RetroArch-based</td>
+                    <td style="text-align: center;" data-key="comparison-launchbox-achievements">RetroAchievements supported</td>
+                </tr>
+                <tr>
+                    <td data-key="comparison-multilang">Multi-Language Support</td>
+                    <td style="text-align: center;" data-key="comparison-retrofe-multilang">Limited</td>
+                    <td style="text-align: center; background: rgba(0,245,212,0.12); font-weight: 600;" data-key="comparison-retrofevlc-multilang">Multi-language (extended)</td>
+                    <td style="text-align: center;" data-key="comparison-retrobat-multilang">Moderate</td>
+                    <td style="text-align: center;" data-key="comparison-launchbox-multilang">Strong (Premium)</td>
+                </tr>
+                <tr>
+                    <td data-key="comparison-portability">Portability</td>
+                    <td style="text-align: center;" data-key="comparison-retrofe-portability">High</td>
+                    <td style="text-align: center; background: rgba(0,245,212,0.12); font-weight: 600;" data-key="comparison-retrofevlc-portability">High</td>
+                    <td style="text-align: center;" data-key="comparison-retrobat-portability">High</td>
+                    <td style="text-align: center;" data-key="comparison-launchbox-portability">Medium</td>
+                </tr>
+                <tr>
+                    <td data-key="comparison-cost">Cost</td>
+                    <td style="text-align: center;" data-key="comparison-retrofe-cost">Free (Open Source)</td>
+                    <td style="text-align: center; background: rgba(0,245,212,0.12); font-weight: 600;" data-key="comparison-retrofevlc-cost">Free (Open Source)</td>
+                    <td style="text-align: center;" data-key="comparison-retrobat-cost">Free</td>
+                    <td style="text-align: center;" data-key="comparison-launchbox-cost">Paid</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p style="text-align: center; margin-top: 35px; color: #888; font-size: 0.95rem;" data-key="comparison-subtitle">
+        RetroFeVLC offers <strong>modern features and enhanced usability</strong> while maintaining full flexibility — ideal for users who want power without legacy complexity.
+    </p>
+</section>
+
+</div>
+
+<footer>
+    <div style="margin-bottom: 20px;">
+        <span data-key="footer-text">RetroFeVLC © 2026 • An open-source evolution of the RetroFE frontend</span>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 25px; opacity: 0.8; flex-wrap: wrap;">
+        <a href="#legal" data-key="footer-priv">Privacy Policy</a>
+        <a href="#legal" data-key="footer-terms">Terms of Use</a>
+        <a href="#legal" data-key="footer-cookies">Cookie Disclosure</a>
+    </div>
+</footer>
+
+<section id="legal">
+    <div class="quickstart-box" style="max-width: 900px; margin: 0 auto; padding: 45px; border-color: rgba(255, 45, 149, 0.25);">
+      
+        <div style="margin-bottom: 30px;">
+            <h3 style="color: var(--accent); font-size: 1.15rem; margin-bottom: 12px;">
+                <i class="fas fa-gavel"></i> <span data-key="legal-title">Terms of Use</span>
+            </h3>
+            <p data-key="legal-terms"></p>
+            <p data-key="legal-downloads"></p>
+        </div>
+        <div style="margin-bottom: 30px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 25px;">
+            <h3 style="color: var(--primary); font-size: 1rem; margin-bottom: 12px;">
+                <i class="fas fa-user-shield"></i> <span data-key="legal-priv-h">Privacy & Cookies</span>
+            </h3>
+            <p data-key="legal-priv-p"></p>
+            <p data-key="legal-cookies"></p>
+        </div>
+        <div style="margin-bottom: 30px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 25px;">
+            <h3 style="color: #ccc; font-size: 1rem; margin-bottom: 12px;">
+                <i class="fas fa-link"></i> <span data-key="legal-ext-h">External Services</span>
+            </h3>
+            <p data-key="legal-ext-p"></p>
+        </div>
+        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 25px; font-style: italic; color: #888; font-size: 0.9rem;">
+            <p data-key="legal-id">Responsible Entity: RetroFeVLC Project (Lisbon, Portugal)</p>
+            <p>Contact: retrofevlc@gmail.com</p>
+        </div>
+    </div>
+</section>
+
+<script>
+let currentSlide = 0;
+const slider = document.getElementById('slider');
+const totalSlides = 6;
+function moveSlider() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    if(slider) slider.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
+}
+setInterval(moveSlider, 5000);
+
+async function loadLanguage(lang) {
+    try {
+        const response = await fetch(`translations/${lang}.json`);
+        if (!response.ok) throw new Error("Translation file not found");
+      
+        const trans = await response.json();
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            if (trans[key]) el.innerHTML = trans[key];
+        });
+        const guideLink = document.getElementById('userGuideLink');
+        if (guideLink && trans['guide-pdf']) {
+            guideLink.href = trans['guide-pdf'];
+        }
+        document.getElementById('langSelect').value = lang;
+        document.documentElement.lang = lang;
+    } catch (e) {
+        console.error("Error loading language:", e);
+        if (lang !== 'en') loadLanguage('en');
+    }
+}
+
+const langs = [
+    {code:'en', name:'English (EN)'}, {code:'pt', name:'Português (PT)'}, {code:'de', name:'Deutsch (DE)'},
+    {code:'es', name:'Español (ES)'}, {code:'fr', name:'Français (FR)'}, {code:'el', name:'Ελληνικά (GR)'},
+    {code:'nl', name:'Nederlands (NL)'}, {code:'it', name:'Italiano (IT)'}, {code:'ru', name:'Pусский (RU)'},
+    {code:'zh', name:'中文 (ZH)'}
+];
+const selectBox = document.getElementById('langSelect');
+langs.forEach(l => {
+    const opt = document.createElement('option');
+    opt.value = l.code;
+    opt.textContent = l.name;
+    selectBox.appendChild(opt);
+});
+
+function detectLanguage() {
+    const lang = (navigator.language || 'en').toLowerCase();
+    const supported = ['en', 'de', 'el', 'nl', 'pt', 'es', 'fr', 'it', 'ru', 'zh'];
+    for (let s of supported) if (lang.startsWith(s)) return s;
+    return 'en';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const detected = detectLanguage();
+    loadLanguage(detected);
+});
+
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+            }
+        }
+    });
+});
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "RetroFeVLC",
+  "description": "Top 5 Retro Gaming Frontend 2026 - The fastest frontend that scrolls 1 to 2350 games in 1 minute. Powerful graphical frontend with VLC engine, Jukebox mode, rich metadata and multi-display support.",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Windows",
+  "license": "GPL-3.0",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "url": "https://retrofevlc.eu/",
+  "downloadUrl": "https://www.mediafire.com/file/3uqfgn7s7z8simu/RetroFeVLC_Full.rar/file"
+}
+</script>
+</body>
+</html>
