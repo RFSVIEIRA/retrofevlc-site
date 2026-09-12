@@ -1,0 +1,2624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroFeVLC | The Fastest Retro Gaming Frontend (VLC Evolution of RetroFE)</title>
+  
+    <!-- Primary SEO Meta Tags -->
+    <meta name="title" content="RetroFeVLC | The Fastest Retro Gaming Frontend (VLC Evolution of RetroFE)">
+    <meta name="description" content="RetroFeVLC is the fastest Windows retro gaming frontend in 2026. Powered by VLC Media Library (4K pre-scale), it scrolls 1 to 2350 games in 60s. Includes universal artwork scraper (RetroFeVLCSkraper), Jukebox mode, zero-config gamepads, multi-language UI, and full Kiosk mode. Best modern alternative to LaunchBox, RetroBat and Batocera.">
+    <meta name="keywords" content="retro gaming frontend, retrogaming frontend, retro frontend, best retro gaming frontend 2026, fastest retro frontend, retrofe, retrofevlc, retrofe vlc, retrofe fork, retrofe update, retrofe download, retrofe 2026, retrofe themes, retrofe addons, retrofevlc skraper, retrofe scraper, artwork scraper, retro gaming scraper, emumovies, screenscraper, steamgriddb, igdb, retrobat alternative, launchbox alternative, bigbox alternative, batocera alternative, emulation frontend pc, 4k arcade frontend, arcade kiosk mode, vlc retro frontend, jukebox frontend, zero config gamepad frontend">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="RetroFeVLC Project">
+    <meta name="application-name" content="RetroFeVLC">
+    <meta name="theme-color" content="#00f5d4">
+    <link rel="canonical" href="https://retrofevlc.eu/" />
+
+    <!-- Open Graph / Facebook / Discord / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://retrofevlc.eu/">
+    <meta property="og:title" content="RetroFeVLC | The Fastest Retro Gaming Frontend (2026)">
+    <meta property="og:description" content="VLC-powered evolution of RetroFE. Ultra-fast performance (1 to 2350 games in 60s), 4K video engine, universal artwork scraper, Jukebox mode, and multi-language support.">
+    <meta property="og:image" content="https://retrofevlc.eu/assets/retrofevlc-logo.png">
+    <meta property="og:image:alt" content="RetroFeVLC Retro Gaming Frontend Logo">
+    <meta property="og:site_name" content="RetroFeVLC">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="pt_PT">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://retrofevlc.eu/">
+    <meta name="twitter:title" content="RetroFeVLC | The Fastest Retro Gaming Frontend (2026)">
+    <meta name="twitter:description" content="VLC-powered evolution of RetroFE. 1 to 2350 games in 60s, 4K rendering, universal artwork scraper, and zero-config gamepads.">
+    <meta name="twitter:image" content="https://retrofevlc.eu/assets/retrofevlc-logo.png">
+
+    <!-- Preconnect / DNS Prefetch for Performance -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cloud.umami.is">
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="55fa5697-f564-4aa6-a646-abe0355995c3"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    
+    <style>
+        :root {
+            --primary: #00f5d4;
+            --primary-glow: rgba(0, 245, 212, 0.45);
+            --accent: #ff2d95;
+            --accent-glow: rgba(255, 45, 149, 0.45);
+            --accent2: #a855f7;
+            --gold: #ffcc00;
+            --gold-glow: rgba(255, 204, 0, 0.4);
+            --blue: #38bdf8;
+            --dark: #070712;
+            --darker: #030308;
+            --card-bg: rgba(16, 16, 30, 0.78);
+            --card-border: rgba(0, 245, 212, 0.16);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--darker);
+            color: #e2e8f0;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.65;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(ellipse 90% 60% at 20% -10%, rgba(0, 245, 212, 0.12), transparent 70%),
+                radial-gradient(ellipse 70% 50% at 85% 15%, rgba(255, 45, 149, 0.10), transparent 70%),
+                radial-gradient(ellipse 60% 40% at 50% 60%, rgba(168, 85, 247, 0.07), transparent 70%),
+                radial-gradient(ellipse 80% 50% at 50% 100%, rgba(0, 245, 212, 0.08), transparent 70%);
+            background-attachment: fixed;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2000;
+            background: rgba(6, 6, 15, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 12px 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        nav::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--primary) 25%, 
+                var(--accent) 50%, 
+                var(--accent2) 75%, 
+                transparent 100%);
+            background-size: 200% 100%;
+            animation: nav-glow 8s linear infinite;
+        }
+
+        @keyframes nav-glow {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-brand img {
+            height: 38px;
+            width: auto;
+            filter: drop-shadow(0 0 8px var(--primary-glow));
+            transition: transform 0.3s ease;
+        }
+
+        .nav-brand:hover img {
+            transform: rotate(5deg) scale(1.08);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            transition: all 0.25s ease;
+            position: relative;
+            padding: 6px 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-menu a:hover {
+            color: #fff;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: all 0.25s ease;
+            transform: translateX(-50%);
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-link-wiki {
+            color: #c084fc !important;
+            background: rgba(168, 85, 247, 0.12);
+            padding: 5px 12px !important;
+            border-radius: 20px;
+            border: 1px solid rgba(168, 85, 247, 0.35);
+        }
+
+        .nav-link-wiki:hover {
+            background: rgba(168, 85, 247, 0.25) !important;
+            box-shadow: 0 0 14px rgba(168, 85, 247, 0.4);
+            color: #fff !important;
+        }
+
+        .nav-link-forum {
+            color: #fbbf24 !important;
+            background: rgba(255, 204, 0, 0.12);
+            padding: 5px 12px !important;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 204, 0, 0.35);
+        }
+
+        .nav-link-forum:hover {
+            background: rgba(255, 204, 0, 0.25) !important;
+            box-shadow: 0 0 14px var(--gold-glow);
+            color: #fff !important;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .lang-select-wrapper {
+            position: relative;
+        }
+
+        .lang-select-wrapper select {
+            background: rgba(20, 20, 38, 0.9);
+            color: #fff;
+            border: 1px solid rgba(0, 245, 212, 0.3);
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .lang-select-wrapper select:hover,
+        .lang-select-wrapper select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 12px var(--primary-glow);
+        }
+
+        .lang-select-wrapper select option {
+            background: #0d0d1e;
+            color: #fff;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 6px;
+        }
+
+        /* HERO SLIDER */
+        .hero-slider {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 95px 20px 45px 20px;
+            border-bottom: 1px solid rgba(0, 245, 212, 0.2);
+        }
+
+        .slider-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 600%;
+            height: 100%;
+            display: flex;
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .slide {
+            width: 16.6666%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(3, 3, 8, 0.55) 0%, rgba(3, 3, 8, 0.92) 85%);
+        }
+
+        .hero-overlay {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 1050px;
+            padding: 0 24px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo-center {
+            margin-bottom: 12px;
+        }
+
+        .logo-center img {
+            max-width: 440px;
+            width: 80%;
+            filter: drop-shadow(0 15px 35px rgba(0, 245, 212, 0.35));
+            animation: floatLogo 6s ease-in-out infinite;
+        }
+
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .hero-main-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #cbd5e1;
+            margin: 8px auto 10px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            max-width: 820px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+        }
+
+        .hero-main-title .highlight-text {
+            color: var(--primary);
+            background: linear-gradient(90deg, var(--primary), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 1.18rem;
+            color: #e2e8f0;
+            max-width: 820px;
+            margin: 0 auto 16px;
+            line-height: 1.5;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+            font-weight: 400;
+        }
+
+        .speed-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(90deg, rgba(255, 45, 149, 0.2), rgba(0, 245, 212, 0.2));
+            border: 1px solid rgba(0, 245, 212, 0.4);
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 18px;
+            box-shadow: 0 0 20px rgba(0, 245, 212, 0.2);
+            backdrop-filter: blur(8px);
+        }
+
+        .speed-badge i {
+            color: var(--gold);
+            font-size: 1.1rem;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 24px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, var(--primary) 0%, #00b4d8 100%);
+            color: #030308;
+            box-shadow: 0 0 25px var(--primary-glow);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 0 35px var(--primary-glow);
+        }
+
+        .btn-wiki {
+            background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+            color: #fff;
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+        }
+
+        .btn-wiki:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 0 35px rgba(168, 85, 247, 0.6);
+        }
+
+        .btn-forum {
+            background: linear-gradient(135deg, #ffcc00 0%, #f59e0b 100%);
+            color: #030308;
+            box-shadow: 0 0 25px var(--gold-glow);
+        }
+
+        .btn-forum:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 0 35px var(--gold-glow);
+        }
+
+        .btn-discord {
+            background: rgba(88, 101, 242, 0.25);
+            color: #fff;
+            border: 1px solid rgba(88, 101, 242, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-discord:hover {
+            background: rgba(88, 101, 242, 0.5);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 0 25px rgba(88, 101, 242, 0.5);
+        }
+
+        /* RELEASE NOTE BANNER */
+        .release-note-banner {
+            max-width: 860px;
+            margin: 14px auto 18px auto;
+            background: rgba(15, 18, 35, 0.82);
+            border: 1px solid rgba(0, 245, 212, 0.35);
+            border-radius: 14px;
+            padding: 14px 22px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 0 15px rgba(0, 245, 212, 0.1);
+            text-align: left;
+            position: relative;
+        }
+
+        .release-note-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .release-badge {
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 16px;
+            letter-spacing: 0.4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .badge-v3 {
+            background: linear-gradient(135deg, rgba(0, 245, 212, 0.25), rgba(0, 180, 216, 0.25));
+            color: var(--primary);
+            border: 1px solid rgba(0, 245, 212, 0.5);
+        }
+
+        .badge-layout {
+            background: linear-gradient(135deg, rgba(255, 45, 149, 0.2), rgba(168, 85, 247, 0.2));
+            color: #ff70ba;
+            border: 1px solid rgba(255, 45, 149, 0.4);
+        }
+
+        .release-note-text {
+            font-size: 0.9rem;
+            line-height: 1.55;
+            color: #cbd5e1;
+            margin: 0;
+        }
+
+        .release-note-text strong {
+            color: #fff;
+        }
+
+        .release-support {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.88rem;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .release-support i.fa-life-ring {
+            color: var(--primary);
+        }
+
+        .release-support a {
+            color: var(--primary);
+            background: rgba(0, 245, 212, 0.12);
+            border: 1px solid rgba(0, 245, 212, 0.4);
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin: 0 2px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .release-support a:hover {
+            background: var(--primary);
+            color: #030308;
+            box-shadow: 0 0 12px var(--primary-glow);
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .badge-chip {
+            background: rgba(14, 14, 28, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            backdrop-filter: blur(8px);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 1260px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* SECTION HEADINGS */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            letter-spacing: -0.5px;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 14px auto 0;
+            border-radius: 2px;
+            box-shadow: 0 0 12px var(--primary-glow);
+        }
+
+        /* SPEED HIGHLIGHT BOX */
+        .speed-highlight {
+            background: linear-gradient(135deg, rgba(255, 45, 149, 0.12) 0%, rgba(0, 245, 212, 0.08) 100%);
+            border: 1px solid rgba(0, 245, 212, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin: 40px auto 70px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 30px;
+            align-items: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .speed-highlight::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 245, 212, 0.06) 0%, transparent 60%);
+            animation: rotateBg 20s linear infinite;
+        }
+
+        @keyframes rotateBg {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .speed-highlight-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .speed-highlight-content h3 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 12px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .speed-highlight-content h3 i {
+            color: var(--gold);
+        }
+
+        .speed-highlight-content p {
+            color: #cbd5e1;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+        .btn-speed {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--accent) 0%, #d91b75 100%);
+            color: #fff;
+            padding: 12px 26px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            box-shadow: 0 0 25px var(--accent-glow);
+            transition: all 0.3s ease;
+        }
+
+        .btn-speed:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 0 35px var(--accent-glow);
+        }
+
+        .speed-stat-wrapper {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .speed-stat {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary) 0%, #fff 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 8px;
+            text-shadow: 0 10px 30px rgba(0, 245, 212, 0.3);
+        }
+
+        .speed-stat span {
+            display: block;
+            font-size: 1rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 8px;
+            -webkit-text-fill-color: #94a3b8;
+        }
+
+        /* BENTO GRID */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .bento-item {
+            background: linear-gradient(160deg, rgba(22, 22, 42, 0.85) 0%, rgba(10, 10, 24, 0.92) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-lg);
+            padding: 30px 28px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(12px);
+        }
+
+        .bento-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 100% 0%, rgba(0, 245, 212, 0.08), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .bento-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 245, 212, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 245, 212, 0.15);
+        }
+
+        .bento-item:hover::before {
+            opacity: 1;
+        }
+
+        .bento-item h3 {
+            font-size: 1.35rem;
+            color: #fff;
+            margin-bottom: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bento-item h3 i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .bento-item p {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
+        }
+
+        .large { grid-column: span 2; grid-row: span 2; }
+        .tall { grid-row: span 2; }
+        .wide { grid-column: span 2; }
+
+        .bento-list {
+            list-style: none;
+            padding: 0;
+            margin: 18px 0 0 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bento-list li {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #cbd5e1;
+        }
+
+        .bento-list li i {
+            color: var(--primary);
+            margin-top: 4px;
+            font-size: 0.85rem;
+            text-shadow: 0 0 8px rgba(0, 245, 212, 0.6);
+        }
+
+        /* GRID SIMPLE (Updates Section) */
+        .grid-simple {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, rgba(20, 20, 38, 0.88), rgba(10, 10, 22, 0.94));
+            padding: 26px 28px;
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(0, 245, 212, 0.12), transparent 70%);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-left-color: var(--accent);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.4);
+            color: #fff;
+        }
+
+        .card strong {
+            color: #fff;
+            font-size: 1.02rem;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        /* ============================================================
+           ADDONS SHOWCASE & GALLERY (With Screenshots & Multi-Lang)
+           ============================================================ */
+        .addons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .addons-multilang-bar {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(90deg, rgba(0, 245, 212, 0.12), rgba(168, 85, 247, 0.16));
+            border: 1px solid rgba(0, 245, 212, 0.35);
+            padding: 10px 26px;
+            border-radius: 50px;
+            font-size: 0.96rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin: 0 auto 36px;
+            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35), 0 0 20px rgba(0, 245, 212, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .addons-multilang-bar i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .addons-multilang-bar span {
+            color: #f1f5f9;
+        }
+
+        .addon-featured-card {
+            background: linear-gradient(145deg, rgba(24, 24, 48, 0.92) 0%, rgba(12, 12, 28, 0.96) 100%);
+            border: 1px solid rgba(0, 245, 212, 0.38);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), 0 0 35px rgba(0, 245, 212, 0.12);
+            overflow: hidden;
+            transition: all 0.35s ease;
+        }
+
+        .addon-featured-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 40px rgba(255, 45, 149, 0.2);
+        }
+
+        .addon-featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 800;
+            padding: 6px 16px;
+            border-radius: 50px;
+            letter-spacing: 0.8px;
+            margin-bottom: 22px;
+            box-shadow: 0 4px 16px var(--accent-glow);
+        }
+
+        .addon-featured-inner {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .addon-featured-img-wrap {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid rgba(0, 245, 212, 0.35);
+            background: #080814;
+            cursor: pointer;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.65);
+            height: 290px;
+        }
+
+        .addon-featured-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            transition: transform 0.45s ease;
+        }
+
+        .addon-featured-img-wrap:hover img {
+            transform: scale(1.04);
+        }
+
+        .addon-featured-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .addon-featured-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(0, 245, 212, 0.2), rgba(168, 85, 247, 0.25));
+            border: 1px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--primary);
+            box-shadow: 0 0 18px var(--primary-glow);
+            flex-shrink: 0;
+        }
+
+        .addon-featured-header h3 {
+            font-size: 1.65rem;
+            color: #fff;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .addon-featured-sub {
+            font-size: 0.85rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            font-weight: 600;
+        }
+
+        .addon-desc {
+            color: #cbd5e1;
+            font-size: 0.96rem;
+            line-height: 1.65;
+            margin-bottom: 20px;
+        }
+
+        .addon-desc strong {
+            color: #fff;
+            font-size: 1.05rem;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        .addon-services-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #94a3b8;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .addon-services-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .service-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(18, 25, 48, 0.85);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            color: #e2e8f0;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 6px 13px;
+            border-radius: 8px;
+            transition: all 0.25s ease;
+        }
+
+        .service-pill i {
+            color: var(--primary);
+            font-size: 0.85rem;
+        }
+
+        .service-pill:hover {
+            border-color: var(--primary);
+            background: rgba(0, 245, 212, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 245, 212, 0.2);
+        }
+
+        /* ADDONS GRID (10 tools) */
+        .addons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .addon-card {
+            background: linear-gradient(145deg, rgba(20, 20, 38, 0.9), rgba(10, 10, 22, 0.95));
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-left: 3px solid var(--primary);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .addon-card:hover {
+            transform: translateY(-6px);
+            border-left-color: var(--accent);
+            border-color: rgba(255, 45, 149, 0.35);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 25px rgba(255, 45, 149, 0.15);
+        }
+
+        .addon-img-wrap {
+            height: 195px;
+            position: relative;
+            background: #060610;
+            overflow: hidden;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .addon-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .addon-card:hover .addon-img-wrap img {
+            transform: scale(1.06);
+        }
+
+        .addon-zoom-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(3, 3, 10, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(2px);
+        }
+
+        .addon-img-wrap:hover .addon-zoom-overlay,
+        .addon-featured-img-wrap:hover .addon-zoom-overlay {
+            opacity: 1;
+        }
+
+        .addon-zoom-overlay i {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .addon-card-body {
+            padding: 22px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .addon-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.75rem;
+            padding: 3px 9px;
+            border-radius: 6px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .tag i {
+            color: var(--primary);
+            font-size: 0.72rem;
+        }
+
+        .tag-multilang {
+            background: rgba(168, 85, 247, 0.15);
+            border-color: rgba(168, 85, 247, 0.35);
+            color: #d8b4fe;
+        }
+
+        .tag-multilang i {
+            color: #c084fc;
+        }
+
+        /* RETRO RA BANNER (Stylized visual card) */
+        .retro-ra-banner {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #161126 0%, #261735 50%, #121832 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .ra-trophy-icon {
+            font-size: 3.4rem;
+            color: var(--gold);
+            text-shadow: 0 0 25px var(--gold-glow);
+            animation: pulseGlow 3s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            from { transform: scale(1); }
+            to { transform: scale(1.08); }
+        }
+
+        .ra-banner-title {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.15rem;
+            letter-spacing: 0.5px;
+        }
+
+        .ra-banner-sub {
+            color: var(--primary);
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        /* LIGHTBOX MODAL */
+        .addon-modal {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(3, 3, 10, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .addon-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-inner {
+            position: relative;
+            max-width: 92vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: modalZoom 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalZoom {
+            from { transform: scale(0.92); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-inner img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 245, 212, 0.45);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), 0 0 35px rgba(0, 245, 212, 0.25);
+            object-fit: contain;
+        }
+
+        .modal-caption {
+            margin-top: 14px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -42px;
+            right: 0;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 2.2rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--accent);
+            transform: scale(1.15);
+        }
+
+        /* DOCS HUB GRID */
+        .docs-hub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 24px;
+            margin-bottom: 45px;
+        }
+
+        .doc-card {
+            background: linear-gradient(160deg, rgba(22, 22, 44, 0.85) 0%, rgba(12, 12, 26, 0.92) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .doc-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .card-wiki { border-top: 3px solid #a855f7; }
+        .card-wiki:hover {
+            border-color: #c084fc;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(168, 85, 247, 0.25);
+        }
+
+        .card-forum { border-top: 3px solid #ffcc00; }
+        .card-forum:hover {
+            border-color: #fde047;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 30px var(--gold-glow);
+        }
+
+        .card-guide { border-top: 3px solid var(--primary); }
+        .card-guide:hover {
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 30px var(--primary-glow);
+        }
+
+        .doc-icon {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .card-wiki .doc-icon { color: #c084fc; }
+        .card-forum .doc-icon { color: #ffcc00; }
+        .card-guide .doc-icon { color: var(--primary); }
+
+        .doc-card h3 {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .doc-card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .doc-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 22px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .doc-btn-wiki {
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            color: #e9d5ff;
+        }
+        .doc-btn-wiki:hover {
+            background: #a855f7;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+        }
+
+        .doc-btn-forum {
+            background: rgba(255, 204, 0, 0.15);
+            border: 1px solid rgba(255, 204, 0, 0.4);
+            color: #fef08a;
+        }
+        .doc-btn-forum:hover {
+            background: #ffcc00;
+            color: #030308;
+            box-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        .doc-btn-guide {
+            background: rgba(0, 245, 212, 0.15);
+            border: 1px solid rgba(0, 245, 212, 0.4);
+            color: #a7f3d0;
+        }
+        .doc-btn-guide:hover {
+            background: var(--primary);
+            color: #030308;
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        /* VIDEO BOX */
+        .video-box {
+            background: linear-gradient(135deg, rgba(16, 16, 32, 0.92) 0%, rgba(8, 8, 18, 0.96) 100%);
+            border: 1px solid rgba(0, 245, 212, 0.25);
+            border-radius: var(--radius-lg);
+            padding: 35px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--radius-md);
+            box-shadow: 0 15px 40px rgba(0, 245, 212, 0.25);
+            border: 1px solid rgba(0, 245, 212, 0.35);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* COMPARISON TABLE */
+        .table-container {
+            overflow-x: auto;
+            border-radius: var(--radius-md);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(14, 14, 28, 0.75);
+            backdrop-filter: blur(12px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        thead tr {
+            background: linear-gradient(90deg, rgba(0, 245, 212, 0.15), rgba(255, 45, 149, 0.12));
+        }
+
+        th {
+            padding: 20px 16px;
+            text-align: left;
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid rgba(0, 245, 212, 0.2);
+        }
+
+        th.col-highlight {
+            background: rgba(0, 245, 212, 0.22);
+            color: #000;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        td {
+            padding: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #cbd5e1;
+        }
+
+        td.col-highlight {
+            background: rgba(0, 245, 212, 0.08);
+            font-weight: 600;
+            text-align: center;
+            color: #fff;
+            border-left: 1px solid rgba(0, 245, 212, 0.2);
+            border-right: 1px solid rgba(0, 245, 212, 0.2);
+        }
+
+        tbody tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        tbody tr:hover td.col-highlight {
+            background: rgba(0, 245, 212, 0.14);
+        }
+
+        /* COMMUNITY BOX */
+        .community-box {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.12) 0%, rgba(0, 245, 212, 0.08) 50%, rgba(255, 45, 149, 0.1) 100%);
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            border-radius: var(--radius-lg);
+            padding: 50px 30px;
+            text-align: center;
+            margin: 60px auto 0;
+            max-width: 1000px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .community-box h3 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 14px;
+            font-weight: 800;
+        }
+
+        .community-box p {
+            color: #cbd5e1;
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin: 0 auto 30px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: rgba(4, 4, 10, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 40px 24px;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        #legal {
+            background: #030308;
+            padding: 60px 24px 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .legal-box {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            background: rgba(14, 14, 26, 0.9);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 45, 149, 0.25);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .legal-section {
+            margin-bottom: 24px;
+        }
+
+        .legal-section:not(:last-child) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 20px;
+        }
+
+        .legal-section h3 {
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legal-section p {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(18, 18, 36, 0.85);
+            border: 1px solid rgba(0, 245, 212, 0.4);
+            color: var(--primary);
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary);
+            color: #000;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px var(--primary-glow);
+        }
+
+        @media (max-width: 1024px) {
+            .video-box { grid-template-columns: 1fr; }
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .large, .wide, .tall { grid-column: span 2; grid-row: span 1; }
+            .addon-featured-inner { grid-template-columns: 1fr; }
+            .addon-featured-img-wrap { height: 240px; }
+        }
+
+        @media (max-width: 900px) {
+            .mobile-toggle { display: block; }
+            
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(8, 8, 18, 0.98);
+                backdrop-filter: blur(25px);
+                flex-direction: column;
+                padding: 20px;
+                gap: 12px;
+                border-bottom: 1px solid rgba(0, 245, 212, 0.2);
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+                display: none;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu a {
+                width: 100%;
+                justify-content: center;
+                padding: 12px;
+                font-size: 0.95rem;
+            }
+
+            .btn-group { flex-direction: column; width: 100%; max-width: 380px; }
+            .btn { width: 100%; }
+        }
+
+        @media (max-width: 650px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .large, .wide, .tall { grid-column: span 1; }
+            .speed-highlight { grid-template-columns: 1fr; text-align: center; }
+            .speed-highlight-content h3 { justify-content: center; }
+            .speed-highlight { padding: 25px 20px; }
+            .speed-stat { font-size: 2.6rem; }
+            h2 { font-size: 2rem; }
+            .video-box { padding: 20px; }
+            .addon-featured-card { padding: 20px; }
+            .addons-grid { grid-template-columns: 1fr; }
+            .addons-multilang-bar { font-size: 0.85rem; padding: 8px 16px; flex-direction: column; text-align: center; gap: 6px; }
+            .release-note-banner { padding: 14px 16px; margin: 18px 10px 22px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+    <div class="nav-container">
+        <a href="#hero" class="nav-brand">
+            <img src="assets/retrofevlc-logo.png" alt="RetroFeVLC">
+            <span>RetroFeVLC</span>
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#hero" data-key="nav-home">Home</a></li>
+            <li><a href="#about" data-key="nav-about">About</a></li>
+            <li><a href="#whatsnew" data-key="nav-whatsnew">Updates</a></li>
+            <li><a href="#quickstart" data-key="nav-quickstart">Guide & Docs</a></li>
+            <li><a href="#addons" data-key="nav-addons">Addons</a></li>
+            <li><a href="#comparison" data-key="nav-comparison">Comparison</a></li>
+            <li><a href="https://retrofevlc.infy.uk/" target="_blank" class="nav-link-wiki" data-key="nav-wiki"><i class="fas fa-book-open"></i> Wiki</a></li>
+            <li><a href="https://retrofevlc.infy.uk/forum" target="_blank" class="nav-link-forum" data-key="nav-forum"><i class="fas fa-comments"></i> Forum</a></li>
+        </ul>
+
+        <div class="nav-right">
+            <div class="lang-select-wrapper">
+                <select id="langSelect" onchange="loadLanguage(this.value)" aria-label="Select Language"></select>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<header class="hero-slider" id="hero">
+    <div class="slider-container" id="slider">
+        <div class="slide" style="background-image: url('assets/1.jpg');"></div>
+        <div class="slide" style="background-image: url('assets/2.png');"></div>
+        <div class="slide" style="background-image: url('assets/3.jpg');"></div>
+        <div class="slide" style="background-image: url('assets/4.jpg');"></div>
+        <div class="slide" style="background-image: url('assets/5.jpg');"></div>
+        <div class="slide" style="background-image: url('assets/6.jpg');"></div>
+    </div>
+    
+    <div class="hero-overlay">
+        <div class="logo-center">
+            <img src="assets/retrofevlc-logo.png" alt="RetroFeVLC - Retro Gaming Frontend with VLC Engine">
+            <h1 class="hero-main-title"><span class="highlight-text">Retro Gaming Frontend</span> &bull; The VLC-Powered Evolution of RetroFE</h1>
+        </div>
+        
+        <p class="subtitle" id="subtitle" data-key="subtitle">
+            The powerful evolution of RetroFE — now with VLC, smart addons & next-level customization
+        </p>
+        
+        <div class="speed-badge">
+            <i class="fas fa-bolt"></i>
+            <span data-key="speed-badge">Fastest Frontend — 1 &rarr; 2350 games in 1 minute</span>
+        </div>
+        
+        <div class="btn-group">
+            <a href="https://www.mediafire.com/file/1286l6rtdz23tde/RetroFeVLC_Full_ROMLESS_V3.0.44.rar/file" target="_blank" class="btn btn-download" data-key="btn-download">
+                <i class="fas fa-download"></i> Download V3.0.44 (ROMLESS)
+            </a>
+            <a href="https://retrofevlc.infy.uk/" target="_blank" class="btn btn-wiki" data-key="btn-wiki">
+                <i class="fas fa-book-open"></i> Official Wiki
+            </a>
+            <a href="https://retrofevlc.infy.uk/forum" target="_blank" class="btn btn-forum" data-key="btn-forum">
+                <i class="fas fa-comments"></i> Community Forum
+            </a>
+            <a href="https://discord.gg/2aYRHdUrVf" target="_blank" class="btn btn-discord" data-key="btn-discord">
+                <i class="fab fa-discord"></i> Join Discord
+            </a>
+        </div>
+
+        <div class="release-note-banner">
+            <div class="release-note-header">
+                <span class="release-badge badge-v3" data-key="release-note-badge1"><i class="fas fa-box-open"></i> V3.0.44 ROMLESS Package</span>
+                <span class="release-badge badge-layout" data-key="release-note-badge2"><i class="fas fa-palette"></i> Phoenix &amp; Phoenix-Lite Included</span>
+            </div>
+            <div class="release-note-text" data-key="release-note-text">
+                Official <strong>ROMLESS</strong> package. Includes <strong>Phoenix</strong> (structure: Main) and <strong>Phoenix-Lite</strong> (structure: Main2). Easily test Phoenix-Lite inside <strong>Settings Editor</strong>: change both options from Main to Main2 and layout name to Phoenix-Lite.<div class="release-support"><i class="fas fa-life-ring"></i> Questions or difficulties? Join our <a href="https://discord.gg/2aYRHdUrVf" target="_blank"><i class="fab fa-discord"></i> Discord</a> or visit our <a href="https://retrofevlc.infy.uk/forum" target="_blank"><i class="fas fa-comments"></i> Community Forum</a>!</div>
+            </div>
+        </div>
+
+        <div class="hero-badges">
+            <div class="badge-chip" data-key="badge-speed"><i class="fas fa-bolt" style="color:var(--gold); margin-right:5px;"></i> Ultra Fast (1&rarr;2350 in 60s)</div>
+            <div class="badge-chip" data-key="badge-vlc"><i class="fas fa-film" style="color:var(--primary); margin-right:5px;"></i> 4K VLC Engine</div>
+            <div class="badge-chip" data-key="badge-zeroconfig"><i class="fas fa-gamepad" style="color:var(--accent); margin-right:5px;"></i> Zero-Config Gamepads</div>
+            <div class="badge-chip" data-key="badge-kiosk"><i class="fas fa-desktop" style="color:var(--blue); margin-right:5px;"></i> Kiosk Console Mode</div>
+            <div class="badge-chip" data-key="badge-free"><i class="fas fa-gem" style="color:var(--accent2); margin-right:5px;"></i> 100% Free & Open Source</div>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+ 
+<!-- ABOUT SECTION -->
+<section id="about">
+    <h2 data-key="about-title">Why RetroFeVLC?</h2>
+    
+    <div class="speed-highlight">
+        <div class="speed-highlight-content">
+            <h3><i class="fas fa-rocket"></i> <span data-key="speed-title">Built for Blazing-Fast Performance</span></h3>
+            <p data-key="speed-desc">RetroFeVLC delivers unmatched performance. It scrolls from game #1 to game #2350 in only 1 minute — pure speed without compromises. No other frontend comes close.</p>
+            <a href="https://youtu.be/uOE82OXQe7c" target="_blank" class="btn-speed">
+                <i class="fas fa-play-circle"></i>
+                <span data-key="btn-speed-video">Watch the Speed Demo</span>
+            </a>
+        </div>
+        <div class="speed-stat-wrapper">
+            <div class="speed-stat">1 &rarr; 2350<span data-key="speed-stat-label">games in 60 seconds</span></div>
+        </div>
+    </div>
+
+    <div class="bento-grid">
+        <div class="bento-item large">
+            <h3><i class="fas fa-film"></i> <span data-key="bento-whatis-h">The VLC Engine Revolution</span></h3>
+            <p data-key="bento-whatis-p1">Forget the limitations of old frameworks. RetroFeVLC is a true next-generation evolution that replaces GStreamer with the powerful <strong>VLC Media Library</strong>. This delivers flawless <strong>4K Pre-Scale</strong> rendering and a rock-solid, leak-free architecture built for arcade stability.</p>
+            <p style="margin-top:15px;" data-key="bento-whatis-p2">Whether you have 500 or 50,000+ games, enjoy ultra-smooth navigation and superior video playback that transforms your collection into a premium cinematic experience.</p>
+        </div>
+        
+        <div class="bento-item tall" style="border-color: rgba(255, 45, 149, 0.45);">
+            <h3 style="color:var(--accent)"><i class="fas fa-microchip"></i> <span data-key="bento-start-h">The Start.exe Ecosystem</span></h3>
+            <p data-key="bento-start-p1">Stop struggling with text files. Our custom <strong>Start.exe</strong> serves as the central brain, giving you a clean, powerful GUI to control your entire setup instantly.</p>
+            <ul class="bento-list">
+                <li><i class="fas fa-gamepad"></i> <strong data-key="bento-list-1">Zero-Config Setup: Intelligent gamepad integration.</strong></li>
+                <li><i class="fas fa-tv"></i> <strong data-key="bento-list-2">Marquee Mastery: Native support for secondary monitors.</strong></li>
+                <li><i class="fas fa-shield-alt"></i> <strong data-key="bento-list-3">Kiosk Mode: Transform Windows into a dedicated console.</strong></li>
+                <li><i class="fas fa-search"></i> <strong data-key="bento-list-4">Ultra-Fast Search: Find any game instantly by title, system or genre via controller.</strong></li>
+            </ul>
+        </div>
+        
+        <div class="bento-item">
+            <h3><i class="fas fa-cube"></i> <span data-key="bento-speed-h">Breathtaking Visuals</span></h3>
+            <p data-key="bento-speed-p">Push boundaries with <strong>3D Effects & Warp</strong> perspective. Thanks to <strong>Per-Game Layouts</strong>, every title can have its own unique, handcrafted visual identity.</p>
+        </div>
+        
+        <div class="bento-item wide">
+            <h3><i class="fas fa-trophy"></i> <span data-key="bento-rank-h">The Elite Choice</span></h3>
+            <p data-key="bento-rank-p">Ranked among the top 5 retro gaming frontends in 2026. RetroFeVLC combines lightweight performance with premium features and complete creative freedom — without the bloat.</p>
+        </div>
+        
+        <div class="bento-item wide" style="border-color: rgba(0, 245, 212, 0.4);">
+            <h3><i class="fas fa-music"></i> <span data-key="bento-jukebox-h">Full Jukebox Mode</span></h3>
+            <p data-key="bento-jukebox-p">RetroFeVLC can also be used as a complete Jukebox. Save custom lists, recall them instantly, control volume, enable <strong>repeat</strong>, <strong>repeat track</strong> and <strong>shuffle</strong>. Create up to <strong>32 individual lists per collection</strong>.</p>
+        </div>
+        
+        <div class="bento-item wide" style="border-color: rgba(255, 45, 149, 0.4);">
+            <h3 style="color:var(--accent)"><i class="fas fa-sort-amount-down"></i> <span data-key="bento-sort-h">One-Click Organization</span></h3>
+            <p data-key="bento-sort-p">Organize your view instantly by clicking. Sort by <strong>Year, Manufacturer, Genre, Metadata</strong> and more — no menus, no configuration files needed.</p>
+        </div>
+        
+        <div class="bento-item wide" style="border-color: rgba(255, 170, 0, 0.45);">
+            <h3 style="color:#ffaa00"><i class="fas fa-tags"></i> <span data-key="bento-meta-h">Rich Metadata Support</span></h3>
+            <p data-key="bento-meta-p">New metadata fields: <strong>Artist</strong>, <strong>Album</strong>, <strong>Track Number</strong> and <strong>Disc Number</strong>. Perfect for music and multi-disc collections.</p>
+        </div>
+        
+        <div class="bento-item wide" style="border-color: rgba(56, 189, 248, 0.45);">
+            <h3 style="color:#38bdf8"><i class="fas fa-th-large"></i> <span data-key="bento-layout-h">Smart Layout Engine</span></h3>
+            <p data-key="bento-layout-p">Automatic text resizing, multi-grid support, independent configuration per display, and background layer (layer 20) when launching smaller windows. Animations on secondary displays when no primary is active.</p>
+        </div>
+    </div>
+</section>
+
+<!-- UPDATES SECTION -->
+<section id="whatsnew" style="margin-top: 100px;">
+    <h2 data-key="whatsnew-title">Latest Updates</h2>
+    <div class="grid-simple">
+        <div class="card" data-key="upd-1"><i class="fas fa-sliders-h" style="color:var(--primary); margin-right:8px;"></i> Menu Options – Settings, Controls, Layout</div>
+        <div class="card" data-key="upd-2"><i class="fas fa-tv" style="color:var(--primary); margin-right:8px;"></i> Full 4K Support + Scale Quality Options</div>
+        <div class="card" data-key="upd-3"><i class="fas fa-images" style="color:var(--primary); margin-right:8px;"></i> Animated Images (GIF + WebP support)</div>
+        <div class="card" data-key="upd-4"><i class="fas fa-list-ul" style="color:var(--primary); margin-right:8px;"></i> Dynamic Playlists with real-time updates</div>
+        <div class="card" data-key="upd-5"><i class="fas fa-th" style="color:var(--primary); margin-right:8px;"></i> New Grid menu option & include files</div>
+        <div class="card" data-key="upd-6"><i class="fas fa-chart-bar" style="color:var(--primary); margin-right:8px;"></i> GameInfo stats (play count, most played)</div>
+        <div class="card" data-key="upd-7"><i class="fas fa-tachometer-alt" style="color:var(--gold); margin-right:8px;"></i> World-class scrolling speed (1&rarr;2350 in 60s)</div>
+        <div class="card" data-key="upd-8"><i class="fas fa-music" style="color:var(--accent); margin-right:8px;"></i> Jukebox Mode – lists, volume, repeat & shuffle</div>
+        <div class="card" data-key="upd-9"><i class="fas fa-filter" style="color:var(--primary); margin-right:8px;"></i> One-click sort by Year / Manufacturer / Genre</div>
+        <div class="card" data-key="upd-10"><i class="fas fa-compact-disc" style="color:var(--blue); margin-right:8px;"></i> New metadata: Artist, Album, Track, Disc</div>
+        <div class="card" data-key="upd-11"><i class="fas fa-text-width" style="color:var(--accent2); margin-right:8px;"></i> Layout text auto-resize + Multi-grid support</div>
+        <div class="card" data-key="upd-12"><i class="fas fa-desktop" style="color:var(--primary); margin-right:8px;"></i> Layer 20 background on launch + per-display config</div>
+    </div>
+</section>
+
+<!-- QUICK START & DOCUMENTATION HUB -->
+<section id="quickstart" style="margin-top: 100px;">
+    <h2 data-key="quickstart-title">Documentation & Guides</h2>
+    
+    <div class="docs-hub-grid">
+        <!-- Wiki Card -->
+        <div class="doc-card card-wiki">
+            <div>
+                <i class="fas fa-book-open doc-icon"></i>
+                <h3 data-key="wiki-card-title">Official Online Wiki</h3>
+                <p data-key="wiki-card-desc">Comprehensive online documentation, XML layout tutorial, configuration guides, architecture deep-dive, and troubleshooting steps.</p>
+            </div>
+            <a href="https://retrofevlc.infy.uk/" target="_blank" class="doc-btn doc-btn-wiki">
+                <i class="fas fa-external-link-alt"></i> <span data-key="btn-wiki-visit">Explore Wiki</span>
+            </a>
+        </div>
+
+        <!-- Forum Card -->
+        <div class="doc-card card-forum">
+            <div>
+                <i class="fas fa-comments doc-icon"></i>
+                <h3 data-key="forum-card-title">Official Community Forum</h3>
+                <p data-key="forum-card-desc">Connect with fellow retro gamers! Ask questions, share custom layouts & themes, post feature requests, and get official support.</p>
+            </div>
+            <a href="https://retrofevlc.infy.uk/forum" target="_blank" class="doc-btn doc-btn-forum">
+                <i class="fas fa-users"></i> <span data-key="btn-forum-visit">Visit Forum</span>
+            </a>
+        </div>
+
+        <!-- PDF Guide Card -->
+        <div class="doc-card card-guide">
+            <div>
+                <i class="fas fa-file-pdf doc-icon"></i>
+                <h3 data-key="guide-title">Offline PDF User Guide</h3>
+                <p data-key="guide-desc">RetroFeVLC Comprehensive User Guide — 35 pages. Complete manual covering Quick Start, Directory Structure, Editors, Collections and advanced features.</p>
+            </div>
+            <a id="userGuideLink" target="_blank" class="doc-btn doc-btn-guide">
+                <i class="fas fa-download"></i> <span data-key="btn-guide-pdf">Download PDF Guide</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Video Showcase Box -->
+    <div class="video-box">
+        <div>
+            <h3 data-key="video-title" style="color: var(--primary); font-size: 1.6rem; margin-bottom: 14px; font-weight: 800;">
+                <i class="fas fa-video"></i> Official Video Tutorial
+            </h3>
+            <p data-key="video-desc" style="margin-bottom: 25px; color: #cbd5e1; font-size: 1.05rem; line-height: 1.6;">
+                Watch the complete step-by-step setup walkthrough and explore the interface in action.
+            </p>
+            <div style="display:flex; gap:14px; flex-wrap:wrap;">
+                <a href="https://retrofevlc.infy.uk/" target="_blank" class="btn btn-wiki" style="padding:10px 20px; font-size:0.9rem;">
+                    <i class="fas fa-book-open"></i> <span data-key="nav-wiki">Wiki</span>
+                </a>
+                <a href="https://retrofevlc.infy.uk/forum" target="_blank" class="btn btn-forum" style="padding:10px 20px; font-size:0.9rem;">
+                    <i class="fas fa-comments"></i> <span data-key="nav-forum">Forum</span>
+                </a>
+            </div>
+        </div>
+        <div>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/FUBS3rJ8uuA" title="RetroFeVLC Video Tutorial" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ESSENTIAL ADDONS & TOOLS SHOWCASE -->
+<section id="addons" style="margin-top: 100px;">
+    <h2 data-key="addons-title">Essential Addons</h2>
+    <p style="text-align: center; max-width: 900px; margin: 0 auto 20px auto; color: #cbd5e1; font-size: 1.1rem;" data-key="addons-subtitle">
+        Powerful tools that work together to make RetroFeVLC faster, smarter, and easier to use.
+    </p>
+
+    <!-- Multi-Language Support Banner -->
+    <div style="text-align: center;">
+        <div class="addons-multilang-bar">
+            <i class="fas fa-globe"></i>
+            <span data-key="addons-multilang">Native Multi-Language Support: EN, PT, ES, FR, IT, DE, GR, RU, ZH across all addons</span>
+        </div>
+    </div>
+  
+    <div class="addons-container">
+        
+        <!-- FEATURED FLAGSHIP ADDON: RetroFeVLCSkraper -->
+        <div class="addon-featured-card">
+            <div class="addon-featured-badge">
+                <i class="fas fa-star"></i> NEW 2026 FLAGSHIP ADDON
+            </div>
+            <div class="addon-featured-inner">
+                <div class="addon-featured-img-wrap" onclick="openLightbox('AddonsImages/RetroFeVLCSkraper.png', 'RetroFeVLCSkraper — Universal Artwork Scraper')">
+                    <img src="AddonsImages/RetroFeVLCSkraper.png" alt="RetroFeVLCSkraper Artwork Scraper" loading="lazy">
+                    <div class="addon-zoom-overlay">
+                        <i class="fas fa-search-plus"></i> <span>Click to expand screenshot</span>
+                    </div>
+                </div>
+                <div class="addon-featured-info">
+                    <div class="addon-featured-header">
+                        <div class="addon-featured-icon">
+                            <i class="fas fa-photo-film"></i>
+                        </div>
+                        <div>
+                            <h3>RetroFeVLCSkraper</h3>
+                            <span class="addon-featured-sub">Universal Multi-Service Artwork Scraper</span>
+                        </div>
+                    </div>
+                    <div class="addon-desc" data-key="ad-skraper">
+                        <strong>🖼️ RetroFeVLCSkraper</strong><br>
+                        Comprehensive artwork scraper integrating ScreenScraper.fr, SteamGridDB, EmuMovies, TheGamesDB, IGDB & Libretro CDN. Fast multi-source downloads for covers, marquees, wheels & metadata.
+                    </div>
+                    <div class="addon-services-title">
+                        <i class="fas fa-plug"></i> Integrated Scraping Services & Localization:
+                    </div>
+                    <div class="addon-services-list">
+                        <span class="service-pill"><i class="fas fa-globe"></i> ScreenScraper.fr</span>
+                        <span class="service-pill"><i class="fab fa-steam"></i> SteamGridDB</span>
+                        <span class="service-pill"><i class="fas fa-film"></i> EmuMovies</span>
+                        <span class="service-pill"><i class="fas fa-database"></i> TheGamesDB</span>
+                        <span class="service-pill"><i class="fas fa-layer-group"></i> IGDB</span>
+                        <span class="service-pill"><i class="fas fa-server"></i> Libretro CDN</span>
+                        <span class="service-pill" style="border-color: rgba(255, 45, 149, 0.5); background: rgba(255, 45, 149, 0.15); color: #fff;">
+                            <i class="fas fa-language" style="color:var(--accent);"></i> Multi-Lang (9 Languages)
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ADDONS GRID: 10 Complementary Tools -->
+        <div class="addons-grid">
+            
+            <!-- 1. Start.exe -->
+            <div class="addon-card">
+                <div class="addon-img-wrap" onclick="openLightbox('AddonsImages/LauncherMenu.png', 'Start.exe (Starter) — Launcher Menu')">
+                    <img src="AddonsImages/LauncherMenu.png" alt="Start.exe Launcher Menu" loading="lazy">
+                    <div class="addon-zoom-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="addon-card-body">
+                    <div class="addon-desc" data-key="ad-start">
+                        <strong>🚀 Start.exe (Starter)</strong><br>
+                        The brain of the system. Auto-launches everything, syncs playlists, manages gamepads, and provides a powerful system tray menu.
+                    </div>
+                    <div class="addon-tags">
+                        <span class="tag"><i class="fas fa-gamepad"></i> Gamepads</span>
+                        <span class="tag"><i class="fas fa-sync"></i> Autostart</span>
+                        <span class="tag"><i class="fas fa-cogs"></i> Tray Menu</span>
+                        <span class="tag tag-multilang"><i class="fas fa-language"></i> Multi-Lang</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Search F11 -->
+            <div class="addon-card">
+                <div class="addon-img-wrap" onclick="openLightbox('AddonsImages/SearchUI.png', 'Search (F11) — Ultra-Fast Search UI')">
+                    <img src="AddonsImages/SearchUI.png" alt="Search UI Screenshot" loading="lazy">
+                    <div class="addon-zoom-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="addon-card-body">
+                    <div class="addon-desc" data-key="ad-search">
+                        <strong>🔍 Search (F11)</strong><br>
+                        Lightning-fast search by title, system or game genre across your full library. Fully gamepad friendly.
+                    </div>
+                    <div class="addon-tags">
+                        <span class="tag"><i class="fas fa-bolt"></i> Instant F11</span>
+                        <span class="tag"><i class="fas fa-tags"></i> Game Genres</span>
+                        <span class="tag"><i class="fas fa-gamepad"></i> Controller</span>
+                        <span class="tag tag-multilang"><i class="fas fa-language"></i> Multi-Lang</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. MenuManager -->
+            <div class="addon-card">
+                <div class="addon-img-wrap" onclick="openLightbox('AddonsImages/MenuManager.png', 'MenuManager — Drag & Drop Menu Editor')">
+                    <img src="AddonsImages/MenuManager.png" alt="MenuManager Screenshot" loading="lazy">
+                    <div class="addon-zoom-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="addon-card-body">
+                    <div class="addon-desc" data-key="ad-menumanager">
+                        <strong>📋 MenuManager</strong><br>
+                        Visual drag-and-drop menu editor. Create, reorder and organize categories easily.
+                    </div>
+                    <div class="addon-tags">
+                        <span class="tag"><i class="fas fa-arrows-alt"></i> Drag & Drop</span>
+                        <span class="tag"><i class="fas fa-list"></i> Categories</span>
+                        <span class="tag"><i class="fas fa-edit"></i> Visual GUI</span>
+                        <span class="tag tag-multilang"><i class="fas fa-language"></i> Multi-Lang</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Metadata ReGenerator -->
+            <div class="addon-card">
+                <div class="addon-img-wrap" onclick="openLightbox('AddonsImages/MetadataRe-Generator.png', 'Metadata ReGenerator — Hyperlist Optimizer')">
+                    <img src="AddonsImages/MetadataRe-Generator.png" alt="Metadata ReGenerator Screenshot" loading="lazy">
+                    <div class="addon-zoom-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="addon-card-body">
+                    <div class="addon-desc" data-key="ad-metadata">
+                        <strong>🔄 Metadata ReGenerator</strong><br>
+                        Creates optimized smaller hyperlists and shows accurate game counts.
+                    </div>
+                    <div class="addon-tags">
+                        <span class="tag"><i class="fas fa-compress"></i> Optimization</span>
+                        <span class="tag"><i class="fas fa-calculator"></i> Game Counts</span>
+                        <span class="tag"><i class="fas fa-file-code"></i> XML Hyperlist</span>
+                        <span class="tag tag-multilang"><i class="fas fa-language"></i> Multi-Lang</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. GenreFixer -->
+            <div class="addon-card">
+                <div class="addon-img-wrap" onclick="openLightbox('AddonsImages/GenreFixer.png', 'GenreFixer — AI Genre Tag Correction')">
+                    <img src="AddonsImages/GenreFixer.png" alt="GenreFixer Screenshot" loading="lazy">
+                    <div class="addon-zoom-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="addon-card-body">
+                    <div class="addon-desc" data-key="ad-genrefixer">
+                        <strong>🎨 GenreFixer</strong><br>
+                        AI-powered automatic genre correction across your entire collection.
+                    </div>
+                    <div class="addon-tags">
+                        <span class="tag"><i class="fas fa-robot"></i> AI Powered</span>
+                        <span class="tag"><i class="fas fa-tags"></i> Genre Fix</span>
+                        <span class="tag"><i class="fas fa-check-double"></i> Batch Mode</span>
+                        <span class="tag tag-multilang"><i class="fas fa-language"></i> Multi-Lang</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. KioskMode -->
+            <div class="addon-card">
+                <div class="addon-img-wrap" onclick="openLightbox('AddonsImages/RetroFeVLCKioskMode.png', 'KioskMode — Arcade Console Lock')">
+                    <img src="AddonsImages/RetroFeVLCKioskMode.png" alt="KioskMode Screenshot" loading="lazy">
+                    <div class="addon-zoom-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="addon-card-body">
+                    <div class="addon-desc" data-key="ad-kioskmode">
+                        <strong>🛡️ KioskMode</strong><br>
+                        Locks Windows into a dedicated console with auto-relaunch and password protection.
+                    </div>
+                    <div class="addon-tags">
+                        <span class="tag"><i class="fas fa-lock"></i> Arcade Lock</span>
+                        <span class="tag"><i class="fas fa-key"></i> Password</span>
+                        <span class="tag"><i class="fas fa-redo"></i> Auto-Relaunch</span>
+                        <span class="tag tag-multilang"><i class="fas fa-language"></i> Multi-Lang</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Story Translator -->
+            <div class="addon-card">
+                <div class="addon-img-wrap" onclick="openLightbox('AddonsImages/StoryTranslator.png', 'Story Translator — AI Story & Synopsis Translation')">
+                    <img src="AddonsImages/StoryTranslator.png" alt="Story Translator Screenshot" loading="lazy">
+                    <div class="addon-zoom-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="addon-card-body">
+                    <div class="addon-desc" data-key="ad-story">
+                        <strong>🌐 Story Translator</strong><br>
+                        AI translation of game stories into multiple languages.
+                    </div>
+                    <div class="addon-tags">
+                        <span class="tag"><i class="fas fa-language"></i> Multi-Lang</span>
+                        <span class="tag"><i class="fas fa-brain"></i> AI Engine</span>
+                        <span class="tag"><i class="fas fa-book"></i> Synopsis</span>
+                        <span class="tag tag-multilang"><i class="fas fa-globe"></i> Global</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Layout Editor -->
+            <div class="addon-card">
+                <div class="addon-img-wrap" onclick="openLightbox('AddonsImages/RetroFeVLCLayoutEdito.png', 'Layout Editor — Visual Theme Editor with Real-Time Preview')">
+                    <img src="AddonsImages/RetroFeVLCLayoutEdito.png" alt="Layout Editor Screenshot" loading="lazy">
+                    <div class="addon-zoom-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="addon-card-body">
+                    <div class="addon-desc" data-key="ad-layouteditor">
+                        <strong>🖌️ Layout Editor</strong><br>
+                        Visual theme editor with real-time graphical preview, making it easy to design, preview, and adjust layouts without launching RetroFeVLC.
+                    </div>
+                    <div class="addon-tags">
+                        <span class="tag"><i class="fas fa-eye"></i> Graphical Preview</span>
+                        <span class="tag"><i class="fas fa-paint-brush"></i> Theme Design</span>
+                        <span class="tag"><i class="fas fa-desktop"></i> Live Edit</span>
+                        <span class="tag tag-multilang"><i class="fas fa-language"></i> Multi-Lang</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9. Layout Diagram Tree -->
+            <div class="addon-card">
+                <div class="addon-img-wrap" onclick="openLightbox('AddonsImages/LayoutDiagramTree.png', 'Layout Diagram Tree — XML Dependency Diagnostic & Compiler')">
+                    <img src="AddonsImages/LayoutDiagramTree.png" alt="Layout Diagram Tree Screenshot" loading="lazy">
+                    <div class="addon-zoom-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="addon-card-body">
+                    <div class="addon-desc" data-key="ad-diagramtree">
+                        <strong>🌳 Layout Diagram Tree</strong><br>
+                        Diagnostic and compilation tool that maps modular XML theme dependencies (&lt;include&gt;), tracks variable overrides, and consolidates all XML files into an optimized temp.xml.
+                    </div>
+                    <div class="addon-tags">
+                        <span class="tag"><i class="fas fa-sitemap"></i> MSAGL Graph</span>
+                        <span class="tag"><i class="fas fa-project-diagram"></i> XML Dependencies</span>
+                        <span class="tag"><i class="fas fa-file-code"></i> temp.xml Compiler</span>
+                        <span class="tag tag-multilang"><i class="fas fa-language"></i> Multi-Lang</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10. Marquee MonitorDuplicator -->
+            <div class="addon-card">
+                <div class="addon-img-wrap" onclick="openLightbox('AddonsImages/ScreenDuplicatorConfig.png', 'Marquee MonitorDuplicator — Multi-Screen Mirroring')">
+                    <img src="AddonsImages/ScreenDuplicatorConfig.png" alt="Screen Duplicator Screenshot" loading="lazy">
+                    <div class="addon-zoom-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="addon-card-body">
+                    <div class="addon-desc" data-key="ad-marquee">
+                        <strong>🖼️ Marquee MonitorDuplicator</strong><br>
+                        Mirrors gameplay to your marquee monitor with full control via JSON.
+                    </div>
+                    <div class="addon-tags">
+                        <span class="tag"><i class="fas fa-tv"></i> Dual Monitor</span>
+                        <span class="tag"><i class="fas fa-clone"></i> Marquee</span>
+                        <span class="tag"><i class="fas fa-sliders-h"></i> JSON Config</span>
+                        <span class="tag tag-multilang"><i class="fas fa-language"></i> Multi-Lang</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 11. RetroRa Sync -->
+            <div class="addon-card">
+                <div class="addon-img-wrap" onclick="openLightbox('AddonsImages/RetroRA.png', 'RetroRa Sync — RetroAchievements Integration')">
+                    <img src="AddonsImages/RetroRA.png" alt="RetroRa Sync Screenshot" loading="lazy">
+                    <div class="addon-zoom-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="addon-card-body">
+                    <div class="addon-desc" data-key="ad-retroRa">
+                        <strong>🏆 RetroRa Sync</strong><br>
+                        Syncs RetroAchievements progress into your frontend for beautiful stats.
+                    </div>
+                    <div class="addon-tags">
+                        <span class="tag"><i class="fas fa-trophy"></i> Achievements</span>
+                        <span class="tag"><i class="fas fa-chart-line"></i> Stats</span>
+                        <span class="tag"><i class="fas fa-sync-alt"></i> Live Sync</span>
+                        <span class="tag tag-multilang"><i class="fas fa-language"></i> Multi-Lang</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section id="comparison" style="margin-top: 100px;">
+    <h2 data-key="comparison-title">2026 Windows Frontend Comparison</h2>
+ 
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th data-key="comparison-feature">Feature / Capability</th>
+                    <th class="col-highlight" data-key="comparison-retrofevlc">RetroFeVLC (2026)</th>
+                    <th data-key="comparison-retrofe">RetroFE (Legacy)</th>
+                    <th data-key="comparison-retrobat">RetroBat</th>
+                    <th data-key="comparison-launchbox">LaunchBox / BigBox</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-key="comparison-cost">Cost / License</td>
+                    <td class="col-highlight" data-key="comparison-retrofevlc-cost">Free (Open Source)</td>
+                    <td data-key="comparison-retrofe-cost">Free (Open Source)</td>
+                    <td data-key="comparison-retrobat-cost">Free</td>
+                    <td data-key="comparison-launchbox-cost">Freemium ($75 Lifetime)</td>
+                </tr>
+                <tr>
+                    <td data-key="comparison-video">Video Playback Engine</td>
+                    <td class="col-highlight" data-key="comparison-retrofevlc-video">VLC Engine (4K Pre-scale)</td>
+                    <td data-key="comparison-retrofe-video">GStreamer (Legacy)</td>
+                    <td data-key="comparison-retrobat-video">FFmpeg / VLC Engine</td>
+                    <td data-key="comparison-launchbox-video">Windows Media / VLC</td>
+                </tr>
+                <tr>
+                    <td data-key="comparison-setup">Setup Style</td>
+                    <td class="col-highlight" data-key="comparison-retrofevlc-setup">Portable Plug & Play</td>
+                    <td data-key="comparison-retrofe-setup">Manual / Advanced</td>
+                    <td data-key="comparison-retrobat-setup">Auto Installer</td>
+                    <td data-key="comparison-launchbox-setup">Installer + Wizard</td>
+                </tr>
+                <tr>
+                    <td data-key="comparison-visual">Visual Customization</td>
+                    <td class="col-highlight" data-key="comparison-retrofevlc-visual">Infinite Per-Game Layouts</td>
+                    <td data-key="comparison-retrofe-visual">Basic / Custom (Manual)</td>
+                    <td data-key="comparison-retrobat-visual">Theme Presets</td>
+                    <td data-key="comparison-launchbox-visual">Advanced Themes (Big Box)</td>
+                </tr>
+                <tr>
+                    <td data-key="comparison-theme">Theme / Layout Creation</td>
+                    <td class="col-highlight" data-key="comparison-retrofevlc-theme">Visual GUI + XML Editor</td>
+                    <td data-key="comparison-retrofe-theme">XML Code / Text</td>
+                    <td data-key="comparison-retrobat-theme">EmulationStation Theme</td>
+                    <td data-key="comparison-launchbox-theme">Advanced (Premium)</td>
+                </tr>
+                <tr>
+                    <td data-key="comparison-portability">Portability (USB / External drive)</td>
+                    <td class="col-highlight" data-key="comparison-retrofevlc-portability">100% Portable (Zero Registry)</td>
+                    <td data-key="comparison-retrofe-portability">100% Portable</td>
+                    <td data-key="comparison-retrobat-portability">Portable</td>
+                    <td data-key="comparison-launchbox-portability">Partially Portable</td>
+                </tr>
+                <tr>
+                    <td data-key="comparison-config">Zero-Config Gamepads</td>
+                    <td class="col-highlight" data-key="comparison-retrofevlc-config">Yes (Auto-mapped)</td>
+                    <td data-key="comparison-retrofe-config">Manual Mapping</td>
+                    <td data-key="comparison-retrobat-config">Yes (Auto-mapped)</td>
+                    <td data-key="comparison-launchbox-config">Yes (Wizard)</td>
+                </tr>
+                <tr>
+                    <td data-key="comparison-achievements">RetroAchievements Sync</td>
+                    <td class="col-highlight" data-key="comparison-retrofevlc-achievements">Native Addon (RetroRa)</td>
+                    <td data-key="comparison-retrofe-achievements">No</td>
+                    <td data-key="comparison-retrobat-achievements">Yes (via ES)</td>
+                    <td data-key="comparison-launchbox-achievements">Yes (Big Box)</td>
+                </tr>
+                <tr>
+                    <td data-key="comparison-multilang">Multi-language UI</td>
+                    <td class="col-highlight" data-key="comparison-retrofevlc-multilang">10 Languages Built-in</td>
+                    <td data-key="comparison-retrofe-multilang">English Only</td>
+                    <td data-key="comparison-retrobat-multilang">Multi-language</td>
+                    <td data-key="comparison-launchbox-multilang">Multi-language</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <p style="text-align: center; margin-top: 30px; color: #94a3b8; font-size: 0.95rem;" data-key="comparison-subtitle">
+        RetroFeVLC delivers <strong>modern features and ease of use</strong> while keeping total flexibility — ideal for those seeking raw power without complexity.
+    </p>
+</section>
+
+<!-- COMMUNITY SECTION -->
+<section id="community">
+    <div class="community-box">
+        <h3 data-key="community-title">Join the RetroFeVLC Community</h3>
+        <p data-key="community-subtitle">
+            Get help, discover new themes, share your arcade builds, and connect with fellow creators.
+        </p>
+        <div class="btn-group" style="margin-bottom: 0;">
+            <a href="https://retrofevlc.infy.uk/" target="_blank" class="btn btn-wiki" data-key="btn-wiki">
+                <i class="fas fa-book-open"></i> Official Wiki
+            </a>
+            <a href="https://retrofevlc.infy.uk/forum" target="_blank" class="btn btn-forum" data-key="btn-forum">
+                <i class="fas fa-comments"></i> Community Forum
+            </a>
+            <a href="https://discord.gg/2aYRHdUrVf" target="_blank" class="btn btn-discord" data-key="btn-discord">
+                <i class="fab fa-discord"></i> Join Discord
+            </a>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer id="footer">
+    <div class="footer-links">
+        <a href="#hero" data-key="nav-home">Home</a>
+        <a href="#about" data-key="nav-about">About</a>
+        <a href="#whatsnew" data-key="nav-whatsnew">Updates</a>
+        <a href="#quickstart" data-key="nav-quickstart">Guide & Docs</a>
+        <a href="#addons" data-key="nav-addons">Addons</a>
+        <a href="#comparison" data-key="nav-comparison">Comparison</a>
+        <a href="https://retrofevlc.infy.uk/" target="_blank">Wiki</a>
+        <a href="https://retrofevlc.infy.uk/forum" target="_blank">Forum</a>
+        <a href="https://discord.gg/2aYRHdUrVf" target="_blank">Discord</a>
+        <a href="#legal" data-key="footer-terms">Terms</a>
+        <a href="#legal" data-key="footer-priv">Privacy</a>
+        <a href="#legal" data-key="footer-cookies">Cookies</a>
+    </div>
+    <p data-key="footer-text">RetroFeVLC &copy; 2026 &bull; An open-source evolution of the RetroFE frontend</p>
+</footer>
+
+<!-- LEGAL SECTION -->
+<section id="legal">
+    <div class="legal-box">
+        <h2 data-key="legal-title" style="margin-bottom: 25px; font-size: 1.6rem;">Legal Information & Privacy</h2>
+        
+        <div class="legal-section">
+            <h3 style="color: var(--primary);"><i class="fas fa-gavel"></i> <span data-key="legal-terms">Terms of Use</span></h3>
+            <p>RetroFeVLC is free open-source frontend software distributed under the GNU General Public License (GPL v3). This software is provided "as is" without warranty of any kind.</p>
+        </div>
+
+        <div class="legal-section">
+            <h3 style="color: var(--primary);"><i class="fas fa-user-shield"></i> <span data-key="legal-priv-h">Privacy Policy</span></h3>
+            <p data-key="legal-priv-p">We do not collect, store, or sell any personal data. Our website uses Umami Analytics, a privacy-first, cookie-free analytics tool compliant with GDPR.</p>
+        </div>
+
+        <div class="legal-section">
+            <h3 style="color: var(--primary);"><i class="fas fa-cookie-bite"></i> <span data-key="footer-cookies">Cookie Policy</span></h3>
+            <p data-key="legal-cookies">We do not use tracking or advertising cookies. The only cookie used is a local preference for your selected language.</p>
+        </div>
+
+        <div class="legal-section">
+            <h3 style="color: var(--primary);"><i class="fas fa-download"></i> <span data-key="legal-ext-h">External Downloads & Resources</span></h3>
+            <p data-key="legal-downloads">All downloads and external resources are used at your own risk. The project holds no responsibility for third-party files.</p>
+        </div>
+
+        <div class="legal-section" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+            <p data-key="legal-juris">Jurisdiction: Portuguese law applies.</p>
+            <p data-key="legal-id">Responsible Entity: RetroFeVLC Project (Lisbon, Portugal)</p>
+            <p>Contact: retrofevlc@gmail.com</p>
+        </div>
+    </div>
+</section>
+
+<!-- BACK TO TOP BUTTON -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- LIGHTBOX MODAL -->
+<div id="addonModal" class="addon-modal" onclick="closeLightbox(event)">
+    <div class="modal-inner">
+        <button class="modal-close" onclick="closeLightbox()" aria-label="Close modal">&times;</button>
+        <img id="modalImg" src="" alt="Screenshot Full View">
+        <div id="modalCaption" class="modal-caption"></div>
+    </div>
+</div>
+
+<!-- SCRIPTS -->
+<script>
+let currentSlide = 0;
+const slider = document.getElementById('slider');
+const totalSlides = 6;
+function moveSlider() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    if(slider) {
+        slider.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
+    }
+}
+setInterval(moveSlider, 5500);
+
+const langs = [
+    {code:'en', name:'English (EN)'}, 
+    {code:'pt', name:'Português (PT)'}, 
+    {code:'de', name:'Deutsch (DE)'},
+    {code:'es', name:'Español (ES)'}, 
+    {code:'fr', name:'Français (FR)'}, 
+    {code:'it', name:'Italiano (IT)'}, 
+    {code:'nl', name:'Nederlands (NL)'}, 
+    {code:'el', name:'Ελληνικά (GR)'},
+    {code:'ru', name:'Pусский (RU)'},
+    {code:'zh', name:'中文 (ZH)'}
+];
+
+const selectBox = document.getElementById('langSelect');
+langs.forEach(l => {
+    const opt = document.createElement('option');
+    opt.value = l.code;
+    opt.textContent = l.name;
+    selectBox.appendChild(opt);
+});
+
+async function loadLanguage(lang) {
+    try {
+        const response = await fetch(`translations/${lang}.json`);
+        if (!response.ok) throw new Error(`Translation not found for: ${lang}`);
+      
+        const trans = await response.json();
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            if (trans[key]) {
+                el.innerHTML = trans[key];
+            }
+        });
+        
+        const guideLink = document.getElementById('userGuideLink');
+        if (guideLink && trans['guide-pdf']) {
+            guideLink.href = trans['guide-pdf'];
+        }
+        
+        document.getElementById('langSelect').value = lang;
+        document.documentElement.lang = lang;
+        localStorage.setItem('retrofe_lang', lang);
+    } catch (e) {
+        console.error("Language load error:", e);
+        if (lang !== 'en') loadLanguage('en');
+    }
+}
+
+function detectLanguage() {
+    const saved = localStorage.getItem('retrofe_lang');
+    if (saved) return saved;
+    const browserLang = (navigator.language || 'en').toLowerCase();
+    const supported = ['en', 'de', 'el', 'nl', 'pt', 'es', 'fr', 'it', 'ru', 'zh'];
+    for (let s of supported) {
+        if (browserLang.startsWith(s)) return s;
+    }
+    return 'en';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const detected = detectLanguage();
+    loadLanguage(detected);
+});
+
+// Mobile menu toggle
+const mobileToggle = document.getElementById('mobileToggle');
+const navMenu = document.getElementById('navMenu');
+
+if (mobileToggle && navMenu) {
+    mobileToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        const icon = mobileToggle.querySelector('i');
+        if (icon) {
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+    });
+
+    navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            const icon = mobileToggle.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href.startsWith('#') && href.length > 1) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                const navHeight = document.getElementById('navbar').offsetHeight || 70;
+                window.scrollTo({
+                    top: target.offsetTop - navHeight,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    });
+});
+
+// Back to top button
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
+});
+
+backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Lightbox Modal for Screenshots
+function openLightbox(src, title) {
+    const modal = document.getElementById('addonModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalCaption = document.getElementById('modalCaption');
+    if (modal && modalImg) {
+        modalImg.src = src;
+        if (modalCaption) {
+            modalCaption.innerHTML = `<i class="fas fa-image" style="color:var(--primary)"></i> ${title}`;
+        }
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeLightbox(e) {
+    if (e && e.target && e.target.id === 'modalImg') {
+        return; // Don't close when clicking directly on the image
+    }
+    const modal = document.getElementById('addonModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeLightbox();
+    }
+});
+</script>
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "RetroFeVLC",
+    "alternateName": ["RetroFE VLC", "RetroFeVLC Frontend", "RetroFE 2026"],
+    "description": "Top 5 Retro Gaming Frontend 2026 - The fastest frontend that scrolls 1 to 2350 games in 1 minute. Powerful graphical frontend with VLC engine, Jukebox mode, rich metadata, Wiki, Forum, multi-display support, and full companion addons suite.",
+    "applicationCategory": "GameApplication",
+    "applicationSubCategory": "Retro Gaming Frontend",
+    "operatingSystem": "Windows 10, Windows 11",
+    "softwareVersion": "3.0.44",
+    "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "url": "https://retrofevlc.eu/",
+    "downloadUrl": "https://www.mediafire.com/file/1286l6rtdz23tde/RetroFeVLC_Full_ROMLESS_V3.0.44.rar/file",
+    "screenshot": "https://retrofevlc.eu/assets/1.jpg",
+    "featureList": [
+      "VLC Media Library Engine with 4K Pre-Scale",
+      "World-class scrolling speed (1 to 2350 games in 60s)",
+      "Universal Artwork Scraper (ScreenScraper, SteamGridDB, EmuMovies, TheGamesDB, IGDB, Libretro)",
+      "Zero-Config Gamepad Auto-Mapping",
+      "Full Jukebox Mode with up to 32 lists per collection",
+      "Arcade Kiosk Mode with auto-relaunch and password protection",
+      "Interactive Layout Diagram Tree and Visual Layout Editor",
+      "Native 10-Language Multi-Language Support"
+    ],
+    "author": {
+      "@type": "Organization",
+      "name": "RetroFeVLC Project",
+      "url": "https://retrofevlc.eu/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "RetroFeVLC Official Website",
+    "url": "https://retrofevlc.eu/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://retrofevlc.infy.uk/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+]
+</script>
+</body>
+</html>
