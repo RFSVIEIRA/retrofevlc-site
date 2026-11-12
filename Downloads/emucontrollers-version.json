@@ -1,0 +1,17 @@
+{
+  "version": "1.3.67",
+  "downloadUrl": "https://retrofevlc.eu/Downloads/EmuControllers_v1.3.67.zip",
+  "pageUrl": "https://retrofevlc.eu/#emucontrollers",
+  "notes": {
+    "en": "Manual Update Check now distinguishes offline/no internet from server unavailable (HTTP error) while keeping startup checks silent on offline arcade cabinets, plus multi-language improvements.",
+    "pt": "A verificação manual de atualizações passa a distinguir falta de ligação à internet de servidor indisponível (erro HTTP), mantendo o arranque 100% silencioso em máquinas arcade offline.",
+    "es": "La comprobación manual de actualizaciones ahora distingue entre falta de conexión a internet y servidor no disponible (error HTTP), manteniendo el inicio silencioso en recreativas sin conexión.",
+    "fr": "La vérification manuelle des mises à jour distingue désormais l'absence d'internet d'un serveur indisponible (erreur HTTP), tout en gardant le démarrage silencieux sur les bornes arcade hors ligne.",
+    "it": "Il controllo manuale degli aggiornamenti ora distingue tra assenza di connessione internet e server non disponibile (errore HTTP), mantenendo l'avvio silenzioso sui cabinati arcade offline.",
+    "de": "Die manuelle Update-Prüfung unterscheidet nun zwischen fehlender Internetverbindung und nicht erreichbarem Server (HTTP-Fehler), während der Start auf Offline-Arcade-Automaten lautlos bleibt.",
+    "gr": "Ο χειροκίνητος έλεγχος ενημερώσεων ξεχωρίζει πλέον την έλλειψη internet από την προσωρινή μη διαθεσιμότητα του διακομιστή (σφάλμα HTTP), διατηρώντας την εκκίνηση σιωπηλή σε offline arcade.",
+    "el": "Ο χειροκίνητος έλεγχος ενημερώσεων ξεχωρίζει πλέον την έλλειψη internet από την προσωρινή μη διαθεσιμότητα του διακομιστή (σφάλμα HTTP), διατηρώντας την εκκίνηση σιωπηλή σε offline arcade.",
+    "ru": "Ручная проверка обновлений теперь различает отсутствие интернета и недоступность сервера (ошибка HTTP), сохраняя тихий запуск на автономных аркадных автоматах.",
+    "zh": "手动检查更新现已支持区分“无网络连接”与“更新服务器不可用（HTTP 错误）”，同时保持离线街机开机自动检查完全静默。"
+  }
+}
