@@ -1,0 +1,17 @@
+{
+  "version": "1.3.68",
+  "downloadUrl": "https://retrofevlc.eu/Downloads/EmuControllers_v1.3.68.zip",
+  "pageUrl": "https://retrofevlc.eu/#emucontrollers",
+  "notes": {
+    "en": "Migrated licensing system to Polar.sh for fast activations and customer portal access, masked key privacy in Pro status, and optimized license UI.",
+    "pt": "Migração completa do sistema de licenciamento para o Polar.sh com ativações instantâneas, chave de licença mascarada em modo Pro e melhorias de privacidade.",
+    "es": "Migración completa del sistema de licencias a Polar.sh con activaciones instantáneas, clave enmascarada en modo Pro y mejoras de privacidad.",
+    "fr": "Migration complète du système de licences vers Polar.sh avec activations instantanées, clé masquée en mode Pro et confidentialité améliorée.",
+    "it": "Migrazione completa del sistema di licenze a Polar.sh con attivazioni istantanee, chiave mascherata in modalità Pro e privacy migliorata.",
+    "de": "Vollständige Migration des Lizenzsystems zu Polar.sh mit sofortiger Aktivierung, maskiertem Lizenzschlüssel im Pro-Modus und verbesserter Privatsphäre.",
+    "gr": "Πλήρης μετάβαση του συστήματος αδειών στο Polar.sh με άμεση ενεργοποίηση, απόκρυψη κλειδιού σε Pro και βελτιώσεις απορρήτου.",
+    "el": "Πλήρης μετάβαση του συστήματος αδειών στο Polar.sh με άμεση ενεργοποίηση, απόκρυψη κλειδιού σε Pro και βελτιώσεις απορρήτου.",
+    "ru": "Полный переход системы лицензирования на Polar.sh с мгновенной активацией, маскированием ключа в режиме Pro и улучшением конфиденциальности.",
+    "zh": "全面迁移授权系统至 Polar.sh，支持即时激活，Pro 模式下密钥隐私脱敏并优化授权界面。"
+  }
+}
